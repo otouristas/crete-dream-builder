@@ -1,18 +1,16 @@
 @import "tailwindcss" source(none);
-@source "../src";
+@source "./**/*.{ts,tsx}";
+@source "../components/**/*.{ts,tsx}";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
 /* Kagiampakis Residences — Cretan editorial design system.
-   Palette: warm cream, terracotta, olive, deep stone.
-   Type: Cormorant Garamond (display) + Inter (body). */
-
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap');
+   Display/body fonts are loaded via next/font in layout (variables --font-inter, --font-cormorant). */
 
 @theme inline {
-  --font-display: "Cormorant Garamond", ui-serif, Georgia, serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-cormorant), ui-serif, Georgia, serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -90,7 +88,9 @@
   * {
     border-color: var(--color-border);
   }
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
@@ -98,7 +98,10 @@
     font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: var(--font-display);
     font-weight: 400;
     letter-spacing: -0.01em;
@@ -106,25 +109,55 @@
 }
 
 @layer utilities {
-  .font-display { font-family: var(--font-display); }
-  .text-balance { text-wrap: balance; }
-  .text-pretty { text-wrap: pretty; }
-  .bg-gradient-warm { background: var(--gradient-warm); }
-  .bg-gradient-overlay { background: var(--gradient-overlay); }
-  .shadow-soft { box-shadow: var(--shadow-soft); }
-  .shadow-warm { box-shadow: var(--shadow-warm); }
+  .font-display {
+    font-family: var(--font-display);
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  .bg-gradient-warm {
+    background: var(--gradient-warm);
+  }
+  .bg-gradient-overlay {
+    background: var(--gradient-overlay);
+  }
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  .shadow-warm {
+    box-shadow: var(--shadow-warm);
+  }
 
-  .tracking-display { letter-spacing: 0.32em; }
+  .tracking-display {
+    letter-spacing: 0.32em;
+  }
 
   @keyframes ken-burns {
-    0% { transform: scale(1.05) translate(0, 0); }
-    100% { transform: scale(1.18) translate(-1.5%, -1%); }
+    0% {
+      transform: scale(1.05) translate(0, 0);
+    }
+    100% {
+      transform: scale(1.18) translate(-1.5%, -1%);
+    }
   }
-  .animate-ken-burns { animation: ken-burns 18s ease-out forwards; }
+  .animate-ken-burns {
+    animation: ken-burns 18s ease-out forwards;
+  }
 
   @keyframes fade-up {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
-  .animate-fade-up { animation: fade-up 0.9s ease-out both; }
+  .animate-fade-up {
+    animation: fade-up 0.9s ease-out both;
+  }
 }

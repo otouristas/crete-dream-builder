@@ -1,0 +1,122 @@
+[
+  {
+    "Position": "1",
+    "Amenity": "Hairdryer"
+  },
+  {
+    "Position": "2",
+    "Amenity": "Shampoo"
+  },
+  {
+    "Position": "3",
+    "Amenity": "Hot water"
+  },
+  {
+    "Position": "4",
+    "Amenity": "Essentials"
+  },
+  {
+    "Position": "5",
+    "Amenity": "Hangers"
+  },
+  {
+    "Position": "6",
+    "Amenity": "Bed linen"
+  },
+  {
+    "Position": "7",
+    "Amenity": "Extra pillows and blankets"
+  },
+  {
+    "Position": "8",
+    "Amenity": "Iron"
+  },
+  {
+    "Position": "9",
+    "Amenity": "TV"
+  },
+  {
+    "Position": "10",
+    "Amenity": "Air conditioning"
+  },
+  {
+    "Position": "11",
+    "Amenity": "Heating"
+  },
+  {
+    "Position": "12",
+    "Amenity": "Smoke alarm"
+  },
+  {
+    "Position": "13",
+    "Amenity": "Carbon monoxide alarm"
+  },
+  {
+    "Position": "14",
+    "Amenity": "First aid kit"
+  },
+  {
+    "Position": "15",
+    "Amenity": "Wifi"
+  },
+  {
+    "Position": "16",
+    "Amenity": "Kitchen"
+  },
+  {
+    "Position": "17",
+    "Amenity": "Fridge"
+  },
+  {
+    "Position": "18",
+    "Amenity": "Cooking basics"
+  },
+  {
+    "Position": "19",
+    "Amenity": "Crockery and cutlery"
+  },
+  {
+    "Position": "20",
+    "Amenity": "Cooker"
+  },
+  {
+    "Position": "21",
+    "Amenity": "Oven"
+  },
+  {
+    "Position": "22",
+    "Amenity": "Coffee maker"
+  },
+  {
+    "Position": "23",
+    "Amenity": "Private entrance"
+  },
+  {
+    "Position": "24",
+    "Amenity": "Patio or balcony"
+  },
+  {
+    "Position": "25",
+    "Amenity": "Back garden"
+  },
+  {
+    "Position": "26",
+    "Amenity": "Free parking on premises"
+  },
+  {
+    "Position": "27",
+    "Amenity": "Free on-street parking"
+  },
+  {
+    "Position": "28",
+    "Amenity": "Luggage drop-off allowed"
+  },
+  {
+    "Position": "29",
+    "Amenity": "Long-term stays allowed"
+  },
+  {
+    "Position": "30",
+    "Amenity": "Host greets you"
+  }
+]

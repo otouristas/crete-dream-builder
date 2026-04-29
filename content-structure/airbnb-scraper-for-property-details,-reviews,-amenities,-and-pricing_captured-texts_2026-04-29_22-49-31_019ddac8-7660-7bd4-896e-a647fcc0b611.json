@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Overall Rating",
+    "newText": "5.0"
+  },
+  {
+    "name": "Cleanliness",
+    "newText": "5.0"
+  },
+  {
+    "name": "Accuracy",
+    "newText": "4.9"
+  },
+  {
+    "name": "Check-in",
+    "newText": "5.0"
+  },
+  {
+    "name": "Communication",
+    "newText": "4.9"
+  },
+  {
+    "name": "Location",
+    "newText": "5.0"
+  },
+  {
+    "name": "Value",
+    "newText": "4.9"
+  },
+  {
+    "name": "Price",
+    "newText": "Add dates for prices"
+  }
+]
