@@ -6,7 +6,7 @@ import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { AIRBNB_URL, MAILTO, WHATSAPP_URL } from "@/lib/site-constants";
-import { SITE_HOME_ANCHORS, SITE_MAIN_PAGES } from "@/lib/nav-config";
+import { SITE_MOBILE_NAV_LINKS } from "@/lib/nav-config";
 
 export function SiteMobileNav() {
   const router = useRouter();
@@ -31,24 +31,9 @@ export function SiteMobileNav() {
           <SheetTitle className="font-display text-2xl text-stone-deep">Menu</SheetTitle>
         </SheetHeader>
         <nav className="flex flex-1 flex-col gap-1 overflow-y-auto px-4 py-6" aria-label="Primary">
-          <Link
-            href="/"
-            className="rounded-md px-4 py-3.5 text-lg text-foreground/90 transition-colors hover:bg-secondary/60 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          >
-            Home
-          </Link>
-          {SITE_MAIN_PAGES.map((link) => (
+          {SITE_MOBILE_NAV_LINKS.map((link) => (
             <Link
-              key={link.href}
-              href={link.href}
-              className="rounded-md px-4 py-3.5 text-lg text-foreground/90 transition-colors hover:bg-secondary/60 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            >
-              {link.label}
-            </Link>
-          ))}
-          {SITE_HOME_ANCHORS.map((link) => (
-            <Link
-              key={link.href}
+              key={`${link.href}-${link.label}`}
               href={link.href}
               className="rounded-md px-4 py-3.5 text-lg text-foreground/90 transition-colors hover:bg-secondary/60 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >

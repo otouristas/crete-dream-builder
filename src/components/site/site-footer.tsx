@@ -14,7 +14,7 @@ import {
   TRIPADVISOR_URL,
   WHATSAPP_URL,
 } from "@/lib/site-constants";
-import { SITE_HOME_ANCHORS, SITE_MAIN_PAGES } from "@/lib/nav-config";
+import { SITE_GALLERY_LINK, SITE_HOME_ANCHORS, SITE_MAIN_PAGES } from "@/lib/nav-config";
 
 export function SiteFooter() {
   return (
@@ -94,6 +94,14 @@ export function SiteFooter() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  href={SITE_GALLERY_LINK.href}
+                  className="text-cream/85 transition-colors hover:text-primary focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                >
+                  {SITE_GALLERY_LINK.label}
+                </Link>
+              </li>
               {SITE_HOME_ANCHORS.map((link) => (
                 <li key={link.href}>
                   <Link

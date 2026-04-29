@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { GalleryWithLightbox } from "@/components/site/gallery-with-lightbox";
-import { SITE_HEADER_PT_CLASS } from "@/lib/layout-constants";
+import { SITE_HERO_HEADER_PAD_CLASS } from "@/lib/layout-constants";
 import { getPropertyAmenities } from "@/lib/property-data";
 import { getPropertyPhotos } from "@/lib/property-photos";
 import { MAILTO, WHATSAPP_URL } from "@/lib/site-constants";
@@ -99,7 +99,7 @@ export function VillaLanding() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-stone-deep/55 via-stone-deep/35 to-stone-deep/88" />
         <div
-          className={`relative z-10 mx-auto flex min-h-[min(92svh,900px)] max-w-7xl flex-col justify-end px-6 pb-16 pt-8 lg:px-10 lg:pb-24 ${SITE_HEADER_PT_CLASS}`}
+          className={`relative z-10 mx-auto flex min-h-[min(92svh,900px)] max-w-7xl flex-col px-6 pb-16 max-lg:justify-center lg:justify-end lg:px-10 lg:pb-24 ${SITE_HERO_HEADER_PAD_CLASS}`}
         >
           <div className="max-w-4xl animate-fade-up">
             <p className="text-xs uppercase tracking-display text-cream/75">Avdou · Crete</p>

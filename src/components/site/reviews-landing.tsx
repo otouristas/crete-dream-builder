@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Quote } from "lucide-react";
-import { SITE_HEADER_PT_CLASS } from "@/lib/layout-constants";
+import { SITE_HERO_HEADER_PAD_CLASS } from "@/lib/layout-constants";
 import { getPropertyReviews } from "@/lib/property-data";
 import { GOOGLE_BUSINESS_URL, MAILTO, TRIPADVISOR_URL, WHATSAPP_URL } from "@/lib/site-constants";
 
@@ -23,9 +23,7 @@ export function ReviewsLanding() {
   const allFive = reviews.every((r) => Number.parseInt(r.Rating, 10) >= 5);
   return (
     <main className="bg-cream text-foreground">
-      <section
-        className={`relative overflow-hidden border-b border-cream/10 bg-stone-deep text-cream ${SITE_HEADER_PT_CLASS}`}
-      >
+      <section className="relative overflow-hidden border-b border-cream/10 bg-stone-deep text-cream">
         <div className="pointer-events-none absolute inset-0 opacity-25">
           <Image
             src="/property/bedroom-view.jpg"
@@ -37,7 +35,9 @@ export function ReviewsLanding() {
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-stone-deep via-stone-deep/95 to-stone-deep/88" />
-        <div className="relative mx-auto max-w-6xl px-6 py-14 lg:px-10 lg:py-20">
+        <div
+          className={`relative mx-auto max-w-6xl px-6 pb-14 lg:px-10 lg:pb-20 lg:pt-6 ${SITE_HERO_HEADER_PAD_CLASS}`}
+        >
           <p className="text-xs uppercase tracking-display text-primary">Guest voices</p>
           <h1 className="mt-4 max-w-3xl font-display text-4xl leading-[0.98] text-balance text-cream sm:text-5xl lg:text-6xl">
             What people remember <em className="text-primary not-italic">after they leave.</em>

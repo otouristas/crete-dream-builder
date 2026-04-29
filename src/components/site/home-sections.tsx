@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { GalleryWithLightbox } from "@/components/site/gallery-with-lightbox";
-import { SITE_HEADER_PT_CLASS } from "@/lib/layout-constants";
+import { SITE_HERO_HEADER_PAD_CLASS } from "@/lib/layout-constants";
 import { getPropertyPhotos } from "@/lib/property-photos";
 import { EMAIL, MAILTO, PHONE_DISPLAY, WHATSAPP_URL } from "@/lib/site-constants";
 
@@ -16,7 +16,10 @@ function Stat({ n, label }: { readonly n: string; readonly label: string }) {
 
 export function HomeHero() {
   return (
-    <section id="top" className="relative h-[100svh] min-h-[640px] w-full overflow-hidden">
+    <section
+      id="top"
+      className="relative min-h-[100svh] w-full overflow-hidden lg:min-h-[min(100svh,900px)]"
+    >
       <Image
         src="/property/exterior-courtyard.jpg"
         alt="Stone-built courtyard of Kagiampakis Residences in Avdou, Crete at dusk"
@@ -27,7 +30,7 @@ export function HomeHero() {
       />
       <div className="absolute inset-0 bg-gradient-to-b from-stone-deep/30 via-stone-deep/20 to-stone-deep/80" />
       <div
-        className={`relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-6 pb-24 lg:px-10 lg:pb-28 ${SITE_HEADER_PT_CLASS}`}
+        className={`relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col px-6 pb-20 max-lg:justify-center lg:min-h-[min(100svh,900px)] lg:justify-end lg:px-10 lg:pb-28 ${SITE_HERO_HEADER_PAD_CLASS}`}
       >
         <div className="animate-fade-up max-w-3xl">
           <p className="mb-6 text-xs uppercase tracking-display text-cream/80">

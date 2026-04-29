@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Church, MapPin, Mountain, Ship, Sparkles, Tent, TreePalm, Waves } from "lucide-react";
-import { SITE_HEADER_PT_CLASS } from "@/lib/layout-constants";
+import { SITE_HERO_HEADER_PAD_CLASS } from "@/lib/layout-constants";
 import { MAILTO, WHATSAPP_URL } from "@/lib/site-constants";
 
 interface ExploreCard {
@@ -52,9 +52,7 @@ export function WhatToSeeLanding() {
   ];
   return (
     <main className="bg-cream text-foreground">
-      <section
-        className={`relative min-h-[min(72svh,720px)] w-full overflow-hidden ${SITE_HEADER_PT_CLASS}`}
-      >
+      <section className="relative min-h-[min(72svh,720px)] w-full overflow-hidden">
         <Image
           src="/property/entrance-evening.jpg"
           alt="Stone entrance and flowers in Avdou at dusk"
@@ -64,7 +62,9 @@ export function WhatToSeeLanding() {
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-stone-deep via-stone-deep/55 to-stone-deep/25" />
-        <div className="relative z-10 mx-auto flex min-h-[min(72svh,720px)] max-w-6xl flex-col justify-end px-6 pb-14 pt-6 lg:px-10 lg:pb-20">
+        <div
+          className={`relative z-10 mx-auto flex min-h-[min(72svh,720px)] max-w-6xl flex-col px-6 pb-14 max-lg:justify-center lg:justify-end lg:px-10 lg:pb-20 ${SITE_HERO_HEADER_PAD_CLASS}`}
+        >
           <p className="text-xs uppercase tracking-display text-primary/95">Beyond the courtyard</p>
           <h1 className="mt-4 max-w-4xl font-display text-4xl leading-[0.95] text-balance text-cream sm:text-5xl lg:text-7xl">
             Crete from <em className="text-primary/95 not-italic">Avdou.</em>
