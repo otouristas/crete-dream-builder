@@ -267,38 +267,44 @@ export default async function ResidenceDetailPage({ params }: ResidencePageProps
                       href={WHATSAPP_1_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-2.5 font-semibold text-white transition-all hover:bg-[#20bd5a]"
+                      className="flex h-11 w-full items-center gap-2 rounded-lg bg-[#25D366] px-4 font-semibold text-white transition-all hover:bg-[#20bd5a]"
                     >
-                      <WhatsAppIcon className="h-3.5 w-3.5 shrink-0" />
+                      <WhatsAppIcon className="h-4 w-4 shrink-0" />
                       <span>WhatsApp Primary</span>
-                      <span className="ml-auto text-[11px] opacity-85">{PHONE_1_DISPLAY}</span>
+                      <span className="ml-auto text-[11px] font-medium opacity-85">
+                        {PHONE_1_DISPLAY}
+                      </span>
                     </a>
 
                     <a
                       href={WHATSAPP_2_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 rounded-full bg-[#25D366]/90 px-4 py-2.5 font-semibold text-white transition-all hover:bg-[#25D366]"
+                      className="flex h-11 w-full items-center gap-2 rounded-lg bg-[#25D366]/90 px-4 font-semibold text-white transition-all hover:bg-[#25D366]"
                     >
-                      <WhatsAppIcon className="h-3.5 w-3.5 shrink-0" />
+                      <WhatsAppIcon className="h-4 w-4 shrink-0" />
                       <span>WhatsApp Secondary</span>
-                      <span className="ml-auto text-[11px] opacity-85">{PHONE_2_DISPLAY}</span>
+                      <span className="ml-auto text-[11px] font-medium opacity-85">
+                        {PHONE_2_DISPLAY}
+                      </span>
                     </a>
 
                     <a
                       href={VIBER_1_URL}
-                      className="flex items-center gap-2 rounded-full bg-[#7360F2] px-4 py-2.5 font-semibold text-white transition-all hover:bg-[#6351e3]"
+                      className="flex h-11 w-full items-center gap-2 rounded-lg bg-[#7360F2] px-4 font-semibold text-white transition-all hover:bg-[#6351e3]"
                     >
-                      <ViberIcon className="h-3.5 w-3.5 shrink-0" />
+                      <ViberIcon className="h-4 w-4 shrink-0" />
                       <span>Viber Message</span>
-                      <span className="ml-auto text-[11px] opacity-85">{PHONE_1_DISPLAY}</span>
+                      <span className="ml-auto text-[11px] font-medium opacity-85">
+                        {PHONE_1_DISPLAY}
+                      </span>
                     </a>
 
                     <a
                       href={MAILTO}
-                      className="flex items-center gap-2 rounded-full border border-cream/30 bg-cream/10 px-4 py-2.5 font-medium text-cream transition-all hover:bg-cream/20"
+                      className="flex h-11 w-full items-center gap-2 rounded-lg border border-cream/30 bg-cream/10 px-4 font-medium text-cream transition-all hover:bg-cream/20"
                     >
-                      <EmailIcon className="h-3.5 w-3.5 shrink-0" />
+                      <EmailIcon className="h-4 w-4 shrink-0" />
                       <span>Email Host</span>
                       <span className="ml-auto text-[11px] opacity-85">{EMAIL}</span>
                     </a>
