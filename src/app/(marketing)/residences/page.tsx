@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { AvailabilityCalculator } from "@/components/site/availability-calculator";
 import { ResidenceCard } from "@/components/site/residence-card";
 import { buildPageMetadata } from "@/lib/build-page-metadata";
+import { SITE_HEADER_PT_CLASS } from "@/lib/layout-constants";
 import { getAllResidences } from "@/lib/residences-data";
 
 export const metadata: Metadata = buildPageMetadata({
@@ -15,7 +16,7 @@ export default function ResidencesPage() {
   const residences = getAllResidences();
 
   return (
-    <div className="bg-cream text-foreground py-16 sm:py-24">
+    <div className={`bg-cream text-foreground pb-16 sm:pb-24 ${SITE_HEADER_PT_CLASS}`}>
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="mx-auto max-w-3xl text-center mb-16">
           <span className="text-xs font-semibold uppercase tracking-display text-primary">

@@ -36,7 +36,7 @@ export function ReviewsLanding() {
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-stone-deep via-stone-deep/95 to-stone-deep/88" />
         <div
-          className={`relative mx-auto max-w-6xl px-6 pb-14 lg:px-10 lg:pb-20 lg:pt-6 ${SITE_HERO_HEADER_PAD_CLASS}`}
+          className={`relative mx-auto max-w-6xl px-6 pb-14 lg:px-10 lg:pb-20 ${SITE_HERO_HEADER_PAD_CLASS}`}
         >
           <p className="text-xs uppercase tracking-display text-primary">Guest voices</p>
           <h1 className="mt-4 max-w-3xl font-display text-4xl leading-[0.98] text-balance text-cream sm:text-5xl lg:text-6xl">

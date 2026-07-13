@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { AvailabilityCalculator } from "@/components/site/availability-calculator";
 import { GalleryWithLightbox } from "@/components/site/gallery-with-lightbox";
 import { buildPageMetadata } from "@/lib/build-page-metadata";
+import { SITE_HERO_HEADER_PAD_CLASS } from "@/lib/layout-constants";
 import { getResidenceById } from "@/lib/residences-data";
 import {
   EMAIL,
@@ -62,7 +63,9 @@ export default async function ResidenceDetailPage({ params }: ResidencePageProps
         />
         <div className="absolute inset-0 bg-gradient-to-t from-stone-deep via-stone-deep/40 to-black/20" />
 
-        <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-6 pb-12 lg:px-10">
+        <div
+          className={`relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-6 pb-12 lg:px-10 ${SITE_HERO_HEADER_PAD_CLASS}`}
+        >
           <div className="flex flex-wrap items-center gap-3 mb-3">
             <span className="rounded-xs bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">
               {residence.badge}
