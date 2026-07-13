@@ -5,21 +5,41 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/en",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/en/:path*",
+        destination: "/:path*",
+        permanent: true,
+      },
+      {
         source: "/amenities",
-        destination: "/villa",
+        destination: "/residences",
+        permanent: true,
+      },
+      {
+        source: "/villa",
+        destination: "/residences/concept-1",
         permanent: true,
       },
     ];
   },
-  /** Browsers still request `/favicon.ico` by default; we serve the same asset as `public/logo.png`. */
+  /** Browsers still request `/favicon.ico`; we serve `/logo-final.png`. */
   async rewrites() {
-    return [{ source: "/favicon.ico", destination: "/logo.png" }];
+    return [{ source: "/favicon.ico", destination: "/logo-final.png" }];
   },
   images: {
     remotePatterns: [
       {
         protocol: "https",
         hostname: "upload.wikimedia.org",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "a0.muscache.com",
         pathname: "/**",
       },
     ],

@@ -1,13 +1,23 @@
 import Image from "next/image";
 import Link from "next/link";
-import { GalleryWithLightbox } from "@/components/site/gallery-with-lightbox";
+import { AvailabilityCalculator } from "@/components/site/availability-calculator";
+import { ResidenceCard } from "@/components/site/residence-card";
+import { WhatsAppIcon, ViberIcon, EmailIcon } from "@/components/icons";
 import { SITE_HERO_HEADER_PAD_CLASS } from "@/lib/layout-constants";
-import { getPropertyPhotos } from "@/lib/property-photos";
-import { EMAIL, MAILTO, PHONE_DISPLAY, WHATSAPP_URL } from "@/lib/site-constants";
+import { getAllResidences } from "@/lib/residences-data";
+import {
+  EMAIL,
+  MAILTO,
+  PHONE_1_DISPLAY,
+  PHONE_2_DISPLAY,
+  VIBER_1_URL,
+  WHATSAPP_1_URL,
+  WHATSAPP_2_URL,
+} from "@/lib/site-constants";
 
 function Stat({ n, label }: { readonly n: string; readonly label: string }) {
   return (
-    <div>
+    <div className="text-center">
       <div className="font-display text-4xl text-primary">{n}</div>
       <div className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">{label}</div>
     </div>
@@ -22,61 +32,117 @@ export function HomeHero() {
     >
       <Image
         src="/property/exterior-courtyard.jpg"
-        alt="Stone-built courtyard of Kagiampakis Residences in Avdou, Crete at dusk"
+        alt="Stone courtyard at Kagiampakis Concept Residences in Avdou, Crete"
         fill
         priority
         sizes="100vw"
         className="object-cover animate-ken-burns"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-stone-deep/30 via-stone-deep/20 to-stone-deep/80" />
+      <div className="absolute inset-0 bg-gradient-to-b from-stone-deep/40 via-stone-deep/30 to-stone-deep/90" />
       <div
         className={`relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col px-6 pb-20 max-lg:justify-center lg:min-h-[min(100svh,900px)] lg:justify-end lg:px-10 lg:pb-28 ${SITE_HERO_HEADER_PAD_CLASS}`}
       >
         <div className="animate-fade-up max-w-3xl">
-          <p className="mb-6 text-xs uppercase tracking-display text-cream/80">
-            Avdou · Heraklion · Crete
+          <p className="mb-4 text-xs font-semibold uppercase tracking-display text-cream/80">
+            Avdou Village · Heraklion · Crete
           </p>
           <h1 className="font-display text-5xl leading-[0.95] text-balance text-cream sm:text-6xl lg:text-8xl">
-            A stone house,
+            Kagiampakis
             <br />
-            <em className="font-light text-primary/95">whispered by the mountain.</em>
+            <em className="font-light text-primary/95">Concept Residences I &amp; II</em>
           </h1>
-          <p className="mt-8 max-w-xl text-pretty text-lg text-cream/85">
-            A traditional, fully renovated two-storey residence in the village of Avdou — where
-            Cretan hospitality, slow mornings, and the scent of wild herbs become part of your stay.
+          <p className="mt-6 max-w-2xl text-pretty text-lg text-cream/90 sm:text-xl">
+            Two authentic, stone-built Cretan residences in historic Avdou village. Choose between
+            <strong className="text-cream"> Residence I (up to 6 guests)</strong> and{" "}
+            <strong className="text-cream"> Residence II (up to 7 guests)</strong>, or reserve both
+            for large group gatherings up to 13 guests.
           </p>
-          <div className="mt-10 flex flex-wrap gap-4">
+
+          <div className="mt-8 flex flex-wrap gap-4">
             <a
-              href={WHATSAPP_URL}
+              href="#calculator"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-warm transition-all hover:bg-primary/90"
+            >
+              Check Availability &amp; Rates →
+            </a>
+            <a
+              href={WHATSAPP_1_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-primary-foreground shadow-warm transition-all hover:bg-primary/90"
+              className="inline-flex items-center gap-2 rounded-full border border-cream/40 bg-[#25D366]/20 px-6 py-3.5 text-sm font-medium text-cream backdrop-blur-xs transition-all hover:bg-[#25D366]/40"
             >
-              WhatsApp — book direct
-            </a>
-            <a
-              href={MAILTO}
-              className="inline-flex items-center gap-2 rounded-full border border-cream/40 px-7 py-3.5 text-cream transition-all hover:bg-cream/10"
-            >
-              Email your dates
+              <WhatsAppIcon className="h-5 w-5" />
+              WhatsApp Direct
             </a>
             <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 rounded-full border border-cream/25 px-7 py-3.5 text-cream/95 transition-all hover:bg-cream/10"
+              href="/residences"
+              className="inline-flex items-center gap-2 rounded-full border border-cream/25 px-6 py-3.5 text-sm font-medium text-cream/90 transition-all hover:bg-cream/10"
             >
-              Contact &amp; map
+              Explore Both Residences
             </Link>
           </div>
-          <div className="mt-12 flex flex-wrap items-center gap-6 text-sm text-cream/80">
-            <span className="flex items-center gap-2">
-              <span className="text-primary">★</span> 5.0 · 22 guest reviews
+
+          <div className="mt-10 flex flex-wrap items-center gap-6 text-sm text-cream/80 border-t border-cream/15 pt-6">
+            <span className="flex items-center gap-2 font-medium">
+              <span className="text-primary">★</span> 5.0 Rating · 23 Reviews
             </span>
             <span className="hidden sm:inline">·</span>
             <span className="hidden sm:inline">
-              Book direct — WhatsApp or email for the best experience
+              Book Direct — Best Rate Guaranteed &amp; Instant Host Communication
             </span>
           </div>
         </div>
+      </div>
+    </section>
+  );
+}
+
+export function HomeResidencesSection() {
+  const residences = getAllResidences();
+
+  return (
+    <section id="residences" className="scroll-mt-header bg-cream py-24 lg:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+        <div className="mx-auto max-w-3xl text-center mb-16">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-display text-primary">
+            Our Accommodations
+          </p>
+          <h2 className="font-display text-4xl text-stone-deep sm:text-5xl lg:text-6xl">
+            Two Distinct Stone Residences
+          </h2>
+          <p className="mt-4 text-lg text-foreground/75">
+            Crafted with traditional stone and wood architecture, renovated with high modern
+            comforts, and situated in the peaceful village of Avdou.
+          </p>
+        </div>
+
+        <div className="grid gap-10 lg:grid-cols-2">
+          {residences.map((residence) => (
+            <ResidenceCard key={residence.id} residence={residence} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function HomeCalculatorSection() {
+  return (
+    <section id="calculator" className="scroll-mt-header bg-secondary/40 py-24 lg:py-32">
+      <div className="mx-auto max-w-5xl px-6 lg:px-10">
+        <div className="mx-auto max-w-2xl text-center mb-12">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-display text-primary">
+            Live Pricing &amp; Dates
+          </p>
+          <h2 className="font-display text-4xl text-stone-deep sm:text-5xl">
+            Check Rates &amp; Availability
+          </h2>
+          <p className="mt-3 text-sm text-muted-foreground">
+            Select your dates and guest count to see instantaneous rates and minimum stay rules.
+          </p>
+        </div>
+
+        <AvailabilityCalculator />
       </div>
     </section>
   );
@@ -84,118 +150,49 @@ export function HomeHero() {
 
 export function HomeStory() {
   return (
-    <section id="story" className="bg-cream py-24 lg:py-36">
+    <section id="story" className="scroll-mt-header bg-cream py-24 lg:py-36">
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 lg:grid-cols-12 lg:gap-20 lg:px-10">
         <div className="lg:col-span-5">
           <figure className="overflow-hidden rounded-sm shadow-soft">
             <Image
               src="/property/entrance-evening.jpg"
-              alt="Lit stone entrance and bougainvillea at the residence"
+              alt="Stone entrance at Kagiampakis Concept Residences at dusk"
               width={900}
               height={1200}
               className="h-[520px] w-full object-cover"
               sizes="(max-width: 1024px) 100vw, 40vw"
             />
-            <figcaption className="sr-only">Entrance at dusk</figcaption>
           </figure>
         </div>
+
         <div className="lg:col-span-7">
-          <p className="mb-5 text-xs uppercase tracking-display text-primary">Our Story</p>
+          <p className="mb-5 text-xs font-semibold uppercase tracking-display text-primary">
+            Our Story
+          </p>
           <h2 className="font-display text-4xl leading-tight text-balance text-stone-deep lg:text-5xl">
             Built of stone, kept by family,
             <em className="text-primary"> opened to you.</em>
           </h2>
           <div className="mt-8 space-y-5 text-lg leading-relaxed text-foreground/80">
             <p>
-              In a quiet corner of Avdou — a village 35 km from Heraklion, cradled by the Lasithi
-              mountains — sits a two-storey stone house lovingly restored across three generations
-              of the Kagiampakis family.
+              In a quiet alley of Avdou — a village 35 km from Heraklion, cradled by the Lasithi
+              mountains — sit the stone residences of the Kagiampakis family.
             </p>
             <p>
-              We kept the wooden beams, the cool thick walls, the wood-burning stove. We added soft
-              beds, a fully equipped kitchen, and a private balcony that opens onto the cave of Agia
-              Fotini. Everything else, the village will give you.
+              We preserved the wooden beams, thick thermal stone walls, and traditional wood stove,
+              while introducing plush beds, climate control, fully equipped kitchens, and high-speed
+              Wi-Fi. Whether you choose Concept I or Concept II, authentic Cretan warmth awaits.
             </p>
           </div>
-          <div className="mt-10 grid grid-cols-3 gap-6 border-t border-border pt-8">
-            <Stat n="7" label="years hosting" />
-            <Stat n="22" label="five-star reviews" />
-            <Stat n="6" label="guests · 2 bedrooms" />
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
 
-export function HomeGallery() {
-  const photos = getPropertyPhotos().map((photo, i) => ({
-    ...photo,
-    span: i === 0 ? "lg:col-span-2 lg:row-span-2" : undefined,
-  }));
-  return (
-    <section id="gallery" className="bg-secondary/40 py-24 lg:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
-          <div>
-            <p className="mb-4 text-xs uppercase tracking-display text-primary">A Look Inside</p>
-            <h2 className="font-display text-4xl text-stone-deep lg:text-5xl">
-              Quiet rooms, warm stone, soft light.
-            </h2>
-            <p className="mt-3 max-w-xl text-sm text-muted-foreground">
-              Tap any photo for a full-screen gallery — hosted here, not on a booking platform.
-            </p>
-          </div>
-          <Link
-            href="/villa#photos"
-            className="text-sm text-primary underline-offset-4 transition-colors hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
-          >
-            Full villa page &amp; amenities →
-          </Link>
-        </div>
-        <GalleryWithLightbox images={photos} />
-      </div>
-    </section>
-  );
-}
+          {/* Decorative shimmer divider */}
+          <div className="shimmer-line my-10" />
 
-export function HomeStay() {
-  const features = [
-    {
-      t: "Three storeys",
-      d: "Ground-floor kitchen & living, first-floor bedroom with private balcony, top-floor bedroom with mountain view.",
-    },
-    {
-      t: "Wood-burning stove",
-      d: "Cook the traditional way and warm winter evenings by the fire.",
-    },
-    {
-      t: "Equipped kitchen",
-      d: "Tea, filter coffee, espresso and everything needed to cook a Cretan meal.",
-    },
-    {
-      t: "Private courtyard",
-      d: "Sokaki Kagiampidon — a dead-end traditional alley that becomes your terrace.",
-    },
-    { t: "Mountain view", d: "Sleep facing the cave of Agia Fotini and wake to birdsong." },
-    { t: "Free parking", d: "One of the few homes in the village with free on-site parking." },
-  ] as const;
-  return (
-    <section id="stay" className="bg-cream py-24 lg:py-36">
-      <div className="mx-auto max-w-6xl px-6 lg:px-10">
-        <div className="max-w-2xl">
-          <p className="mb-4 text-xs uppercase tracking-display text-primary">The Stay</p>
-          <h2 className="font-display text-4xl text-balance text-stone-deep lg:text-5xl">
-            Everything for six guests, nothing in excess.
-          </h2>
-        </div>
-        <div className="mt-14 grid gap-px overflow-hidden rounded-sm bg-border md:grid-cols-2 lg:grid-cols-3">
-          {features.map((f) => (
-            <div key={f.t} className="bg-cream p-8 transition-colors hover:bg-secondary/40">
-              <div className="mb-3 font-display text-2xl text-primary">{f.t}</div>
-              <p className="leading-relaxed text-foreground/75">{f.d}</p>
-            </div>
-          ))}
+          <div className="grid grid-cols-3 gap-6">
+            <Stat n="2" label="Residences" />
+            <Stat n="13" label="Max Guests" />
+            <Stat n="5.0" label="Star Rating" />
+          </div>
         </div>
       </div>
     </section>
@@ -207,14 +204,15 @@ export function HomeLocation() {
     ["3.6 km", "Cave of Agia Fotini"],
     ["3.9 km", "Aposelemi Dam"],
     ["11.2 km", "Aqua Plus Water Park"],
-    ["14 km", "Hersonissos beaches"],
+    ["14 km", "Hersonissos Beaches"],
     ["14 km", "Lasithi Plateau"],
-    ["35 km", "Heraklion city"],
+    ["35 km", "Heraklion City & Airport"],
   ] as const;
+
   return (
     <section
       id="location"
-      className="relative overflow-hidden bg-stone-deep py-24 text-cream lg:py-36"
+      className="scroll-mt-header relative overflow-hidden bg-stone-deep py-24 text-cream lg:py-36"
     >
       <div className="absolute inset-0 opacity-20">
         <Image
@@ -228,30 +226,33 @@ export function HomeLocation() {
       </div>
       <div className="relative mx-auto grid max-w-6xl gap-16 px-6 lg:grid-cols-2 lg:px-10">
         <div>
-          <p className="mb-4 text-xs uppercase tracking-display text-primary">The Village</p>
+          <p className="mb-4 text-xs font-semibold uppercase tracking-display text-primary">
+            The Village
+          </p>
           <h2 className="font-display text-4xl leading-tight text-balance lg:text-5xl">
-            Avdou — between mountain and sea.
+            Avdou — Between Mountain &amp; Sea
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-cream/80">
-            Paragliding, the Rosa gorge, horseback riding, the Lasithi plateau and its eighteen
-            villages, hidden chapels, and the beaches of Hersonissos — all within a short drive from
-            your door.
+            Paragliding, hiking the Rosa gorge, horseback riding, exploring the 18 villages of
+            Lasithi Plateau, and swimming at Hersonissos beaches — all within easy reach from your
+            private residence door.
           </p>
           <Link
             href="/what-to-see"
-            className="mt-6 inline-flex text-sm text-primary underline-offset-4 transition-colors hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
+            className="mt-6 inline-flex text-sm font-medium text-primary underline-offset-4 transition-colors hover:underline"
           >
-            What to see in Heraklion &amp; nearby →
+            What to see nearby →
           </Link>
           <a
             href="https://maps.google.com/?q=Avdou+Crete+Greece"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-3 block text-primary underline-offset-4 transition-colors hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
+            className="mt-3 block text-sm font-medium text-cream/80 underline-offset-4 transition-colors hover:text-primary hover:underline"
           >
             Open in Google Maps →
           </a>
         </div>
+
         <ul className="space-y-px overflow-hidden rounded-sm bg-cream/10">
           {places.map(([d, p]) => (
             <li
@@ -270,59 +271,93 @@ export function HomeLocation() {
 
 export function HomeContact() {
   return (
-    <section id="contact" className="bg-cream py-24 pb-32 lg:py-36 lg:pb-40">
+    <section id="contact" className="scroll-mt-header bg-cream py-24 pb-32 lg:py-36 lg:pb-40">
       <div className="mx-auto max-w-5xl px-6 text-center lg:px-10">
         <Image
-          src="/logo.png"
-          alt=""
+          src="/logo-final.png"
+          alt="Kagiampakis Concept Residences Logo"
           width={200}
           height={200}
-          className="mx-auto h-32 w-32 object-contain opacity-95 sm:h-40 sm:w-40"
+          className="mx-auto h-28 w-28 object-contain opacity-95 sm:h-36 sm:w-36"
         />
-        <p className="mb-4 mt-8 text-xs uppercase tracking-display text-primary">
-          Reserve Your Stay
+        <p className="mb-4 mt-8 text-xs font-semibold uppercase tracking-display text-primary">
+          Reserve Your Stay Direct
         </p>
         <h2 className="font-display text-4xl leading-tight text-balance text-stone-deep lg:text-6xl">
           We would love to <em className="text-primary">welcome you.</em>
         </h2>
         <p className="mx-auto mt-6 max-w-xl text-lg text-foreground/75">
-          The best way to reserve is <strong className="text-stone-deep">WhatsApp</strong> or{" "}
-          <strong className="text-stone-deep">email</strong>. Speak directly with Xrisa — replies
-          within hours, in Greek or English.
+          Reach out directly via <strong className="text-stone-deep">WhatsApp</strong>,{" "}
+          <strong className="text-stone-deep">Viber</strong>, or{" "}
+          <strong className="text-stone-deep">Email</strong>. Speak directly with host Xrisa for
+          instant responses and personalized arrangements.
         </p>
-        <div className="mx-auto mt-12 grid max-w-2xl gap-4 sm:grid-cols-2">
+
+        {/* Contact Grid */}
+        <div className="mx-auto mt-12 grid max-w-3xl gap-4 sm:grid-cols-2">
           <a
-            href={WHATSAPP_URL}
+            href={WHATSAPP_1_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex flex-col items-start gap-2 rounded-sm bg-primary p-8 text-left text-primary-foreground shadow-warm transition-all hover:bg-primary/90 sm:p-9"
+            className="group flex flex-col items-start gap-3 rounded-sm bg-[#25D366] p-7 text-left text-white shadow-warm transition-all hover:bg-[#20bd5a]"
           >
-            <span className="text-xs uppercase tracking-widest opacity-90">
-              WhatsApp — preferred
+            <div className="flex items-center gap-2">
+              <WhatsAppIcon className="h-6 w-6" />
+              <span className="text-xs font-semibold uppercase tracking-widest opacity-90">
+                WhatsApp (Primary)
+              </span>
+            </div>
+            <span className="font-display text-2xl sm:text-3xl">{PHONE_1_DISPLAY}</span>
+            <span className="text-xs opacity-90 group-hover:opacity-100">
+              Message Xrisa on WhatsApp →
             </span>
-            <span className="font-display text-2xl sm:text-3xl">{PHONE_DISPLAY}</span>
-            <span className="text-sm opacity-90 group-hover:opacity-100">Message Xrisa now →</span>
           </a>
+
+          <a
+            href={WHATSAPP_2_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex flex-col items-start gap-3 rounded-sm bg-stone-deep p-7 text-left text-cream shadow-warm transition-all hover:bg-stone-deep/90"
+          >
+            <div className="flex items-center gap-2">
+              <WhatsAppIcon className="h-6 w-6 text-[#25D366]" />
+              <span className="text-xs font-semibold uppercase tracking-widest text-primary">
+                WhatsApp (Secondary)
+              </span>
+            </div>
+            <span className="font-display text-2xl sm:text-3xl">{PHONE_2_DISPLAY}</span>
+            <span className="text-xs opacity-90 group-hover:opacity-100">
+              Message on WhatsApp →
+            </span>
+          </a>
+
+          <a
+            href={VIBER_1_URL}
+            className="group flex flex-col items-start gap-3 rounded-sm bg-[#7360F2] p-7 text-left text-white shadow-warm transition-all hover:bg-[#6351e3]"
+          >
+            <div className="flex items-center gap-2">
+              <ViberIcon className="h-6 w-6" />
+              <span className="text-xs font-semibold uppercase tracking-widest opacity-90">
+                Viber Chat
+              </span>
+            </div>
+            <span className="font-display text-2xl sm:text-3xl">{PHONE_1_DISPLAY}</span>
+            <span className="text-xs opacity-90 group-hover:opacity-100">Open Viber Chat →</span>
+          </a>
+
           <a
             href={MAILTO}
-            className="group flex flex-col items-start gap-2 rounded-sm border-2 border-primary/25 bg-card p-8 text-left transition-all hover:border-primary sm:p-9"
+            className="group flex flex-col items-start gap-3 rounded-sm border-2 border-primary/25 bg-card p-7 text-left transition-all hover:border-primary"
           >
-            <span className="text-xs uppercase tracking-widest text-muted-foreground">Email</span>
-            <span className="font-display break-all text-2xl text-stone-deep sm:text-3xl">
-              {EMAIL}
-            </span>
-            <span className="text-sm font-medium text-primary">Send an enquiry →</span>
+            <div className="flex items-center gap-2">
+              <EmailIcon className="h-6 w-6 text-primary" />
+              <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                Email Enquiry
+              </span>
+            </div>
+            <span className="font-display break-all text-2xl text-stone-deep">{EMAIL}</span>
+            <span className="text-xs font-medium text-primary">Send an email enquiry →</span>
           </a>
-        </div>
-        <div className="mx-auto mt-8 max-w-xl rounded-sm border border-border/80 bg-secondary/30 px-6 py-5 text-left text-sm text-foreground/80">
-          <Link
-            href="/contact"
-            className="font-medium text-primary underline-offset-4 hover:underline"
-          >
-            Contact page
-          </Link>{" "}
-          — map, enquiry form, and quick links. Third-party listing sites are optional only if you
-          already use them; we always recommend messaging us first.
         </div>
       </div>
     </section>

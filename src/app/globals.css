@@ -160,4 +160,63 @@
   .animate-fade-up {
     animation: fade-up 0.9s ease-out both;
   }
+
+  /* Scroll offset for anchor targets behind fixed header */
+  .scroll-mt-header {
+    scroll-margin-top: 5rem;
+  }
+
+  /* Pulsing glow ring for WhatsApp FAB */
+  @keyframes fab-glow {
+    0%,
+    100% {
+      box-shadow:
+        0 0 0 0 rgba(37, 211, 102, 0.5),
+        0 8px 24px -4px rgba(37, 211, 102, 0.35);
+    }
+    50% {
+      box-shadow:
+        0 0 0 10px rgba(37, 211, 102, 0),
+        0 8px 24px -4px rgba(37, 211, 102, 0.35);
+    }
+  }
+  .animate-fab-glow {
+    animation: fab-glow 2.5s ease-in-out infinite;
+  }
+
+  /* Slide-up-fade for popover */
+  @keyframes slide-up-fade {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-slide-up-fade {
+    animation: slide-up-fade 0.25s ease-out both;
+  }
+
+  /* Decorative shimmer line */
+  @keyframes shimmer {
+    0% {
+      background-position: -200% center;
+    }
+    100% {
+      background-position: 200% center;
+    }
+  }
+  .shimmer-line {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      oklch(0.555 0.135 38 / 0.5) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 3s ease-in-out infinite;
+  }
 }
