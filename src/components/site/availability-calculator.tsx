@@ -251,43 +251,53 @@ export function AvailabilityCalculator({
         <p className="mb-4 text-xs font-semibold uppercase tracking-display text-primary">
           Send Direct Reservation Request
         </p>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-3 sm:grid-cols-2">
           <a
             href={whatsapp1Url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-4 py-3 text-xs font-semibold text-white shadow-xs transition-transform hover:scale-[1.02] hover:bg-[#20bd5a]"
+            className="group flex items-center justify-between gap-3 rounded-xl bg-[#25D366] px-4 py-3.5 text-xs font-semibold text-white shadow-soft transition-all hover:bg-[#20bd5a] hover:shadow-warm sm:px-5"
           >
-            <WhatsAppIcon className="h-4 w-4" />
-            <span>WhatsApp</span>
-            <span className="text-[11px] opacity-85">{PHONE_1_DISPLAY}</span>
+            <span className="flex items-center gap-2.5">
+              <WhatsAppIcon className="h-5 w-5 shrink-0" />
+              <span>WhatsApp Primary</span>
+            </span>
+            <span className="text-[11px] opacity-90">{PHONE_1_DISPLAY}</span>
           </a>
 
           <a
             href={whatsapp2Url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 rounded-full bg-[#25D366]/90 px-4 py-3 text-xs font-semibold text-white shadow-xs transition-transform hover:scale-[1.02] hover:bg-[#25D366]"
+            className="group flex items-center justify-between gap-3 rounded-xl bg-stone-deep px-4 py-3.5 text-xs font-semibold text-cream shadow-soft transition-all hover:bg-stone-deep/90 hover:shadow-warm sm:px-5"
           >
-            <WhatsAppIcon className="h-4 w-4" />
-            <span>WhatsApp</span>
-            <span className="text-[11px] opacity-85">{PHONE_2_DISPLAY}</span>
+            <span className="flex items-center gap-2.5">
+              <WhatsAppIcon className="h-5 w-5 shrink-0 text-[#25D366]" />
+              <span>WhatsApp Secondary</span>
+            </span>
+            <span className="text-[11px] opacity-80">{PHONE_2_DISPLAY}</span>
           </a>
 
           <a
             href={VIBER_1_URL}
-            className="flex items-center justify-center gap-2 rounded-full bg-[#7360F2] px-4 py-3 text-xs font-semibold text-white shadow-xs transition-transform hover:scale-[1.02] hover:bg-[#6351e3]"
+            className="group flex items-center justify-between gap-3 rounded-xl bg-[#7360F2] px-4 py-3.5 text-xs font-semibold text-white shadow-soft transition-all hover:bg-[#6351e3] hover:shadow-warm sm:px-5"
           >
-            <ViberIcon className="h-4 w-4" />
-            <span>Viber Message</span>
+            <span className="flex items-center gap-2.5">
+              <ViberIcon className="h-5 w-5 shrink-0" />
+              <span>Viber Message</span>
+            </span>
+            <span className="text-[11px] opacity-90">{PHONE_1_DISPLAY}</span>
           </a>
 
           <a
             href={mailtoUrl}
-            className="flex items-center justify-center gap-2 rounded-full border border-primary bg-primary/10 px-4 py-3 text-xs font-semibold text-primary transition-all hover:bg-primary hover:text-primary-foreground"
+            className="group flex items-center justify-between gap-3 rounded-xl border border-primary/30 bg-primary/10 px-4 py-3.5 text-xs font-semibold text-primary transition-all hover:bg-primary hover:text-primary-foreground sm:px-5"
           >
-            <EmailIcon className="h-4 w-4" />
-            <span>Email Enquiry</span>
+            <span className="flex items-center gap-2.5">
+              <EmailIcon className="h-5 w-5 shrink-0" />
+              <span>Email Enquiry</span>
+            </span>
+            <span className="text-[11px] opacity-80">Send →</span>
           </a>
         </div>
       </div>
