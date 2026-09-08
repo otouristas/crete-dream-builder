@@ -71,7 +71,7 @@ export function ContactChannelCard({
       href={href}
       {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       className={cn(
-        "group flex flex-col items-start gap-3 rounded-sm p-6 text-left transition-all sm:p-7",
+        "group flex flex-col items-start gap-3 rounded-sm p-6 text-left transition-all sm:p-7 min-h-[10.5rem]",
         VARIANT_CARD[variant],
       )}
     >

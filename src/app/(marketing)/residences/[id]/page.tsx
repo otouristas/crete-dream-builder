@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: ResidencePageProps) {
 
   return buildPageMetadata({
     title: `${residence.title} in Avdou`,
-    description: `${residence.subtitle}. Up to ${residence.maxGuests} guests, ${residence.bedrooms} bedrooms, ${residence.bathrooms} bathrooms. From €${residence.startingPriceSunThu}/night. Book direct with host Xrisa.`,
+    description: `${residence.subtitle}. Up to ${residence.maxGuests} guests, ${residence.bedrooms} ${residence.bedrooms === 1 ? "bedroom" : "bedrooms"}, ${residence.bathrooms} ${residence.bathrooms === 1 ? "bathroom" : "bathrooms"}. From €${residence.startingPriceSunThu}/night. Book direct with host Xrisa.`,
     path: `/residences/${id}`,
     ogImage: {
       url: residence.heroImage,

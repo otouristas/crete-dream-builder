@@ -48,7 +48,7 @@ export function HomeHero() {
         sizes="100vw"
         className="object-cover animate-ken-burns"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-stone-deep/40 via-stone-deep/30 to-stone-deep/90" />
+      <div className="absolute inset-0 bg-gradient-to-b from-stone-deep/55 via-stone-deep/40 to-stone-deep/92 sm:from-stone-deep/40 sm:via-stone-deep/30 sm:to-stone-deep/90" />
       <div
         className={`relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col px-5 pb-16 max-lg:justify-center sm:px-6 lg:min-h-[min(100svh,900px)] lg:justify-end lg:px-10 lg:pb-24 ${SITE_HERO_HEADER_PAD_CLASS}`}
       >
@@ -56,12 +56,12 @@ export function HomeHero() {
           <p className="mb-4 text-xs font-semibold uppercase tracking-display text-cream/80">
             Avdou Village · Heraklion · Crete
           </p>
-          <h1 className="font-display text-5xl leading-[0.95] text-balance text-cream sm:text-6xl lg:text-8xl">
+          <h1 className="font-display text-5xl leading-[0.95] text-balance text-cream [text-shadow:0_2px_28px_rgba(0,0,0,0.45)] sm:text-6xl lg:text-8xl">
             Kagiampakis
             <br />
             <em className="font-light text-primary/95">Concept Residences I &amp; II</em>
           </h1>
-          <p className="mt-6 max-w-2xl text-pretty text-lg text-cream/90 sm:text-xl">
+          <p className="mt-6 max-w-2xl text-pretty text-lg text-cream [text-shadow:0_1px_16px_rgba(0,0,0,0.4)] sm:text-xl">
             Two authentic stone houses in historic Avdou —{" "}
             <strong className="text-cream">Residence I for up to 6 guests</strong> (from €60/night)
             and <strong className="text-cream">Residence II for up to 7 guests</strong> (from
@@ -69,32 +69,34 @@ export function HomeHero() {
             Heraklion Airport.
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-3 sm:gap-4">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
             <a
               href="#calculator"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-warm transition-all hover:bg-primary/90"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-warm transition-all hover:bg-primary/90"
             >
               Check rates &amp; dates
             </a>
-            <a
-              href={WHATSAPP_1_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-cream/40 bg-[#25D366]/25 px-6 py-3.5 text-sm font-medium text-cream backdrop-blur-xs transition-all hover:bg-[#25D366]/45"
-            >
-              <WhatsAppIcon className="h-5 w-5" />
-              WhatsApp
-            </a>
-            <a
-              href={VIBER_1_URL}
-              className="inline-flex items-center gap-2 rounded-full border border-cream/40 bg-[#7360F2]/30 px-6 py-3.5 text-sm font-medium text-cream backdrop-blur-xs transition-all hover:bg-[#7360F2]/50"
-            >
-              <ViberIcon className="h-5 w-5" />
-              Viber
-            </a>
+            <div className="flex flex-wrap gap-3">
+              <a
+                href={WHATSAPP_1_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-cream/40 bg-[#25D366]/30 px-6 py-3.5 text-sm font-medium text-cream backdrop-blur-xs transition-all hover:bg-[#25D366]/50 sm:flex-none"
+              >
+                <WhatsAppIcon className="h-5 w-5" />
+                WhatsApp
+              </a>
+              <a
+                href={VIBER_1_URL}
+                className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-cream/40 bg-[#7360F2]/40 px-6 py-3.5 text-sm font-medium text-cream backdrop-blur-xs transition-all hover:bg-[#7360F2]/55 sm:flex-none"
+              >
+                <ViberIcon className="h-5 w-5" />
+                Viber
+              </a>
+            </div>
             <Link
               href="/residences"
-              className="inline-flex items-center gap-2 rounded-full border border-cream/25 px-6 py-3.5 text-sm font-medium text-cream/90 transition-all hover:bg-cream/10"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-cream/25 px-6 py-3.5 text-sm font-medium text-cream/90 transition-all hover:bg-cream/10"
             >
               Explore both houses
             </Link>

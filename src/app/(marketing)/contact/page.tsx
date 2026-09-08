@@ -17,7 +17,6 @@ import {
   MAILTO,
   PHONE_1,
   PHONE_1_DISPLAY,
-  PHONE_2,
   PHONE_2_DISPLAY,
   TRIPADVISOR_LOGO_URL,
   TRIPADVISOR_URL,
@@ -57,7 +56,7 @@ export default function ContactPage() {
           — the form below opens your mail app.
         </p>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           <ContactChannelCard
             href={WHATSAPP_1_URL}
             variant="whatsapp"
@@ -105,14 +104,7 @@ export default function ContactPage() {
             external={false}
           />
         </div>
-        <p className="mt-4 text-sm text-muted-foreground">
-          Secondary line:{" "}
-          <a href={`tel:${PHONE_2}`} className="font-medium text-stone-deep hover:text-primary">
-            {PHONE_2_DISPLAY}
-          </a>
-        </p>
-
-        <div className="mt-10 flex flex-wrap items-center gap-6 border-y border-border py-8">
+        <div className="mt-12 flex flex-wrap items-center gap-6 border-y border-border py-8">
           <span className="text-sm text-muted-foreground">Reviews &amp; listings:</span>
           <a
             href={GOOGLE_BUSINESS_URL}
@@ -142,7 +134,7 @@ export default function ContactPage() {
               height={24}
               className="h-6 w-auto object-contain"
             />
-            Tripadvisor
+            <span className="sr-only">Tripadvisor</span>
           </a>
         </div>
 

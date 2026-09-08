@@ -91,7 +91,7 @@ export function SiteWhatsAppFab() {
         <a
           href={VIBER_1_URL}
           aria-label={`Open Viber chat with Xrisa at ${PHONE_1_DISPLAY}`}
-          className="flex h-12 w-12 items-center justify-center rounded-full bg-[#7360F2] text-white shadow-soft ring-2 ring-white/25 transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+          className="hidden h-12 w-12 items-center justify-center rounded-full bg-[#7360F2] text-white shadow-soft ring-2 ring-white/25 transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white sm:flex"
         >
           <ViberIcon className="h-6 w-6" />
         </a>

@@ -79,7 +79,7 @@ export function SiteFooter() {
                   height={22}
                   className="h-5 w-auto shrink-0 object-contain opacity-90"
                 />
-                Tripadvisor
+                <span className="sr-only">Tripadvisor</span>
               </a>
               <a
                 href={INSTAGRAM_URL}

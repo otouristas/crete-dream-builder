@@ -83,21 +83,22 @@ export function SiteNav() {
           </NavigationMenu>
         </div>
 
-        <div className="flex shrink-0 items-center gap-2">
+        <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
           <a
             href={WHATSAPP_1_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden items-center gap-1.5 rounded-full bg-[#25D366] px-3.5 py-2 text-xs font-semibold text-white shadow-xs transition-all hover:bg-[#20bd5a] sm:inline-flex"
+            aria-label={`WhatsApp ${PHONE_1_DISPLAY}`}
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xs transition-all hover:bg-[#20bd5a] sm:h-auto sm:w-auto sm:gap-1.5 sm:px-3.5 sm:py-2 sm:text-xs sm:font-semibold"
           >
             <WhatsAppIcon className="h-4 w-4" />
+            <span className="hidden sm:inline xl:hidden">WhatsApp</span>
             <span className="hidden xl:inline">{PHONE_1_DISPLAY}</span>
-            <span className="xl:hidden">WhatsApp</span>
           </a>
           <a
             href={VIBER_1_URL}
             aria-label={`Open Viber chat at ${PHONE_1_DISPLAY}`}
-            className="hidden h-9 w-9 items-center justify-center rounded-full bg-[#7360F2] text-white shadow-xs transition-all hover:bg-[#6351e3] sm:inline-flex"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#7360F2] text-white shadow-xs transition-all hover:bg-[#6351e3]"
           >
             <ViberIcon className="h-4 w-4" />
           </a>
