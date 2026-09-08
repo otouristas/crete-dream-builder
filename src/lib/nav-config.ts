@@ -35,6 +35,7 @@ export const SITE_RESIDENCES_LINKS: readonly SiteNavItem[] = [
 export const SITE_TOP_LEVEL_PAGES: readonly SiteNavItem[] = [
   { href: "/reviews", label: "Reviews" },
   { href: "/what-to-see", label: "What to See" },
+  { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
@@ -45,7 +46,13 @@ export const SITE_MAIN_PAGES: readonly SiteNavItem[] = [
   { href: "/residences/concept-2", label: "Residence II" },
   { href: "/reviews", label: "Reviews" },
   { href: "/what-to-see", label: "What to See" },
+  { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
+] as const;
+
+export const SITE_LEGAL_PAGES: readonly SiteNavItem[] = [
+  { href: "/faq", label: "FAQ" },
+  { href: "/privacy", label: "Privacy" },
 ] as const;
 
 export const SITE_CALCULATOR_LINK: SiteNavItem = {
@@ -59,6 +66,7 @@ export const SITE_HOME_ANCHORS: readonly SiteNavItem[] = [
   { href: "/#calculator", label: "Rates & Calculator" },
   { href: "/#story", label: "Our Story" },
   { href: "/#location", label: "Location" },
+  { href: "/#faq", label: "FAQ" },
 ] as const;
 
 /** Mobile sheet list */

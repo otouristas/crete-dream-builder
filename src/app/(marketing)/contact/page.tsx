@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { ContactEnquiryForm } from "@/components/site/contact-enquiry-form";
+import { ContactChannelCard } from "@/components/site/contact-channels";
+import { JsonLd } from "@/components/site/json-ld";
 import { buildPageMetadata } from "@/lib/build-page-metadata";
-import { SITE_HEADER_PT_CLASS } from "@/lib/layout-constants";
+import {
+  SITE_CONTAINER_CLASS,
+  SITE_FAB_CLEAR_CLASS,
+  SITE_HEADER_PT_CLASS,
+} from "@/lib/layout-constants";
 import {
   EMAIL,
   GOOGLE_BUSINESS_URL,
@@ -21,102 +26,91 @@ import {
   WHATSAPP_1_URL,
   WHATSAPP_2_URL,
 } from "@/lib/site-constants";
+import { buildBreadcrumbJsonLd } from "@/lib/structured-data";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Contact & Direct Booking — Kagiampakis Concept Residences",
+  title: "Contact & direct booking",
   description:
-    "WhatsApp, Viber, email, and enquiry form for Kagiampakis Concept Residences I & II, Avdou. Phone contacts: +30 694 968 7227 and +30 698 221 0506. Map & airport directions.",
+    "WhatsApp, Viber, phone, and email for Kagiampakis Concept Residences in Avdou, Crete. Host Xrisa: +30 694 968 7227 and +30 698 221 0506. 31 minutes from Heraklion Airport.",
   path: "/contact",
 });
 
 export default function ContactPage() {
   return (
-    <main className={`bg-cream text-foreground ${SITE_HEADER_PT_CLASS}`}>
-      <div className="mx-auto max-w-5xl px-6 py-16 lg:px-10 lg:py-24">
+    <main className={`bg-cream text-foreground ${SITE_HEADER_PT_CLASS} ${SITE_FAB_CLEAR_CLASS}`}>
+      <JsonLd
+        data={buildBreadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Contact", path: "/contact" },
+        ])}
+      />
+      <div className={`${SITE_CONTAINER_CLASS} max-w-5xl py-12 lg:py-16`}>
         <p className="text-xs font-semibold uppercase tracking-display text-primary">
-          Direct Host Booking
+          Direct host booking
         </p>
         <h1 className="mt-2 font-display text-4xl text-stone-deep lg:text-5xl">
-          Contact Host Xrisa
+          Contact host Xrisa
         </h1>
         <p className="mt-4 max-w-2xl text-lg text-foreground/80">
-          The fastest way to reserve dates or ask questions for <strong>Residence I</strong> or{" "}
-          <strong>Residence II</strong> is WhatsApp, Viber, or Email. We reply in Greek and English,
-          usually within hours.
+          The fastest way to reserve <strong>Residence I</strong> or <strong>Residence II</strong>{" "}
+          is WhatsApp or Viber. We reply in Greek and English, usually within hours. Email works too
+          — the form below opens your mail app.
         </p>
 
-        {/* Primary Contact Buttons Grid */}
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <a
+          <ContactChannelCard
             href={WHATSAPP_1_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col gap-2 rounded-sm bg-[#25D366] p-6 text-white shadow-warm transition-all hover:bg-[#20bd5a]"
-          >
-            <span className="text-xs font-semibold uppercase tracking-widest opacity-90">
-              WhatsApp (Primary Phone)
-            </span>
-            <span className="font-display text-2xl">{PHONE_1_DISPLAY}</span>
-            <span className="text-sm opacity-90">Message Xrisa on WhatsApp →</span>
-          </a>
-
-          <a
+            variant="whatsapp"
+            eyebrow="WhatsApp primary"
+            title={PHONE_1_DISPLAY}
+            hint="Message Xrisa on WhatsApp"
+          />
+          <ContactChannelCard
             href={WHATSAPP_2_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col gap-2 rounded-sm bg-stone-deep p-6 text-cream shadow-warm transition-all hover:bg-stone-deep/90"
-          >
-            <span className="text-xs font-semibold uppercase tracking-widest text-primary">
-              WhatsApp (Secondary Phone)
-            </span>
-            <span className="font-display text-2xl">{PHONE_2_DISPLAY}</span>
-            <span className="text-sm opacity-90">Message Secondary Phone →</span>
-          </a>
-
-          <a
+            variant="whatsapp-alt"
+            eyebrow="WhatsApp secondary"
+            title={PHONE_2_DISPLAY}
+            hint="Message secondary WhatsApp"
+          />
+          <ContactChannelCard
             href={VIBER_1_URL}
-            className="flex flex-col gap-2 rounded-sm bg-[#7360F2] p-6 text-white shadow-warm transition-all hover:bg-[#6351e3]"
-          >
-            <span className="text-xs font-semibold uppercase tracking-widest opacity-90">
-              Viber Message
-            </span>
-            <span className="font-display text-2xl">{PHONE_1_DISPLAY}</span>
-            <span className="text-sm opacity-90">Open Viber Chat →</span>
-          </a>
-
-          <a
+            variant="viber"
+            eyebrow="Viber primary"
+            title={PHONE_1_DISPLAY}
+            hint="Open Viber chat"
+            external={false}
+          />
+          <ContactChannelCard
+            href={VIBER_2_URL}
+            variant="viber"
+            eyebrow="Viber secondary"
+            title={PHONE_2_DISPLAY}
+            hint="Open Viber chat"
+            external={false}
+          />
+          <ContactChannelCard
             href={`tel:${PHONE_1}`}
-            className="flex flex-col gap-2 rounded-sm border border-border bg-card p-6 transition-colors hover:border-primary"
-          >
-            <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-              Direct Call (Primary)
-            </span>
-            <span className="font-display text-2xl text-stone-deep">{PHONE_1_DISPLAY}</span>
-            <span className="text-sm text-primary">Call Host Xrisa →</span>
-          </a>
-
-          <a
-            href={`tel:${PHONE_2}`}
-            className="flex flex-col gap-2 rounded-sm border border-border bg-card p-6 transition-colors hover:border-primary"
-          >
-            <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-              Direct Call (Secondary)
-            </span>
-            <span className="font-display text-2xl text-stone-deep">{PHONE_2_DISPLAY}</span>
-            <span className="text-sm text-primary">Call Secondary Line →</span>
-          </a>
-
-          <a
+            variant="phone"
+            eyebrow="Call primary"
+            title={PHONE_1_DISPLAY}
+            hint="Call host Xrisa"
+            external={false}
+          />
+          <ContactChannelCard
             href={MAILTO}
-            className="flex flex-col gap-2 rounded-sm border border-border bg-card p-6 transition-colors hover:border-primary"
-          >
-            <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-              Direct Email
-            </span>
-            <span className="font-display break-all text-2xl text-stone-deep">{EMAIL}</span>
-            <span className="text-sm text-primary">Send Email Enquiry →</span>
-          </a>
+            variant="email"
+            eyebrow="Direct email"
+            title={EMAIL}
+            hint="Send an email enquiry"
+            external={false}
+          />
         </div>
+        <p className="mt-4 text-sm text-muted-foreground">
+          Secondary line:{" "}
+          <a href={`tel:${PHONE_2}`} className="font-medium text-stone-deep hover:text-primary">
+            {PHONE_2_DISPLAY}
+          </a>
+        </p>
 
         <div className="mt-10 flex flex-wrap items-center gap-6 border-y border-border py-8">
           <span className="text-sm text-muted-foreground">Reviews &amp; listings:</span>
@@ -154,9 +148,9 @@ export default function ContactPage() {
 
         <div className="mt-14 grid gap-14 lg:grid-cols-2 lg:items-start">
           <div>
-            <h2 className="font-display text-2xl text-stone-deep">Direct Email Enquiry</h2>
+            <h2 className="font-display text-2xl text-stone-deep">Email enquiry</h2>
             <p className="mt-2 text-sm text-muted-foreground">
-              Select your residence preference and dates to send a message directly to{" "}
+              Choose a residence and dates. Your mail app opens addressed to{" "}
               <strong>{EMAIL}</strong>.
             </p>
             <div className="mt-8">
@@ -165,10 +159,10 @@ export default function ContactPage() {
           </div>
 
           <div>
-            <h2 className="font-display text-2xl text-stone-deep">Where You&apos;ll Find Us</h2>
+            <h2 className="font-display text-2xl text-stone-deep">Where you&apos;ll find us</h2>
             <p className="mt-2 text-sm text-muted-foreground">
-              Kagiampakis Concept Residences, Avdou — 31 min from Heraklion airport (34.3 km), 41
-              min from Heraklion port (37.5 km).
+              Kagiampakis Concept Residences, Avdou, Crete 70005 — about 31 minutes from Heraklion
+              Airport (34.3 km) and 41 minutes from Heraklion port (37.5 km).
             </p>
             <div className="mt-6 overflow-hidden rounded-sm border border-border shadow-soft">
               <iframe
@@ -189,7 +183,7 @@ export default function ContactPage() {
                 rel="noopener noreferrer"
                 className="text-primary underline-offset-4 hover:underline"
               >
-                Open in Google Maps →
+                Open in Google Maps
               </a>
             </p>
           </div>

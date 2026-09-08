@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { EmailIcon, InstagramIcon, PhoneIcon, ViberIcon, WhatsAppIcon } from "@/components/icons";
 import {
   AIRBNB_RESI_1_URL,
   AIRBNB_RESI_2_URL,
@@ -21,23 +22,23 @@ import {
   WHATSAPP_1_URL,
   WHATSAPP_2_URL,
 } from "@/lib/site-constants";
-import { SITE_HOME_ANCHORS, SITE_MAIN_PAGES } from "@/lib/nav-config";
-import { WhatsAppIcon, ViberIcon, PhoneIcon, EmailIcon } from "@/components/icons";
+import { SITE_HOME_ANCHORS, SITE_LEGAL_PAGES, SITE_MAIN_PAGES } from "@/lib/nav-config";
+import { SITE_CONTAINER_CLASS } from "@/lib/layout-constants";
 
 export function SiteFooter() {
   return (
-    <footer className="bg-stone-deep text-cream/80">
-      <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
+    <footer className="bg-stone-deep text-cream/80 pb-[max(1rem,env(safe-area-inset-bottom))]">
+      <div className={`${SITE_CONTAINER_CLASS} py-14 lg:py-16`}>
         <div className="grid gap-12 border-b border-cream/10 pb-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-1">
             <Link href="/" className="inline-flex items-center gap-3">
               <span className="inline-flex shrink-0 brightness-0 invert">
                 <Image
                   src="/logo-final.png"
-                  alt="Kagiampakis Concept Residences Logo"
+                  alt="Kagiampakis Concept Residences"
                   width={96}
                   height={96}
-                  className="h-20 w-20 object-contain opacity-95 sm:h-24 sm:w-24"
+                  className="h-16 w-16 object-contain opacity-95 sm:h-20 sm:w-20"
                 />
               </span>
               <span className="font-display text-xl text-cream sm:text-2xl">
@@ -46,10 +47,10 @@ export function SiteFooter() {
               </span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-cream/65">
-              Two traditional stone residences in Avdou, Crete — Concept Residence I (6 guests)
-              &amp; Concept Residence II (7 guests). Hosted by the Kagiampakis family.
+              Two traditional stone residences in Avdou, Crete — Residence I (6 guests) and
+              Residence II (7 guests). Hosted by the Kagiampakis family. Book direct.
             </p>
-            <div className="mt-6 flex flex-wrap items-center gap-4">
+            <div className="mt-6 flex flex-wrap items-center gap-3">
               <a
                 href={GOOGLE_BUSINESS_URL}
                 target="_blank"
@@ -79,6 +80,15 @@ export function SiteFooter() {
                   className="h-5 w-auto shrink-0 object-contain opacity-90"
                 />
                 Tripadvisor
+              </a>
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-sm border border-cream/20 bg-cream/5 px-3 py-2 text-xs text-cream/90 transition-colors hover:border-primary hover:text-primary"
+              >
+                <InstagramIcon className="h-4 w-4" />
+                Instagram
               </a>
             </div>
           </div>
@@ -118,7 +128,7 @@ export function SiteFooter() {
 
           <div>
             <h2 className="text-xs font-semibold uppercase tracking-display text-primary">
-              Book Direct &amp; Contact
+              Book direct
             </h2>
             <ul className="mt-5 space-y-3 text-sm">
               <li>
@@ -129,7 +139,7 @@ export function SiteFooter() {
                   className="inline-flex items-center gap-2 font-medium text-cream transition-colors hover:text-primary"
                 >
                   <WhatsAppIcon className="h-4 w-4 text-[#25D366]" />
-                  WhatsApp Primary ({PHONE_1_DISPLAY})
+                  WhatsApp {PHONE_1_DISPLAY}
                 </a>
               </li>
               <li>
@@ -140,7 +150,7 @@ export function SiteFooter() {
                   className="inline-flex items-center gap-2 text-cream/85 transition-colors hover:text-primary"
                 >
                   <WhatsAppIcon className="h-4 w-4 text-[#25D366]/80" />
-                  WhatsApp Secondary ({PHONE_2_DISPLAY})
+                  WhatsApp {PHONE_2_DISPLAY}
                 </a>
               </li>
               <li>
@@ -149,7 +159,7 @@ export function SiteFooter() {
                   className="inline-flex items-center gap-2 text-cream/85 transition-colors hover:text-primary"
                 >
                   <ViberIcon className="h-4 w-4 text-[#7360F2]" />
-                  Viber ({PHONE_1_DISPLAY})
+                  Viber {PHONE_1_DISPLAY}
                 </a>
               </li>
               <li>
@@ -158,7 +168,7 @@ export function SiteFooter() {
                   className="inline-flex items-center gap-2 text-cream/85 transition-colors hover:text-primary"
                 >
                   <ViberIcon className="h-4 w-4 text-[#7360F2]/80" />
-                  Viber ({PHONE_2_DISPLAY})
+                  Viber {PHONE_2_DISPLAY}
                 </a>
               </li>
               <li>
@@ -167,7 +177,7 @@ export function SiteFooter() {
                   className="inline-flex items-center gap-2 text-cream/85 transition-colors hover:text-primary"
                 >
                   <EmailIcon className="h-4 w-4 text-primary" />
-                  Email: {EMAIL}
+                  {EMAIL}
                 </a>
               </li>
             </ul>
@@ -175,7 +185,7 @@ export function SiteFooter() {
 
           <div>
             <h2 className="text-xs font-semibold uppercase tracking-display text-primary">
-              Direct Phone
+              Call or list
             </h2>
             <ul className="mt-4 space-y-2 text-sm">
               <li>
@@ -184,7 +194,7 @@ export function SiteFooter() {
                   className="inline-flex items-center gap-2 font-medium text-cream transition-colors hover:text-primary"
                 >
                   <PhoneIcon className="h-4 w-4 text-primary" />
-                  {PHONE_1_DISPLAY} (Primary)
+                  {PHONE_1_DISPLAY}
                 </a>
               </li>
               <li>
@@ -193,13 +203,13 @@ export function SiteFooter() {
                   className="inline-flex items-center gap-2 text-cream/80 transition-colors hover:text-primary"
                 >
                   <PhoneIcon className="h-4 w-4 text-primary/70" />
-                  {PHONE_2_DISPLAY} (Secondary)
+                  {PHONE_2_DISPLAY}
                 </a>
               </li>
             </ul>
 
             <h2 className="mt-6 text-xs font-semibold uppercase tracking-display text-primary">
-              Airbnb Listings
+              Also listed on
             </h2>
             <ul className="mt-3 space-y-2 text-xs">
               <li>
@@ -209,7 +219,7 @@ export function SiteFooter() {
                   rel="noopener noreferrer"
                   className="text-cream/60 transition-colors hover:text-primary"
                 >
-                  Airbnb: Residence I (6 Guests)
+                  Airbnb: Residence I
                 </a>
               </li>
               <li>
@@ -219,26 +229,23 @@ export function SiteFooter() {
                   rel="noopener noreferrer"
                   className="text-cream/60 transition-colors hover:text-primary"
                 >
-                  Airbnb: Residence II (7 Guests)
-                </a>
-              </li>
-              <li>
-                <a
-                  href={INSTAGRAM_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-cream/60 transition-colors hover:text-primary"
-                >
-                  Instagram @kagiampakis_residences
+                  Airbnb: Residence II
                 </a>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="flex flex-col gap-4 border-t border-cream/10 pt-10 text-xs text-cream/50">
+        <div className="flex flex-col gap-4 border-t border-cream/10 pt-8 text-xs text-cream/50">
           <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
             <p>{REGISTRATION}</p>
+            <nav className="flex flex-wrap gap-x-4 gap-y-2" aria-label="Legal">
+              {SITE_LEGAL_PAGES.map((link) => (
+                <Link key={link.href} href={link.href} className="hover:text-primary">
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
             <p className="sm:text-right">
               © {new Date().getFullYear()} {SITE_DOMAIN}. All rights reserved.
             </p>

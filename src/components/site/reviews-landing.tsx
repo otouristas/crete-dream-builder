@@ -3,6 +3,8 @@ import Link from "next/link";
 import { Quote } from "lucide-react";
 import { SITE_HERO_HEADER_PAD_CLASS } from "@/lib/layout-constants";
 import { getPropertyReviews } from "@/lib/property-data";
+import { WhatsAppIcon } from "@/components/icons";
+import { SITE_FAB_CLEAR_CLASS } from "@/lib/layout-constants";
 import { GOOGLE_BUSINESS_URL, MAILTO, TRIPADVISOR_URL, WHATSAPP_URL } from "@/lib/site-constants";
 
 function StarRow({ rating }: { readonly rating: string }) {
@@ -86,9 +88,10 @@ export function ReviewsLanding() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground shadow-warm transition-colors hover:bg-primary/90"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground shadow-warm transition-colors hover:bg-primary/90"
             >
-              Ask a question on WhatsApp
+              <WhatsAppIcon className="h-4 w-4" />
+              Ask on WhatsApp
             </a>
           </div>
         </div>
@@ -136,7 +139,9 @@ export function ReviewsLanding() {
           </ul>
         </div>
       </section>
-      <section className="border-t border-border/60 bg-gradient-warm py-14 text-primary-foreground lg:py-20">
+      <section
+        className={`border-t border-border/60 bg-gradient-warm py-14 text-primary-foreground lg:py-20 ${SITE_FAB_CLEAR_CLASS}`}
+      >
         <div className="mx-auto flex max-w-4xl flex-col items-center gap-5 px-6 text-center lg:px-10">
           <p className="text-xs uppercase tracking-display opacity-90">Your turn</p>
           <h2 className="font-display text-3xl leading-tight lg:text-4xl">
@@ -147,8 +152,9 @@ export function ReviewsLanding() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex rounded-full bg-cream px-7 py-3 text-sm font-semibold text-stone-deep shadow-soft transition-transform hover:scale-[1.02]"
+              className="inline-flex items-center gap-2 rounded-full bg-cream px-7 py-3 text-sm font-semibold text-stone-deep shadow-soft transition-transform hover:scale-[1.02]"
             >
+              <WhatsAppIcon className="h-4 w-4 text-[#25D366]" />
               WhatsApp
             </a>
             <a

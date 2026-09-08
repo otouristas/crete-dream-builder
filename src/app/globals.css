@@ -163,7 +163,7 @@
 
   /* Scroll offset for anchor targets behind fixed header */
   .scroll-mt-header {
-    scroll-margin-top: 5rem;
+    scroll-margin-top: calc(5.5rem + env(safe-area-inset-top, 0px));
   }
 
   /* Pulsing glow ring for WhatsApp FAB */

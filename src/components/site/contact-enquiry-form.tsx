@@ -19,7 +19,7 @@ interface ContactEnquiryFormState {
 const initialState: ContactEnquiryFormState = {
   guestName: "",
   guestEmail: "",
-  residenceChoice: "Concept I (6 guests max)",
+  residenceChoice: "Concept Residence I (6 guests max)",
   travelDates: "",
   message: "",
 };
@@ -136,7 +136,12 @@ export function ContactEnquiryForm() {
 
       <div className="flex flex-col gap-3 border-t border-border pt-5 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-xs text-muted-foreground">
-          Opens your email app addressed to <strong>{EMAIL}</strong>.
+          Opens your email app addressed to <strong>{EMAIL}</strong>. We only use this to reply
+          about your stay. See our{" "}
+          <a href="/privacy" className="text-primary underline-offset-4 hover:underline">
+            privacy notice
+          </a>
+          .
         </p>
         <Button type="submit" className="inline-flex items-center gap-2 sm:w-auto">
           <EmailIcon className="h-4 w-4" />

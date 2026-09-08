@@ -3,7 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Church, MapPin, Mountain, Ship, Sparkles, Tent, TreePalm, Waves } from "lucide-react";
 import { SITE_HERO_HEADER_PAD_CLASS } from "@/lib/layout-constants";
-import { MAILTO, WHATSAPP_URL } from "@/lib/site-constants";
+import { ViberIcon, WhatsAppIcon } from "@/components/icons";
+import { MAILTO, VIBER_URL, WHATSAPP_URL } from "@/lib/site-constants";
 
 interface ExploreCard {
   readonly title: string;
@@ -178,7 +179,7 @@ export function WhatToSeeLanding() {
           </div>
         </div>
       </section>
-      <section className="bg-gradient-warm py-14 text-primary-foreground lg:py-20">
+      <section className="bg-gradient-warm py-14 pb-28 text-primary-foreground lg:py-20 lg:pb-28">
         <div className="mx-auto max-w-4xl px-6 text-center lg:px-10">
           <h2 className="font-display text-3xl lg:text-4xl">Planning drives or arrival times?</h2>
           <p className="mx-auto mt-4 max-w-lg text-pretty text-base opacity-95">
@@ -190,9 +191,17 @@ export function WhatToSeeLanding() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex rounded-full bg-cream px-8 py-3.5 text-sm font-semibold text-stone-deep shadow-soft transition-transform hover:scale-[1.02]"
+              className="inline-flex items-center gap-2 rounded-full bg-cream px-8 py-3.5 text-sm font-semibold text-stone-deep shadow-soft transition-transform hover:scale-[1.02]"
             >
+              <WhatsAppIcon className="h-4 w-4 text-[#25D366]" />
               WhatsApp us
+            </a>
+            <a
+              href={VIBER_URL}
+              className="inline-flex items-center gap-2 rounded-full border-2 border-cream/75 px-8 py-3.5 text-sm font-semibold text-cream hover:bg-cream/10"
+            >
+              <ViberIcon className="h-4 w-4" />
+              Viber
             </a>
             <a
               href={MAILTO}
@@ -201,7 +210,7 @@ export function WhatToSeeLanding() {
               Email
             </a>
             <Link
-              href="/villa#photos"
+              href="/residences"
               className="inline-flex items-center rounded-full border border-cream/40 px-8 py-3.5 text-sm text-cream/95 hover:bg-cream/10"
             >
               See the villa →

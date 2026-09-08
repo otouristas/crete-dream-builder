@@ -1,6 +1,7 @@
 "use client";
 
 import { useId, useState } from "react";
+import { ContactChannelRow } from "@/components/site/contact-channels";
 import {
   EMAIL,
   PHONE_1_DISPLAY,
@@ -8,10 +9,8 @@ import {
   PHONE_2_DISPLAY,
   PHONE_2_RAW,
   VIBER_1_URL,
-  VIBER_2_URL,
 } from "@/lib/site-constants";
 import { calculateStayPrice, getResidenceSpecs } from "@/lib/price-calculator";
-import { WhatsAppIcon, ViberIcon, EmailIcon } from "@/components/icons";
 
 interface AvailabilityCalculatorProps {
   readonly initialResidenceId?: "concept-1" | "concept-2";
@@ -189,8 +188,8 @@ export function AvailabilityCalculator({
       {/* Validation Warning */}
       {result && !result.isValidMinStay && (
         <div className="mt-6 rounded-sm border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-900">
-          ⚠️ <strong>Minimum Stay Notice:</strong> {specs.shortName} requires a minimum stay of{" "}
-          <strong>{specs.minStayNights} nights</strong>. Please select at least{" "}
+          <strong>Minimum stay:</strong> {specs.shortName} requires{" "}
+          <strong>{specs.minStayNights} nights</strong>. Please choose at least{" "}
           {specs.minStayNights} nights to reserve.
         </div>
       )}
@@ -252,52 +251,31 @@ export function AvailabilityCalculator({
           Send Direct Reservation Request
         </p>
         <div className="flex flex-col gap-2.5">
-          <a
+          <ContactChannelRow
             href={whatsapp1Url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex h-12 w-full items-center justify-between rounded-lg bg-[#25D366] px-4 text-xs font-semibold text-white shadow-soft transition-all hover:bg-[#20bd5a] hover:shadow-warm"
-          >
-            <span className="flex items-center gap-2.5">
-              <WhatsAppIcon className="h-5 w-5 shrink-0" />
-              <span>WhatsApp Primary</span>
-            </span>
-            <span className="text-[11px] font-medium opacity-90">{PHONE_1_DISPLAY}</span>
-          </a>
-
-          <a
+            variant="whatsapp"
+            label="WhatsApp primary"
+            detail={PHONE_1_DISPLAY}
+          />
+          <ContactChannelRow
             href={whatsapp2Url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex h-12 w-full items-center justify-between rounded-lg bg-stone-deep px-4 text-xs font-semibold text-cream shadow-soft transition-all hover:bg-stone-deep/90 hover:shadow-warm"
-          >
-            <span className="flex items-center gap-2.5">
-              <WhatsAppIcon className="h-5 w-5 shrink-0 text-[#25D366]" />
-              <span>WhatsApp Secondary</span>
-            </span>
-            <span className="text-[11px] font-medium opacity-80">{PHONE_2_DISPLAY}</span>
-          </a>
-
-          <a
+            variant="whatsapp-alt"
+            label="WhatsApp secondary"
+            detail={PHONE_2_DISPLAY}
+          />
+          <ContactChannelRow
             href={VIBER_1_URL}
-            className="group flex h-12 w-full items-center justify-between rounded-lg bg-[#7360F2] px-4 text-xs font-semibold text-white shadow-soft transition-all hover:bg-[#6351e3] hover:shadow-warm"
-          >
-            <span className="flex items-center gap-2.5">
-              <ViberIcon className="h-5 w-5 shrink-0" />
-              <span>Viber Message</span>
-            </span>
-            <span className="text-[11px] font-medium opacity-90">{PHONE_1_DISPLAY}</span>
-          </a>
-
+            variant="viber"
+            label="Viber message"
+            detail={PHONE_1_DISPLAY}
+            external={false}
+          />
           <a
             href={mailtoUrl}
-            className="group flex h-12 w-full items-center justify-between rounded-lg border border-primary/30 bg-primary/10 px-4 text-xs font-semibold text-primary transition-all hover:bg-primary hover:text-primary-foreground"
+            className="flex h-12 w-full items-center justify-between rounded-lg border border-primary/30 bg-primary/10 px-4 text-xs font-semibold text-primary transition-all hover:bg-primary hover:text-primary-foreground"
           >
-            <span className="flex items-center gap-2.5">
-              <EmailIcon className="h-5 w-5 shrink-0" />
-              <span>Email Enquiry</span>
-            </span>
-            <span className="text-[11px] font-medium opacity-80">Send →</span>
+            <span>Email enquiry</span>
+            <span className="text-[11px] font-medium opacity-80">Send</span>
           </a>
         </div>
       </div>
