@@ -32,7 +32,7 @@ export const RESIDENCES_DATA: Record<"concept-1" | "concept-2", ResidenceDetails
     id: "concept-1",
     title: "Kagiampakis Concept Residence I",
     subtitle: "Traditional 3-Level Stone House with Mountain & Agia Fotini Cave Views",
-    badge: "Guest Favorite · ★ 5.0 (23 Reviews)",
+    badge: "Guest Favorite · ★ 5.0",
     maxGuests: 6,
     bedrooms: 2,
     bathrooms: 1,
@@ -140,7 +140,7 @@ export const RESIDENCES_DATA: Record<"concept-1" | "concept-2", ResidenceDetails
     minStayNights: 3,
     startingPriceSunThu: 170,
     startingPriceFriSat: 180,
-    registrationNumber: "0001845501",
+    registrationNumber: "00001845501",
     airbnbUrl: AIRBNB_RESI_2_URL,
     heroImage:
       "https://a0.muscache.com/im/pictures/miso/Hosting-1083410970859524546/original/da03d28a-0404-4fe8-9075-bdf420733725.jpeg",
