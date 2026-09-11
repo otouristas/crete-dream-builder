@@ -1,5 +1,6 @@
-import { SITE_DOMAIN, SITE_URL } from "@/lib/site-constants";
+import { headers } from "next/headers";
 import { getAllResidences } from "@/lib/residences-data";
+import { originFromHostHeader } from "@/lib/site-url";
 
 const AI_CRAWLERS = [
   "GPTBot",
@@ -35,34 +36,37 @@ function escapeXml(value: string): string {
     .replaceAll("'", "&apos;");
 }
 
-function locFor(path: string): string {
-  return path === "/" ? `${SITE_URL}/` : `${SITE_URL}${path}`;
+function locFor(origin: string, path: string): string {
+  const base = origin.replace(/\/+$/, "");
+  return path === "/" ? `${base}/` : `${base}${path}`;
 }
 
 export const SITEMAP_HEADERS = {
   "Content-Type": "application/xml; charset=utf-8",
-  "Cache-Control": "public, max-age=3600, s-maxage=86400",
+  "Cache-Control": "public, max-age=0, must-revalidate, s-maxage=600",
+  Vary: "Host",
 } as const;
 
 export const ROBOTS_HEADERS = {
   "Content-Type": "text/plain; charset=utf-8",
-  "Cache-Control": "public, max-age=3600, s-maxage=86400",
+  "Cache-Control": "public, max-age=0, must-revalidate, s-maxage=600",
+  Vary: "Host",
 } as const;
 
 /**
  * Spec-compliant urlset. Google Search Console rejects Next-generated sitemaps
  * that use the `https://` schema namespace or a non-XML content type.
  */
-export function buildSitemapXml(now = new Date()): string {
+export function buildSitemapXml(origin: string, now = new Date()): string {
   const lastmod = now.toISOString().slice(0, 10);
   const entries = [
     ...STATIC_PATHS.map((item) => ({
-      loc: locFor(item.path),
+      loc: locFor(origin, item.path),
       changeFrequency: item.changeFrequency,
       priority: item.priority,
     })),
     ...getAllResidences().map((residence) => ({
-      loc: locFor(`/residences/${residence.id}`),
+      loc: locFor(origin, `/residences/${residence.id}`),
       changeFrequency: "weekly" as const,
       priority: "0.9",
     })),
@@ -78,16 +82,23 @@ export function buildSitemapXml(now = new Date()): string {
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
 }
 
-export function buildRobotsTxt(): string {
+export function buildRobotsTxt(origin: string): string {
+  const base = origin.replace(/\/+$/, "");
+  const host = new URL(base).host;
   const lines = [
     "User-agent: *",
     "Allow: /",
     "Disallow: /api/",
     "",
     ...AI_CRAWLERS.flatMap((userAgent) => [`User-agent: ${userAgent}`, "Allow: /", ""]),
-    `Sitemap: ${SITE_URL}/sitemap.xml`,
-    `Host: ${SITE_DOMAIN}`,
+    `Sitemap: ${base}/sitemap.xml`,
+    `Host: ${host}`,
     "",
   ];
   return lines.join("\n");
+}
+
+export async function getCrawlerOrigin(): Promise<string> {
+  const requestHeaders = await headers();
+  return originFromHostHeader(requestHeaders.get("x-forwarded-host") ?? requestHeaders.get("host"));
 }
