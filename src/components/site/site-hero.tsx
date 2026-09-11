@@ -18,6 +18,7 @@ interface SitePhotoHeroProps {
   readonly overlayClassName?: string;
   readonly kenBurns?: boolean;
   readonly priority?: boolean;
+  readonly padHeader?: boolean;
 }
 
 export function SitePhotoHero({
@@ -31,6 +32,7 @@ export function SitePhotoHero({
   overlayClassName = SITE_HERO_OVERLAY_CLASS,
   kenBurns = false,
   priority = true,
+  padHeader = true,
 }: SitePhotoHeroProps) {
   return (
     <section
@@ -56,7 +58,7 @@ export function SitePhotoHero({
       <div
         className={cn(
           "relative z-10 mx-auto flex w-full max-w-7xl flex-col px-5 sm:px-6 lg:px-10",
-          SITE_HERO_HEADER_PAD_CLASS,
+          padHeader && SITE_HERO_HEADER_PAD_CLASS,
           contentClassName,
         )}
       >

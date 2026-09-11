@@ -77,8 +77,9 @@ export default async function ResidenceDetailPage({ params }: ResidencePageProps
       <SitePhotoHero
         src={residence.heroImage}
         alt={residence.title}
-        className="h-[min(62vh,640px)] min-h-[380px]"
-        contentClassName="h-[min(62vh,640px)] min-h-[380px] justify-end pb-10 lg:pb-12"
+        padHeader={false}
+        className="h-[min(70vh,720px)] min-h-[440px]"
+        contentClassName="h-[min(70vh,720px)] min-h-[440px] justify-end pb-10 lg:pb-12"
       >
         <div className="mb-3 flex flex-wrap items-center gap-3">
           <span className="rounded-xs bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">
