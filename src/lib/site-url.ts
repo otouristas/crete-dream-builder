@@ -1,22 +1,44 @@
 import { SITE_URL } from "@/lib/site-constants";
 
+function parseAbsoluteUrl(value: string | undefined): URL | null {
+  const trimmed = value?.trim();
+  if (!trimmed) {
+    return null;
+  }
+
+  const withoutTrailingSlash = trimmed.replace(/\/+$/, "");
+  const candidates = /^[a-zA-Z][a-zA-Z\d+\-.]*:\/\//.test(withoutTrailingSlash)
+    ? [withoutTrailingSlash]
+    : [`https://${withoutTrailingSlash}`];
+
+  for (const candidate of candidates) {
+    try {
+      return new URL(candidate);
+    } catch {
+      // Try the next candidate (or fall through to SITE_URL).
+    }
+  }
+
+  return null;
+}
+
 /**
  * Canonical site origin for metadata, sitemap, and Open Graph URLs.
  * Production always resolves to the public domain unless an explicit
  * `NEXT_PUBLIC_SITE_URL` is set. Vercel preview deployments keep their unique host.
  */
 export function getSiteUrl(): URL {
-  const explicit = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  const explicit = parseAbsoluteUrl(process.env.NEXT_PUBLIC_SITE_URL);
   if (explicit) {
-    const normalized = explicit.endsWith("/") ? explicit.slice(0, -1) : explicit;
-    return new URL(normalized);
+    return explicit;
   }
 
   const vercelEnv = process.env.VERCEL_ENV?.trim();
-  const vercel = process.env.VERCEL_URL?.trim();
-  if (vercelEnv === "preview" && vercel) {
-    const host = vercel.startsWith("http") ? vercel : `https://${vercel}`;
-    return new URL(host.endsWith("/") ? host.slice(0, -1) : host);
+  if (vercelEnv === "preview") {
+    const preview = parseAbsoluteUrl(process.env.VERCEL_URL);
+    if (preview) {
+      return preview;
+    }
   }
 
   return new URL(SITE_URL);
