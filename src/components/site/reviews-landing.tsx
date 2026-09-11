@@ -1,9 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Quote } from "lucide-react";
-import { SITE_HERO_HEADER_PAD_CLASS } from "@/lib/layout-constants";
 import { getPropertyReviews } from "@/lib/property-data";
 import { WhatsAppIcon } from "@/components/icons";
+import { SitePhotoHero } from "@/components/site/site-hero";
 import { SITE_FAB_CLEAR_CLASS } from "@/lib/layout-constants";
 import { GOOGLE_BUSINESS_URL, MAILTO, TRIPADVISOR_URL, WHATSAPP_URL } from "@/lib/site-constants";
 
@@ -25,77 +24,66 @@ export function ReviewsLanding() {
   const allFive = reviews.every((r) => Number.parseInt(r.Rating, 10) >= 5);
   return (
     <main className="bg-cream text-foreground">
-      <section className="relative overflow-hidden border-b border-cream/10 bg-stone-deep text-cream">
-        <div className="pointer-events-none absolute inset-0 opacity-25">
-          <Image
-            src="/property/bedroom-view.jpg"
-            alt=""
-            fill
-            className="object-cover"
-            sizes="100vw"
-            priority
-          />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-stone-deep via-stone-deep/95 to-stone-deep/88" />
-        <div
-          className={`relative mx-auto max-w-6xl px-6 pb-14 lg:px-10 lg:pb-20 ${SITE_HERO_HEADER_PAD_CLASS}`}
-        >
-          <p className="text-xs uppercase tracking-display text-primary">Guest voices</p>
-          <h1 className="mt-4 max-w-3xl font-display text-4xl leading-[0.98] text-balance text-cream sm:text-5xl lg:text-6xl">
-            What people remember <em className="text-primary not-italic">after they leave.</em>
-          </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-cream/80">
-            Every note below is from a real stay — same house, same family welcome. Prefer your own
-            thread? Message us on WhatsApp.
+      <SitePhotoHero
+        src="/property/bedroom-view.jpg"
+        alt="Bedroom with mountain views at Kagiampakis Concept Residences"
+        kenBurns
+        className="border-b border-cream/10 text-cream"
+        contentClassName="max-w-6xl pb-14 lg:pb-20"
+      >
+        <p className="text-xs uppercase tracking-display text-primary">Guest voices</p>
+        <h1 className="mt-4 max-w-3xl font-display text-4xl leading-[1.12] text-balance text-cream sm:text-5xl lg:text-6xl">
+          What people remember <span className="text-primary">after they leave.</span>
+        </h1>
+        <p className="mt-6 max-w-xl text-lg leading-relaxed text-cream/80">
+          Every note below is from a real stay — same house, same family welcome. Prefer your own
+          thread? Message us on WhatsApp.
+        </p>
+        <div className="mt-10 flex flex-wrap items-end gap-8 border-t border-cream/15 pt-10">
+          <div>
+            <p className="font-display text-5xl text-primary sm:text-6xl">5.0</p>
+            <p className="mt-1 text-xs uppercase tracking-display text-cream/55">Average rating</p>
+          </div>
+          <div className="h-12 w-px bg-cream/20" aria-hidden />
+          <div>
+            <p className="font-display text-5xl text-cream sm:text-6xl">{count}</p>
+            <p className="mt-1 text-xs uppercase tracking-display text-cream/55">Reviews shown</p>
+          </div>
+          <div className="h-12 w-px bg-cream/20 max-sm:hidden" aria-hidden />
+          <p className="max-w-xs text-sm text-cream/65 max-sm:w-full sm:ml-4">
+            {allFive
+              ? "Shown reviews are five-star experiences guests chose to publish on the original platform."
+              : "Ratings reflect guest feedback from our listing history."}
           </p>
-          <div className="mt-10 flex flex-wrap items-end gap-8 border-t border-cream/15 pt-10">
-            <div>
-              <p className="font-display text-5xl text-primary sm:text-6xl">5.0</p>
-              <p className="mt-1 text-xs uppercase tracking-display text-cream/55">
-                Average rating
-              </p>
-            </div>
-            <div className="h-12 w-px bg-cream/20" aria-hidden />
-            <div>
-              <p className="font-display text-5xl text-cream sm:text-6xl">{count}</p>
-              <p className="mt-1 text-xs uppercase tracking-display text-cream/55">Reviews shown</p>
-            </div>
-            <div className="h-12 w-px bg-cream/20 max-sm:hidden" aria-hidden />
-            <p className="max-w-xs text-sm text-cream/65 max-sm:w-full sm:ml-4">
-              {allFive
-                ? "Shown reviews are five-star experiences guests chose to publish on the original platform."
-                : "Ratings reflect guest feedback from our listing history."}
-            </p>
-          </div>
-          <div className="mt-10 flex flex-wrap gap-3">
-            <a
-              href={GOOGLE_BUSINESS_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex rounded-full border border-cream/25 bg-cream/5 px-5 py-2.5 text-sm text-cream transition-colors hover:border-primary hover:bg-cream/10"
-            >
-              Google reviews →
-            </a>
-            <a
-              href={TRIPADVISOR_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex rounded-full border border-cream/25 bg-cream/5 px-5 py-2.5 text-sm text-cream transition-colors hover:border-primary hover:bg-cream/10"
-            >
-              Tripadvisor →
-            </a>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground shadow-warm transition-colors hover:bg-primary/90"
-            >
-              <WhatsAppIcon className="h-4 w-4" />
-              Ask on WhatsApp
-            </a>
-          </div>
         </div>
-      </section>
+        <div className="mt-10 flex flex-wrap gap-3">
+          <a
+            href={GOOGLE_BUSINESS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex rounded-full border border-cream/25 bg-cream/5 px-5 py-2.5 text-sm text-cream transition-colors hover:border-primary hover:bg-cream/10"
+          >
+            Google reviews →
+          </a>
+          <a
+            href={TRIPADVISOR_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex rounded-full border border-cream/25 bg-cream/5 px-5 py-2.5 text-sm text-cream transition-colors hover:border-primary hover:bg-cream/10"
+          >
+            Tripadvisor →
+          </a>
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground shadow-warm transition-colors hover:bg-primary/90"
+          >
+            <WhatsAppIcon className="h-4 w-4" />
+            Ask on WhatsApp
+          </a>
+        </div>
+      </SitePhotoHero>
       <section className="relative py-16 lg:py-24">
         <div className="pointer-events-none absolute left-1/2 top-0 h-64 w-[min(90vw,48rem)] -translate-x-1/2 rounded-full bg-primary/8 blur-3xl" />
         <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
