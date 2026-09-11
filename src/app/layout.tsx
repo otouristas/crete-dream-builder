@@ -37,6 +37,9 @@ export const metadata: Metadata = {
     ],
     apple: [{ url: "/logo-final.png", sizes: "180x180", type: "image/png" }],
   },
+  verification: {
+    google: "A4JaHDE52ZZ_-SCp-Ie61Shy0XvLl5kk4xSCOxSiLPk",
+  },
   category: "travel",
   applicationName: SITE_NAME,
   formatDetection: { telephone: true, email: true },
