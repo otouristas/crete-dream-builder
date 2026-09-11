@@ -12,7 +12,23 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   async headers() {
-    return [{ source: "/:path*", headers: securityHeaders }];
+    return [
+      {
+        source: "/sitemap.xml",
+        headers: [
+          ...securityHeaders,
+          { key: "Content-Type", value: "application/xml; charset=utf-8" },
+        ],
+      },
+      {
+        source: "/robots.txt",
+        headers: [
+          ...securityHeaders,
+          { key: "Content-Type", value: "text/plain; charset=utf-8" },
+        ],
+      },
+      { source: "/:path*", headers: securityHeaders },
+    ];
   },
   async redirects() {
     return [
