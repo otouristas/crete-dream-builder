@@ -60,14 +60,14 @@ export function WhatToSeeLanding() {
         className="min-h-[min(72svh,720px)]"
         contentClassName="min-h-[min(72svh,720px)] max-w-6xl max-lg:justify-center pb-14 lg:justify-end lg:pb-20"
       >
-          <p className="text-xs uppercase tracking-display text-primary/95">Beyond the courtyard</p>
-          <h1 className="mt-4 max-w-4xl font-display text-4xl leading-[1.12] text-balance text-cream sm:text-5xl lg:text-7xl">
-            Crete from <span className="text-primary/95">Avdou.</span>
-          </h1>
-          <p className="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-cream/88 lg:text-xl">
-            You are between the Lasithi mountains and the north coast — day trips to plateau, sea,
-            and Heraklion without sacrificing the quiet of the village.
-          </p>
+        <p className="text-xs uppercase tracking-display text-primary/95">Beyond the courtyard</p>
+        <h1 className="mt-4 max-w-4xl font-display text-4xl leading-[1.12] text-balance text-cream sm:text-5xl lg:text-7xl">
+          Crete from <span className="text-primary/95">Avdou.</span>
+        </h1>
+        <p className="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-cream/88 lg:text-xl">
+          You are between the Lasithi mountains and the north coast — day trips to plateau, sea, and
+          Heraklion without sacrificing the quiet of the village.
+        </p>
       </SitePhotoHero>
       <section className="border-b border-border/60 bg-stone-deep py-12 text-cream lg:py-16">
         <div className="mx-auto grid max-w-6xl gap-8 px-6 sm:grid-cols-3 lg:gap-10 lg:px-10">

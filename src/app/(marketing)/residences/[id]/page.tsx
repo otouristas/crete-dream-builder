@@ -80,27 +80,27 @@ export default async function ResidenceDetailPage({ params }: ResidencePageProps
         className="h-[min(62vh,640px)] min-h-[380px]"
         contentClassName="h-[min(62vh,640px)] min-h-[380px] justify-end pb-10 lg:pb-12"
       >
-          <div className="mb-3 flex flex-wrap items-center gap-3">
-            <span className="rounded-xs bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">
-              {residence.badge}
-            </span>
-            <span className="rounded-xs bg-cream/90 px-3 py-1 text-xs font-medium text-stone-deep backdrop-blur-xs">
-              EOT {residence.registrationNumber}
-            </span>
-          </div>
+        <div className="mb-3 flex flex-wrap items-center gap-3">
+          <span className="rounded-xs bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">
+            {residence.badge}
+          </span>
+          <span className="rounded-xs bg-cream/90 px-3 py-1 text-xs font-medium text-stone-deep backdrop-blur-xs">
+            EOT {residence.registrationNumber}
+          </span>
+        </div>
 
-          <h1 className="font-display text-4xl leading-[1.12] text-cream sm:text-6xl">
-            {residence.title}
-          </h1>
-          <p className="mt-2 max-w-2xl text-lg text-cream/90">{residence.subtitle}</p>
+        <h1 className="font-display text-4xl leading-[1.12] text-cream sm:text-6xl">
+          {residence.title}
+        </h1>
+        <p className="mt-2 max-w-2xl text-lg text-cream/90">{residence.subtitle}</p>
 
-          <ResidenceSpecs
-            guests={residence.maxGuests}
-            bedrooms={residence.bedrooms}
-            bathrooms={residence.bathrooms}
-            minStayNights={residence.minStayNights}
-            className="mt-6 border-t border-cream/20 pt-4 text-sm text-cream/85"
-          />
+        <ResidenceSpecs
+          guests={residence.maxGuests}
+          bedrooms={residence.bedrooms}
+          bathrooms={residence.bathrooms}
+          minStayNights={residence.minStayNights}
+          className="mt-6 border-t border-cream/20 pt-4 text-sm text-cream/85"
+        />
       </SitePhotoHero>
 
       <section className="py-14 sm:py-20 lg:py-24">

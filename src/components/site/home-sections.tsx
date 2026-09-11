@@ -44,63 +44,63 @@ export function HomeHero() {
       className="min-h-[100svh] lg:min-h-[min(100svh,900px)]"
       contentClassName="min-h-[100svh] max-lg:justify-center pb-16 lg:min-h-[min(100svh,900px)] lg:justify-end lg:pb-24"
     >
-        <div className="animate-fade-up max-w-3xl">
-          <p className="mb-4 text-xs font-semibold uppercase tracking-display text-cream/80">
-            Avdou Village · Heraklion · Crete
-          </p>
-          <h1 className="font-display text-5xl leading-[1.12] text-balance text-cream [text-shadow:0_2px_28px_rgba(0,0,0,0.45)] sm:text-6xl lg:text-8xl">
-            Kagiampakis
-            <br />
-            <span className="font-light text-primary/95">Concept Residences I &amp; II</span>
-          </h1>
-          <p className="mt-6 max-w-2xl text-pretty text-lg text-cream [text-shadow:0_1px_16px_rgba(0,0,0,0.4)] sm:text-xl">
-            Two authentic stone houses in historic Avdou —{" "}
-            <strong className="text-cream">Residence I for up to 6 guests</strong> (from €60/night)
-            and <strong className="text-cream">Residence II for up to 7 guests</strong> (from
-            €170/night). Reserve one, or both for groups of up to 13. About 31 minutes from
-            Heraklion Airport.
-          </p>
+      <div className="animate-fade-up max-w-3xl">
+        <p className="mb-4 text-xs font-semibold uppercase tracking-display text-cream/80">
+          Avdou Village · Heraklion · Crete
+        </p>
+        <h1 className="font-display text-5xl leading-[1.12] text-balance text-cream [text-shadow:0_2px_28px_rgba(0,0,0,0.45)] sm:text-6xl lg:text-8xl">
+          Kagiampakis
+          <br />
+          <span className="font-light text-primary/95">Concept Residences I &amp; II</span>
+        </h1>
+        <p className="mt-6 max-w-2xl text-pretty text-lg text-cream [text-shadow:0_1px_16px_rgba(0,0,0,0.4)] sm:text-xl">
+          Two authentic stone houses in historic Avdou —{" "}
+          <strong className="text-cream">Residence I for up to 6 guests</strong> (from €60/night)
+          and <strong className="text-cream">Residence II for up to 7 guests</strong> (from
+          €170/night). Reserve one, or both for groups of up to 13. About 31 minutes from Heraklion
+          Airport.
+        </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
+          <a
+            href="#calculator"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-warm transition-all hover:bg-primary/90"
+          >
+            Check rates &amp; dates
+          </a>
+          <div className="flex flex-wrap gap-3">
             <a
-              href="#calculator"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-warm transition-all hover:bg-primary/90"
+              href={WHATSAPP_1_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-cream/40 bg-[#25D366]/30 px-6 py-3.5 text-sm font-medium text-cream backdrop-blur-xs transition-all hover:bg-[#25D366]/50 sm:flex-none"
             >
-              Check rates &amp; dates
+              <WhatsAppIcon className="h-5 w-5" />
+              WhatsApp
             </a>
-            <div className="flex flex-wrap gap-3">
-              <a
-                href={WHATSAPP_1_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-cream/40 bg-[#25D366]/30 px-6 py-3.5 text-sm font-medium text-cream backdrop-blur-xs transition-all hover:bg-[#25D366]/50 sm:flex-none"
-              >
-                <WhatsAppIcon className="h-5 w-5" />
-                WhatsApp
-              </a>
-              <a
-                href={VIBER_1_URL}
-                className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-cream/40 bg-[#7360F2]/40 px-6 py-3.5 text-sm font-medium text-cream backdrop-blur-xs transition-all hover:bg-[#7360F2]/55 sm:flex-none"
-              >
-                <ViberIcon className="h-5 w-5" />
-                Viber
-              </a>
-            </div>
-            <Link
-              href="/residences"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-cream/25 px-6 py-3.5 text-sm font-medium text-cream/90 transition-all hover:bg-cream/10"
+            <a
+              href={VIBER_1_URL}
+              className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-cream/40 bg-[#7360F2]/40 px-6 py-3.5 text-sm font-medium text-cream backdrop-blur-xs transition-all hover:bg-[#7360F2]/55 sm:flex-none"
             >
-              Explore both houses
-            </Link>
+              <ViberIcon className="h-5 w-5" />
+              Viber
+            </a>
           </div>
-
-          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-cream/15 pt-6 text-sm text-cream/80">
-            <span className="flex items-center gap-2 font-medium">
-              <span className="text-primary">★</span> {ratingDisplay} · {count} guest reviews
-            </span>
-            <span className="hidden sm:inline">Book direct — host rates, no platform fees</span>
-          </div>
+          <Link
+            href="/residences"
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-cream/25 px-6 py-3.5 text-sm font-medium text-cream/90 transition-all hover:bg-cream/10"
+          >
+            Explore both houses
+          </Link>
         </div>
+
+        <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-cream/15 pt-6 text-sm text-cream/80">
+          <span className="flex items-center gap-2 font-medium">
+            <span className="text-primary">★</span> {ratingDisplay} · {count} guest reviews
+          </span>
+          <span className="hidden sm:inline">Book direct — host rates, no platform fees</span>
+        </div>
+      </div>
     </SitePhotoHero>
   );
 }

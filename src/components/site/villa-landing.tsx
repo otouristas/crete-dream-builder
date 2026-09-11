@@ -93,54 +93,54 @@ export function VillaLanding() {
         className="min-h-[min(92svh,900px)]"
         contentClassName="min-h-[min(92svh,900px)] max-lg:justify-center pb-16 lg:justify-end lg:pb-24"
       >
-          <div className="max-w-4xl animate-fade-up">
-            <p className="text-xs uppercase tracking-display text-cream/75">Avdou · Crete</p>
-            <h1
-              id="villa-hero-heading"
-              className="mt-4 font-display text-5xl leading-[1.12] text-balance text-cream sm:text-6xl lg:text-7xl xl:text-8xl"
+        <div className="max-w-4xl animate-fade-up">
+          <p className="text-xs uppercase tracking-display text-cream/75">Avdou · Crete</p>
+          <h1
+            id="villa-hero-heading"
+            className="mt-4 font-display text-5xl leading-[1.12] text-balance text-cream sm:text-6xl lg:text-7xl xl:text-8xl"
+          >
+            The villa
+            <br />
+            <span className="font-light text-primary/95">three levels of stone &amp; light.</span>
+          </h1>
+          <p className="mt-8 max-w-xl text-pretty text-lg leading-relaxed text-cream/88 lg:text-xl">
+            A fully renovated residence — kitchen and living on the ground floor, bedrooms above,
+            mountain views, courtyard, and every amenity for up to six guests.
+          </p>
+          <div className="mt-10 flex flex-wrap gap-4">
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-base font-medium text-primary-foreground shadow-warm transition-all hover:bg-primary/90"
             >
-              The villa
-              <br />
-              <span className="font-light text-primary/95">three levels of stone &amp; light.</span>
-            </h1>
-            <p className="mt-8 max-w-xl text-pretty text-lg leading-relaxed text-cream/88 lg:text-xl">
-              A fully renovated residence — kitchen and living on the ground floor, bedrooms above,
-              mountain views, courtyard, and every amenity for up to six guests.
-            </p>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-base font-medium text-primary-foreground shadow-warm transition-all hover:bg-primary/90"
-              >
-                WhatsApp — enquire
-              </a>
-              <a
-                href={MAILTO}
-                className="inline-flex items-center gap-2 rounded-full border border-cream/45 px-8 py-4 text-base text-cream transition-all hover:bg-cream/10"
-              >
-                Email your dates
-              </a>
-            </div>
-            <div className="mt-10 flex flex-wrap gap-6 text-sm text-cream/70">
-              <a href="#photos" className="underline-offset-4 transition-colors hover:text-primary">
-                Gallery →
-              </a>
-              <a
-                href="#amenities"
-                className="underline-offset-4 transition-colors hover:text-primary"
-              >
-                Amenities →
-              </a>
-              <Link
-                href="/contact"
-                className="underline-offset-4 transition-colors hover:text-primary"
-              >
-                Map &amp; contact →
-              </Link>
-            </div>
+              WhatsApp — enquire
+            </a>
+            <a
+              href={MAILTO}
+              className="inline-flex items-center gap-2 rounded-full border border-cream/45 px-8 py-4 text-base text-cream transition-all hover:bg-cream/10"
+            >
+              Email your dates
+            </a>
           </div>
+          <div className="mt-10 flex flex-wrap gap-6 text-sm text-cream/70">
+            <a href="#photos" className="underline-offset-4 transition-colors hover:text-primary">
+              Gallery →
+            </a>
+            <a
+              href="#amenities"
+              className="underline-offset-4 transition-colors hover:text-primary"
+            >
+              Amenities →
+            </a>
+            <Link
+              href="/contact"
+              className="underline-offset-4 transition-colors hover:text-primary"
+            >
+              Map &amp; contact →
+            </Link>
+          </div>
+        </div>
       </SitePhotoHero>
       <section className="border-b border-border/60 bg-stone-deep py-16 text-cream lg:py-20">
         <div className="mx-auto grid max-w-6xl gap-10 px-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8 lg:px-10">
