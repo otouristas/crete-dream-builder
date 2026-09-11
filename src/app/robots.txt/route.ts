@@ -1,9 +1,10 @@
-import { buildRobotsTxt, ROBOTS_HEADERS } from "@/lib/crawler-documents";
+import { buildRobotsTxt, getCrawlerOrigin, ROBOTS_HEADERS } from "@/lib/crawler-documents";
 
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 
-export function GET(): Response {
-  return new Response(buildRobotsTxt(), {
+export async function GET(): Promise<Response> {
+  const origin = await getCrawlerOrigin();
+  return new Response(buildRobotsTxt(origin), {
     status: 200,
     headers: ROBOTS_HEADERS,
   });

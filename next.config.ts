@@ -18,6 +18,7 @@ const nextConfig: NextConfig = {
         headers: [
           ...securityHeaders,
           { key: "Content-Type", value: "application/xml; charset=utf-8" },
+          { key: "Vary", value: "Host" },
         ],
       },
       {
@@ -25,6 +26,7 @@ const nextConfig: NextConfig = {
         headers: [
           ...securityHeaders,
           { key: "Content-Type", value: "text/plain; charset=utf-8" },
+          { key: "Vary", value: "Host" },
         ],
       },
       { source: "/:path*", headers: securityHeaders },

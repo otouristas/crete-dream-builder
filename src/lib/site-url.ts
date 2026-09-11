@@ -1,4 +1,4 @@
-import { SITE_URL } from "@/lib/site-constants";
+import { PRODUCTION_HOSTS, SITE_URL } from "@/lib/site-constants";
 
 function parseAbsoluteUrl(value: string | undefined): URL | null {
   const trimmed = value?.trim();
@@ -48,4 +48,18 @@ export function getAbsoluteUrl(pathname: string): string {
   const base = getSiteUrl().origin;
   const path = pathname.startsWith("/") ? pathname : `/${pathname}`;
   return path === "/" ? `${base}/` : `${base}${path}`;
+}
+
+const PRODUCTION_HOST_SET = new Set<string>(PRODUCTION_HOSTS);
+
+/**
+ * Origin for sitemap.xml / robots.txt. Google requires every `<loc>` to use the
+ * same host as the sitemap URL (www vs apex vs alias domains are different hosts).
+ */
+export function originFromHostHeader(hostHeader: string | null | undefined): string {
+  const host = hostHeader?.split(",")[0]?.trim().replace(/:\d+$/, "").toLowerCase() ?? "";
+  if (PRODUCTION_HOST_SET.has(host)) {
+    return `https://${host}`;
+  }
+  return SITE_URL;
 }
