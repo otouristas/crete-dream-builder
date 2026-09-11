@@ -100,7 +100,5 @@ export function buildRobotsTxt(origin: string): string {
 
 export async function getCrawlerOrigin(): Promise<string> {
   const requestHeaders = await headers();
-  return originFromHostHeader(
-    requestHeaders.get("x-forwarded-host") ?? requestHeaders.get("host"),
-  );
+  return originFromHostHeader(requestHeaders.get("x-forwarded-host") ?? requestHeaders.get("host"));
 }
