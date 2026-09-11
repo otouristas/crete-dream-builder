@@ -84,11 +84,7 @@ export function buildRobotsTxt(): string {
     "Allow: /",
     "Disallow: /api/",
     "",
-    ...AI_CRAWLERS.flatMap((userAgent) => [
-      `User-agent: ${userAgent}`,
-      "Allow: /",
-      "",
-    ]),
+    ...AI_CRAWLERS.flatMap((userAgent) => [`User-agent: ${userAgent}`, "Allow: /", ""]),
     `Sitemap: ${SITE_URL}/sitemap.xml`,
     `Host: ${SITE_DOMAIN}`,
     "",
