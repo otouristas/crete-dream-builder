@@ -2,8 +2,8 @@ import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Church, MapPin, Mountain, Ship, Sparkles, Tent, TreePalm, Waves } from "lucide-react";
-import { SITE_HERO_HEADER_PAD_CLASS } from "@/lib/layout-constants";
 import { ViberIcon, WhatsAppIcon } from "@/components/icons";
+import { SitePhotoHero } from "@/components/site/site-hero";
 import { MAILTO, VIBER_URL, WHATSAPP_URL } from "@/lib/site-constants";
 
 interface ExploreCard {
@@ -53,29 +53,22 @@ export function WhatToSeeLanding() {
   ];
   return (
     <main className="bg-cream text-foreground">
-      <section className="relative min-h-[min(72svh,720px)] w-full overflow-hidden">
-        <Image
-          src="/property/entrance-evening.jpg"
-          alt="Stone entrance and flowers in Avdou at dusk"
-          fill
-          priority
-          className="object-cover animate-ken-burns"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-stone-deep via-stone-deep/55 to-stone-deep/25" />
-        <div
-          className={`relative z-10 mx-auto flex min-h-[min(72svh,720px)] max-w-6xl flex-col px-6 pb-14 max-lg:justify-center lg:justify-end lg:px-10 lg:pb-20 ${SITE_HERO_HEADER_PAD_CLASS}`}
-        >
+      <SitePhotoHero
+        src="/property/entrance-evening.jpg"
+        alt="Stone entrance and flowers in Avdou at dusk"
+        kenBurns
+        className="min-h-[min(72svh,720px)]"
+        contentClassName="min-h-[min(72svh,720px)] max-w-6xl max-lg:justify-center pb-14 lg:justify-end lg:pb-20"
+      >
           <p className="text-xs uppercase tracking-display text-primary/95">Beyond the courtyard</p>
-          <h1 className="mt-4 max-w-4xl font-display text-4xl leading-[0.95] text-balance text-cream sm:text-5xl lg:text-7xl">
-            Crete from <em className="text-primary/95 not-italic">Avdou.</em>
+          <h1 className="mt-4 max-w-4xl font-display text-4xl leading-[1.12] text-balance text-cream sm:text-5xl lg:text-7xl">
+            Crete from <span className="text-primary/95">Avdou.</span>
           </h1>
           <p className="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-cream/88 lg:text-xl">
             You are between the Lasithi mountains and the north coast — day trips to plateau, sea,
             and Heraklion without sacrificing the quiet of the village.
           </p>
-        </div>
-      </section>
+      </SitePhotoHero>
       <section className="border-b border-border/60 bg-stone-deep py-12 text-cream lg:py-16">
         <div className="mx-auto grid max-w-6xl gap-8 px-6 sm:grid-cols-3 lg:gap-10 lg:px-10">
           {[

@@ -6,6 +6,7 @@ import { ContactChannelRow } from "@/components/site/contact-channels";
 import { GalleryWithLightbox } from "@/components/site/gallery-with-lightbox";
 import { JsonLd } from "@/components/site/json-ld";
 import { ResidenceSpecs } from "@/components/site/residence-specs";
+import { SitePhotoHero } from "@/components/site/site-hero";
 import { buildPageMetadata } from "@/lib/build-page-metadata";
 import { SITE_CONTAINER_CLASS, SITE_FAB_CLEAR_CLASS } from "@/lib/layout-constants";
 import { getAllResidences, getResidenceById } from "@/lib/residences-data";
@@ -73,18 +74,12 @@ export default async function ResidenceDetailPage({ params }: ResidencePageProps
       />
       <JsonLd data={buildVacationRentalJsonLd(residence)} />
 
-      <section className="relative h-[min(62vh,640px)] min-h-[380px] w-full overflow-hidden">
-        <Image
-          src={residence.heroImage}
-          alt={residence.title}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-stone-deep via-stone-deep/40 to-black/20" />
-
-        <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-5 pb-10 sm:px-6 lg:px-10 lg:pb-12">
+      <SitePhotoHero
+        src={residence.heroImage}
+        alt={residence.title}
+        className="h-[min(62vh,640px)] min-h-[380px]"
+        contentClassName="h-[min(62vh,640px)] min-h-[380px] justify-end pb-10 lg:pb-12"
+      >
           <div className="mb-3 flex flex-wrap items-center gap-3">
             <span className="rounded-xs bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground">
               {residence.badge}
@@ -94,7 +89,9 @@ export default async function ResidenceDetailPage({ params }: ResidencePageProps
             </span>
           </div>
 
-          <h1 className="font-display text-4xl text-cream sm:text-6xl">{residence.title}</h1>
+          <h1 className="font-display text-4xl leading-[1.12] text-cream sm:text-6xl">
+            {residence.title}
+          </h1>
           <p className="mt-2 max-w-2xl text-lg text-cream/90">{residence.subtitle}</p>
 
           <ResidenceSpecs
@@ -104,8 +101,7 @@ export default async function ResidenceDetailPage({ params }: ResidencePageProps
             minStayNights={residence.minStayNights}
             className="mt-6 border-t border-cream/20 pt-4 text-sm text-cream/85"
           />
-        </div>
-      </section>
+      </SitePhotoHero>
 
       <section className="py-14 sm:py-20 lg:py-24">
         <div className={SITE_CONTAINER_CLASS}>

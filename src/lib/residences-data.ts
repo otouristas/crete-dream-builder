@@ -142,8 +142,7 @@ export const RESIDENCES_DATA: Record<"concept-1" | "concept-2", ResidenceDetails
     startingPriceFriSat: 180,
     registrationNumber: "00001845501",
     airbnbUrl: AIRBNB_RESI_2_URL,
-    heroImage:
-      "https://a0.muscache.com/im/pictures/miso/Hosting-1083410970859524546/original/da03d28a-0404-4fe8-9075-bdf420733725.jpeg",
+    heroImage: "/property/stone-living.jpg",
     description: [
       "Kagiampakis Concept Residence II is a spacious, elegantly appointed home designed for families and groups of up to 7 guests seeking high comfort in Avdou village.",
       "Featuring 3 plush bedrooms, 2 full bathrooms, a dedicated workspace, washer, and expansive common areas blending Cretan architectural stone charm with modern amenities.",

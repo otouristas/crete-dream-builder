@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { GalleryWithLightbox } from "@/components/site/gallery-with-lightbox";
-import { SITE_HERO_HEADER_PAD_CLASS } from "@/lib/layout-constants";
+import { SitePhotoHero } from "@/components/site/site-hero";
 import { getPropertyAmenities } from "@/lib/property-data";
 import { getPropertyPhotos } from "@/lib/property-photos";
 import { MAILTO, WHATSAPP_URL } from "@/lib/site-constants";
@@ -85,31 +85,23 @@ export function VillaLanding() {
   const groups = buildAmenityGroups(amenityRows);
   return (
     <main className="bg-cream text-foreground">
-      <section
-        className="relative min-h-[min(92svh,900px)] w-full overflow-hidden"
-        aria-labelledby="villa-hero-heading"
+      <SitePhotoHero
+        src="/property/exterior-courtyard.jpg"
+        alt="Stone courtyard and entrance at Kagiampakis Concept Residences, Avdou"
+        kenBurns
+        labelledBy="villa-hero-heading"
+        className="min-h-[min(92svh,900px)]"
+        contentClassName="min-h-[min(92svh,900px)] max-lg:justify-center pb-16 lg:justify-end lg:pb-24"
       >
-        <Image
-          src="/property/exterior-courtyard.jpg"
-          alt="Stone courtyard and entrance at Kagiampakis Concept Residences, Avdou"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover animate-ken-burns"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-stone-deep/55 via-stone-deep/35 to-stone-deep/88" />
-        <div
-          className={`relative z-10 mx-auto flex min-h-[min(92svh,900px)] max-w-7xl flex-col px-6 pb-16 max-lg:justify-center lg:justify-end lg:px-10 lg:pb-24 ${SITE_HERO_HEADER_PAD_CLASS}`}
-        >
           <div className="max-w-4xl animate-fade-up">
             <p className="text-xs uppercase tracking-display text-cream/75">Avdou · Crete</p>
             <h1
               id="villa-hero-heading"
-              className="mt-4 font-display text-5xl leading-[0.95] text-balance text-cream sm:text-6xl lg:text-7xl xl:text-8xl"
+              className="mt-4 font-display text-5xl leading-[1.12] text-balance text-cream sm:text-6xl lg:text-7xl xl:text-8xl"
             >
               The villa
               <br />
-              <em className="font-light text-primary/95">three levels of stone &amp; light.</em>
+              <span className="font-light text-primary/95">three levels of stone &amp; light.</span>
             </h1>
             <p className="mt-8 max-w-xl text-pretty text-lg leading-relaxed text-cream/88 lg:text-xl">
               A fully renovated residence — kitchen and living on the ground floor, bedrooms above,
@@ -149,8 +141,7 @@ export function VillaLanding() {
               </Link>
             </div>
           </div>
-        </div>
-      </section>
+      </SitePhotoHero>
       <section className="border-b border-border/60 bg-stone-deep py-16 text-cream lg:py-20">
         <div className="mx-auto grid max-w-6xl gap-10 px-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8 lg:px-10">
           {[
@@ -282,7 +273,7 @@ export function VillaLanding() {
                 id="villa-photos-heading"
                 className="mt-3 font-display text-4xl text-stone-deep lg:text-6xl"
               >
-                Walk the rooms <em className="text-primary not-italic">before you arrive.</em>
+                Walk the rooms <span className="text-primary">before you arrive.</span>
               </h2>
             </div>
             <p className="max-w-md text-sm leading-relaxed text-muted-foreground lg:text-right lg:text-base">
@@ -342,7 +333,7 @@ export function VillaLanding() {
               id="villa-amenities-heading"
               className="mt-4 font-display text-4xl leading-tight text-stone-deep lg:text-5xl"
             >
-              Everything considered — <em className="text-primary not-italic">nothing generic.</em>
+              Everything considered — <span className="text-primary">nothing generic.</span>
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
               Curated for a real stay: from kitchen kit to parking, grouped so you can scan at a

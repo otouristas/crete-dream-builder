@@ -4,11 +4,11 @@ import { AvailabilityCalculator } from "@/components/site/availability-calculato
 import { ContactChannelCard } from "@/components/site/contact-channels";
 import { ResidenceCard } from "@/components/site/residence-card";
 import { SiteFaq } from "@/components/site/site-faq";
+import { SitePhotoHero } from "@/components/site/site-hero";
 import { WhatsAppIcon, ViberIcon } from "@/components/icons";
 import {
   SITE_CONTAINER_CLASS,
   SITE_FAB_CLEAR_CLASS,
-  SITE_HERO_HEADER_PAD_CLASS,
   SITE_SECTION_Y_CLASS,
 } from "@/lib/layout-constants";
 import { getAllResidences } from "@/lib/residences-data";
@@ -36,30 +36,22 @@ export function HomeHero() {
   const { count, ratingDisplay } = getReviewStats();
 
   return (
-    <section
+    <SitePhotoHero
       id="top"
-      className="relative min-h-[100svh] w-full overflow-hidden lg:min-h-[min(100svh,900px)]"
+      src="/property/exterior-courtyard.jpg"
+      alt="Stone courtyard at Kagiampakis Concept Residences in Avdou, Crete"
+      kenBurns
+      className="min-h-[100svh] lg:min-h-[min(100svh,900px)]"
+      contentClassName="min-h-[100svh] max-lg:justify-center pb-16 lg:min-h-[min(100svh,900px)] lg:justify-end lg:pb-24"
     >
-      <Image
-        src="/property/exterior-courtyard.jpg"
-        alt="Stone courtyard at Kagiampakis Concept Residences in Avdou, Crete"
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover animate-ken-burns"
-      />
-      <div className="absolute inset-0 bg-gradient-to-b from-stone-deep/55 via-stone-deep/40 to-stone-deep/92 sm:from-stone-deep/40 sm:via-stone-deep/30 sm:to-stone-deep/90" />
-      <div
-        className={`relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col px-5 pb-16 max-lg:justify-center sm:px-6 lg:min-h-[min(100svh,900px)] lg:justify-end lg:px-10 lg:pb-24 ${SITE_HERO_HEADER_PAD_CLASS}`}
-      >
         <div className="animate-fade-up max-w-3xl">
           <p className="mb-4 text-xs font-semibold uppercase tracking-display text-cream/80">
             Avdou Village · Heraklion · Crete
           </p>
-          <h1 className="font-display text-5xl leading-[0.95] text-balance text-cream [text-shadow:0_2px_28px_rgba(0,0,0,0.45)] sm:text-6xl lg:text-8xl">
+          <h1 className="font-display text-5xl leading-[1.12] text-balance text-cream [text-shadow:0_2px_28px_rgba(0,0,0,0.45)] sm:text-6xl lg:text-8xl">
             Kagiampakis
             <br />
-            <em className="font-light text-primary/95">Concept Residences I &amp; II</em>
+            <span className="font-light text-primary/95">Concept Residences I &amp; II</span>
           </h1>
           <p className="mt-6 max-w-2xl text-pretty text-lg text-cream [text-shadow:0_1px_16px_rgba(0,0,0,0.4)] sm:text-xl">
             Two authentic stone houses in historic Avdou —{" "}
@@ -109,8 +101,7 @@ export function HomeHero() {
             <span className="hidden sm:inline">Book direct — host rates, no platform fees</span>
           </div>
         </div>
-      </div>
-    </section>
+    </SitePhotoHero>
   );
 }
 
@@ -191,7 +182,7 @@ export function HomeStory() {
           </p>
           <h2 className="font-display text-4xl leading-tight text-balance text-stone-deep lg:text-5xl">
             Built of stone, kept by family,
-            <em className="text-primary"> opened to you.</em>
+            <span className="text-primary"> opened to you.</span>
           </h2>
           <div className="mt-8 space-y-5 text-lg leading-relaxed text-foreground/80">
             <p>
@@ -233,7 +224,7 @@ export function HomeLocation() {
       id="location"
       className={`scroll-mt-header relative overflow-hidden bg-stone-deep text-cream ${SITE_SECTION_Y_CLASS}`}
     >
-      <div className="absolute inset-0 opacity-20">
+      <div className="absolute inset-0 opacity-35">
         <Image
           src="/property/exterior-courtyard.jpg"
           alt=""
@@ -335,7 +326,7 @@ export function HomeContact() {
           Reserve your stay direct
         </p>
         <h2 className="font-display text-4xl leading-tight text-balance text-stone-deep lg:text-6xl">
-          We would love to <em className="text-primary">welcome you.</em>
+          We would love to <span className="text-primary">welcome you.</span>
         </h2>
         <p className="mx-auto mt-6 max-w-xl text-lg text-foreground/75">
           Message host Xrisa on <strong className="text-stone-deep">WhatsApp</strong> or{" "}
