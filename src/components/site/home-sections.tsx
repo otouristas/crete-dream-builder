@@ -42,7 +42,7 @@ export function HomeHero() {
       alt="Stone courtyard at Kagiampakis Concept Residences in Avdou, Crete"
       kenBurns
       className="min-h-[100svh] lg:min-h-[min(100svh,900px)]"
-      contentClassName="min-h-[100svh] max-lg:justify-center pb-16 lg:min-h-[min(100svh,900px)] lg:justify-end lg:pb-24"
+      contentClassName="min-h-[100svh] justify-end pb-16 sm:pb-20 lg:min-h-[min(100svh,900px)] lg:pb-28"
     >
       <div className="animate-fade-up max-w-3xl">
         <p className="mb-4 text-xs font-semibold uppercase tracking-display text-cream/80">
@@ -75,14 +75,14 @@ export function HomeHero() {
               rel="noopener noreferrer"
               className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-cream/40 bg-[#25D366]/30 px-6 py-3.5 text-sm font-medium text-cream backdrop-blur-xs transition-all hover:bg-[#25D366]/50 sm:flex-none"
             >
-              <WhatsAppIcon className="h-5 w-5" />
+              <WhatsAppIcon className="h-5 w-5 shrink-0" />
               WhatsApp
             </a>
             <a
               href={VIBER_1_URL}
               className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-cream/40 bg-[#7360F2]/40 px-6 py-3.5 text-sm font-medium text-cream backdrop-blur-xs transition-all hover:bg-[#7360F2]/55 sm:flex-none"
             >
-              <ViberIcon className="h-5 w-5" />
+              <ViberIcon className="h-5 w-5 shrink-0" />
               Viber
             </a>
           </div>

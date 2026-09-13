@@ -91,7 +91,7 @@ export function VillaLanding() {
         kenBurns
         labelledBy="villa-hero-heading"
         className="min-h-[min(92svh,900px)]"
-        contentClassName="min-h-[min(92svh,900px)] max-lg:justify-center pb-16 lg:justify-end lg:pb-24"
+        contentClassName="min-h-[min(92svh,900px)] justify-end pb-16 sm:pb-20 lg:pb-28"
       >
         <div className="max-w-4xl animate-fade-up">
           <p className="text-xs uppercase tracking-display text-cream/75">Avdou · Crete</p>
