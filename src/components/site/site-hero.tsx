@@ -19,6 +19,8 @@ interface SitePhotoHeroProps {
   readonly kenBurns?: boolean;
   readonly priority?: boolean;
   readonly padHeader?: boolean;
+  /** Push children to the bottom when there is spare height (safe — uses mt-auto). */
+  readonly alignEnd?: boolean;
 }
 
 export function SitePhotoHero({
@@ -33,6 +35,7 @@ export function SitePhotoHero({
   kenBurns = false,
   priority = true,
   padHeader = true,
+  alignEnd = true,
 }: SitePhotoHeroProps) {
   return (
     <section
@@ -57,12 +60,21 @@ export function SitePhotoHero({
       <div className={overlayClassName} aria-hidden />
       <div
         className={cn(
-          "relative z-10 mx-auto flex w-full max-w-7xl flex-col px-6 sm:px-8 lg:px-10",
+          // Literal pad utilities kept here so Tailwind always emits them even if
+          // layout-constants scanning fails.
+          "relative z-10 mx-auto flex w-full max-w-7xl flex-col px-7 sm:px-8 lg:px-10",
           padHeader && SITE_HERO_HEADER_PAD_CLASS,
+          padHeader &&
+            "pt-[calc(7.5rem+env(safe-area-inset-top,0px))] lg:pt-[calc(8.5rem+env(safe-area-inset-top,0px))]",
           contentClassName,
         )}
       >
-        {children}
+        {/*
+          mt-auto (not justify-end): when hero copy is taller than the viewport,
+          auto margin collapses to 0 so content stays below the header pad instead
+          of overflowing upward under the fixed nav.
+        */}
+        <div className={cn(alignEnd && "mt-auto", "w-full")}>{children}</div>
       </div>
     </section>
   );

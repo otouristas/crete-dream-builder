@@ -29,7 +29,7 @@ export function ReviewsLanding() {
         alt="Bedroom with mountain views at Kagiampakis Concept Residences"
         kenBurns
         className="min-h-[min(62svh,640px)] border-b border-cream/10 text-cream"
-        contentClassName="min-h-[min(62svh,640px)] max-w-6xl justify-end pb-14 sm:pb-16 lg:pb-20"
+        contentClassName="min-h-[min(62svh,640px)] max-w-6xl pb-14 sm:pb-16 lg:pb-20"
       >
         <p className="text-xs uppercase tracking-display text-primary">Guest voices</p>
         <h1 className="mt-4 max-w-3xl font-display text-4xl leading-[1.12] text-balance text-cream sm:text-5xl lg:text-6xl">
