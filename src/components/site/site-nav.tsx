@@ -27,7 +27,7 @@ export function SiteNav() {
             alt="Kagiampakis Concept Residences"
             width={160}
             height={160}
-            className="h-14 w-14 shrink-0 object-contain sm:h-16 sm:w-16"
+            className="h-16 w-16 shrink-0 object-contain"
             priority
           />
           <span className="font-display hidden min-w-0 truncate text-base tracking-wide text-stone-deep md:inline lg:text-lg">

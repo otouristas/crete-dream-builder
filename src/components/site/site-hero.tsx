@@ -57,7 +57,7 @@ export function SitePhotoHero({
       <div className={overlayClassName} aria-hidden />
       <div
         className={cn(
-          "relative z-10 mx-auto flex w-full max-w-7xl flex-col px-5 sm:px-6 lg:px-10",
+          "relative z-10 mx-auto flex w-full max-w-7xl flex-col px-6 sm:px-8 lg:px-10",
           padHeader && SITE_HERO_HEADER_PAD_CLASS,
           contentClassName,
         )}
