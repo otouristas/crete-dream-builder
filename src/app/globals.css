@@ -98,7 +98,9 @@
     /* Inter-only defaults. Do not inherit ss01/cv11 — Cormorant treats those as
        swashes/alternates and browsers may faux-bold missing weights, which
        reads as doubled letters in display headings. */
-    font-feature-settings: "liga" 1, "calt" 1;
+    font-feature-settings:
+      "liga" 1,
+      "calt" 1;
     font-synthesis: none;
     -webkit-font-smoothing: antialiased;
   }
@@ -111,7 +113,13 @@
     font-weight: 400;
     letter-spacing: -0.01em;
     font-synthesis: none;
-    font-feature-settings: "kern" 1, "liga" 1, "calt" 0, "swsh" 0, "ss01" 0, "cv11" 0;
+    font-feature-settings:
+      "kern" 1,
+      "liga" 1,
+      "calt" 0,
+      "swsh" 0,
+      "ss01" 0,
+      "cv11" 0;
   }
 }
 
@@ -119,7 +127,13 @@
   .font-display {
     font-family: var(--font-display);
     font-synthesis: none;
-    font-feature-settings: "kern" 1, "liga" 1, "calt" 0, "swsh" 0, "ss01" 0, "cv11" 0;
+    font-feature-settings:
+      "kern" 1,
+      "liga" 1,
+      "calt" 0,
+      "swsh" 0,
+      "ss01" 0,
+      "cv11" 0;
   }
   .text-balance {
     text-wrap: balance;
@@ -172,7 +186,7 @@
 
   /* Scroll offset for anchor targets behind fixed header */
   .scroll-mt-header {
-    scroll-margin-top: calc(5.5rem + env(safe-area-inset-top, 0px));
+    scroll-margin-top: calc(5.75rem + env(safe-area-inset-top, 0px));
   }
 
   /* Pulsing glow ring for WhatsApp FAB */

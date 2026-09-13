@@ -27,7 +27,7 @@ export function SiteNav() {
             alt="Kagiampakis Concept Residences"
             width={160}
             height={160}
-            className="h-11 w-11 shrink-0 object-contain sm:h-12 sm:w-12"
+            className="h-14 w-14 shrink-0 object-contain sm:h-16 sm:w-16"
             priority
           />
           <span className="font-display hidden min-w-0 truncate text-base tracking-wide text-stone-deep md:inline lg:text-lg">
@@ -89,18 +89,18 @@ export function SiteNav() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`WhatsApp ${PHONE_1_DISPLAY}`}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xs transition-all hover:bg-[#20bd5a] sm:h-auto sm:w-auto sm:gap-1.5 sm:px-3.5 sm:py-2 sm:text-xs sm:font-semibold"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xs transition-all hover:bg-[#20bd5a] sm:h-auto sm:w-auto sm:gap-1.5 sm:px-3.5 sm:py-2 sm:text-xs sm:font-semibold"
           >
-            <WhatsAppIcon className="h-4 w-4" />
+            <WhatsAppIcon className="h-5 w-5 shrink-0" />
             <span className="hidden sm:inline xl:hidden">WhatsApp</span>
             <span className="hidden xl:inline">{PHONE_1_DISPLAY}</span>
           </a>
           <a
             href={VIBER_1_URL}
             aria-label={`Open Viber chat at ${PHONE_1_DISPLAY}`}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#7360F2] text-white shadow-xs transition-all hover:bg-[#6351e3]"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#7360F2] text-white shadow-xs transition-all hover:bg-[#6351e3]"
           >
-            <ViberIcon className="h-4 w-4" />
+            <ViberIcon className="h-5 w-5 shrink-0" />
           </a>
           <SiteMobileNav />
         </div>

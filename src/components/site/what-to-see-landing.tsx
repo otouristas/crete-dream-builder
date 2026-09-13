@@ -58,7 +58,7 @@ export function WhatToSeeLanding() {
         alt="Stone entrance and flowers in Avdou at dusk"
         kenBurns
         className="min-h-[min(72svh,720px)]"
-        contentClassName="min-h-[min(72svh,720px)] max-w-6xl max-lg:justify-center pb-14 lg:justify-end lg:pb-20"
+        contentClassName="min-h-[min(72svh,720px)] max-w-6xl justify-end pb-14 sm:pb-16 lg:pb-20"
       >
         <p className="text-xs uppercase tracking-display text-primary/95">Beyond the courtyard</p>
         <h1 className="mt-4 max-w-4xl font-display text-4xl leading-[1.12] text-balance text-cream sm:text-5xl lg:text-7xl">
