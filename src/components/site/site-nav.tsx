@@ -23,11 +23,11 @@ export function SiteNav() {
       >
         <Link href="/" className="flex min-w-0 shrink items-center gap-2 sm:gap-3">
           <Image
-            src="/logo-final.png"
+            src="/logo-header.png"
             alt="Kagiampakis Concept Residences"
             width={160}
             height={160}
-            className="h-[4.5rem] w-[4.5rem] shrink-0 object-contain"
+            className="h-[4.25rem] w-[4.25rem] shrink-0 object-contain sm:h-[4.5rem] sm:w-[4.5rem]"
             priority
           />
           <span className="font-display hidden min-w-0 truncate text-base tracking-wide text-stone-deep md:inline lg:text-lg">

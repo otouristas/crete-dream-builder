@@ -42,18 +42,18 @@ export function HomeHero() {
       alt="Stone courtyard at Kagiampakis Concept Residences in Avdou, Crete"
       kenBurns
       className="min-h-[100svh] lg:min-h-[min(100svh,900px)]"
-      contentClassName="min-h-[100svh] justify-end pb-16 sm:pb-20 lg:min-h-[min(100svh,900px)] lg:pb-28"
+      contentClassName="min-h-[100svh] pb-16 sm:pb-20 lg:min-h-[min(100svh,900px)] lg:pb-28"
     >
       <div className="animate-fade-up max-w-3xl">
         <p className="mb-3 text-xs font-semibold uppercase tracking-display text-cream/80">
           Avdou Village · Heraklion · Crete
         </p>
-        <h1 className="font-display text-4xl leading-[1.15] text-balance text-cream [text-shadow:0_2px_28px_rgba(0,0,0,0.45)] sm:text-6xl lg:text-8xl">
+        <h1 className="font-display text-4xl leading-[1.15] text-balance text-cream [text-shadow:0_2px_28px_rgba(0,0,0,0.45)] sm:text-5xl lg:text-7xl xl:text-8xl">
           Kagiampakis
           <br />
           <span className="font-light text-primary/95">Concept Residences I &amp; II</span>
         </h1>
-        <p className="mt-5 max-w-2xl text-pretty text-base text-cream [text-shadow:0_1px_16px_rgba(0,0,0,0.4)] sm:mt-6 sm:text-lg lg:text-xl">
+        <p className="mt-4 max-w-2xl text-pretty text-base text-cream [text-shadow:0_1px_16px_rgba(0,0,0,0.4)] sm:mt-5 sm:text-lg lg:text-xl">
           Two authentic stone houses in historic Avdou —{" "}
           <strong className="text-cream">Residence I for up to 6 guests</strong> (from €60/night)
           and <strong className="text-cream">Residence II for up to 7 guests</strong> (from
@@ -61,7 +61,7 @@ export function HomeHero() {
           Airport.
         </p>
 
-        <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:gap-4">
+        <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:gap-4">
           <a
             href="#calculator"
             className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-warm transition-all hover:bg-primary/90"
