@@ -19,6 +19,8 @@ interface SitePhotoHeroProps {
   readonly kenBurns?: boolean;
   readonly priority?: boolean;
   readonly padHeader?: boolean;
+  /** Push children to the bottom when there is spare height (safe — uses mt-auto). */
+  readonly alignEnd?: boolean;
 }
 
 export function SitePhotoHero({
@@ -33,6 +35,7 @@ export function SitePhotoHero({
   kenBurns = false,
   priority = true,
   padHeader = true,
+  alignEnd = true,
 }: SitePhotoHeroProps) {
   return (
     <section
@@ -57,12 +60,18 @@ export function SitePhotoHero({
       <div className={overlayClassName} aria-hidden />
       <div
         className={cn(
-          "relative z-10 mx-auto flex w-full max-w-7xl flex-col px-5 sm:px-6 lg:px-10",
+          // Literal pad utilities kept here so Tailwind always emits them even if
+          // layout-constants scanning fails. Never put justify-end on this flex
+          // row — oversized copy overflows upward under the fixed header after
+          // mobile chrome show/hide on scroll. mt-auto on the inner block is safe.
+          "relative z-10 mx-auto flex w-full max-w-7xl flex-col px-7 sm:px-8 lg:px-10",
           padHeader && SITE_HERO_HEADER_PAD_CLASS,
+          padHeader &&
+            "pt-[calc(7.5rem+env(safe-area-inset-top,0px))] lg:pt-[calc(8.5rem+env(safe-area-inset-top,0px))]",
           contentClassName,
         )}
       >
-        {children}
+        <div className={cn(alignEnd && "mt-auto", "w-full min-w-0")}>{children}</div>
       </div>
     </section>
   );

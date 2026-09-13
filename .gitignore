@@ -35,3 +35,8 @@ dist-ssr
 *.sln
 *.sw?
 tsconfig.tsbuildinfo
+
+.playwright-mcp/
+*.playwright.png
+homepage-*-hero.png
+homepage-*-fixed.png
