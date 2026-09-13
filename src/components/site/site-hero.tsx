@@ -61,7 +61,9 @@ export function SitePhotoHero({
       <div
         className={cn(
           // Literal pad utilities kept here so Tailwind always emits them even if
-          // layout-constants scanning fails.
+          // layout-constants scanning fails. Never put justify-end on this flex
+          // row — oversized copy overflows upward under the fixed header after
+          // mobile chrome show/hide on scroll. mt-auto on the inner block is safe.
           "relative z-10 mx-auto flex w-full max-w-7xl flex-col px-7 sm:px-8 lg:px-10",
           padHeader && SITE_HERO_HEADER_PAD_CLASS,
           padHeader &&
@@ -69,12 +71,7 @@ export function SitePhotoHero({
           contentClassName,
         )}
       >
-        {/*
-          mt-auto (not justify-end): when hero copy is taller than the viewport,
-          auto margin collapses to 0 so content stays below the header pad instead
-          of overflowing upward under the fixed nav.
-        */}
-        <div className={cn(alignEnd && "mt-auto", "w-full")}>{children}</div>
+        <div className={cn(alignEnd && "mt-auto", "w-full min-w-0")}>{children}</div>
       </div>
     </section>
   );
