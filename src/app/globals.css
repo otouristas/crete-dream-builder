@@ -1,6 +1,7 @@
 @import "tailwindcss" source(none);
 @source "./**/*.{ts,tsx}";
 @source "../components/**/*.{ts,tsx}";
+@source "../lib/**/*.{ts,tsx}";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
@@ -186,7 +187,7 @@
 
   /* Scroll offset for anchor targets behind fixed header */
   .scroll-mt-header {
-    scroll-margin-top: calc(5.75rem + env(safe-area-inset-top, 0px));
+    scroll-margin-top: calc(6.25rem + env(safe-area-inset-top, 0px));
   }
 
   /* Pulsing glow ring for WhatsApp FAB */
