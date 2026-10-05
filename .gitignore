@@ -40,3 +40,9 @@ tsconfig.tsbuildinfo
 *.playwright.png
 homepage-*-hero.png
 homepage-*-fixed.png
+.vinext/
+
+node_modules/
+.wrangler/
+.dev.vars*
+.env*.local
