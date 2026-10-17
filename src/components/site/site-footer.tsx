@@ -23,6 +23,7 @@ import {
   WHATSAPP_2_URL,
 } from "@/lib/site-constants";
 import { SITE_HOME_ANCHORS, SITE_LEGAL_PAGES, SITE_MAIN_PAGES } from "@/lib/nav-config";
+import { CreditsBar } from "./CreditsBar";
 import { SITE_CONTAINER_CLASS } from "@/lib/layout-constants";
 
 export function SiteFooter() {
@@ -250,6 +251,11 @@ export function SiteFooter() {
               © {new Date().getFullYear()} {SITE_DOMAIN}. All rights reserved.
             </p>
           </div>
+          <CreditsBar
+            partner="crete"
+            source="kagiampakisconceptresidences.com"
+            className="sm:justify-center"
+          />
         </div>
       </div>
     </footer>
