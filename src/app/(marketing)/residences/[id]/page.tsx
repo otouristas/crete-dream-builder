@@ -9,7 +9,7 @@ import { ResidenceSpecs } from "@/components/site/residence-specs";
 import { SitePhotoHero } from "@/components/site/site-hero";
 import { buildPageMetadata } from "@/lib/build-page-metadata";
 import { SITE_CONTAINER_CLASS, SITE_FAB_CLEAR_CLASS } from "@/lib/layout-constants";
-import { getAllResidences, getResidenceById } from "@/lib/residences-data";
+import { getAllResidences, getResidenceById, type ResidenceDetails } from "@/lib/residences-data";
 import {
   EMAIL,
   MAILTO,
@@ -29,6 +29,26 @@ export function generateStaticParams() {
   return getAllResidences().map((residence) => ({ id: residence.id }));
 }
 
+function residenceDocumentTitle(id: ResidenceDetails["id"]): string {
+  switch (id) {
+    case "concept-1":
+      return "Residence I – 3-level stone house for 6 in Avdou, Crete";
+    case "concept-2":
+      return "Residence II – 3-bedroom stone house for 7 in Avdou, Crete";
+    default: {
+      const exhaustive: never = id;
+      return exhaustive;
+    }
+  }
+}
+
+function residenceHeroAlt(residence: ResidenceDetails): string {
+  const match = getAllResidences()
+    .flatMap((item) => item.photos)
+    .find((photo) => photo.src === residence.heroImage);
+  return match?.alt ?? residence.subtitle;
+}
+
 export async function generateMetadata({ params }: ResidencePageProps) {
   const { id } = await params;
   const residence = getResidenceById(id);
@@ -40,15 +60,16 @@ export async function generateMetadata({ params }: ResidencePageProps) {
     });
   }
 
+  const heroAlt = residenceHeroAlt(residence);
   return buildPageMetadata({
-    title: `${residence.title} in Avdou`,
+    title: residenceDocumentTitle(residence.id),
     description: `${residence.subtitle}. Up to ${residence.maxGuests} guests, ${residence.bedrooms} ${residence.bedrooms === 1 ? "bedroom" : "bedrooms"}, ${residence.bathrooms} ${residence.bathrooms === 1 ? "bathroom" : "bathrooms"}. From €${residence.startingPriceSunThu}/night. Book direct with host Xrisa.`,
     path: `/residences/${id}`,
     ogImage: {
       url: residence.heroImage,
       width: 1200,
       height: 800,
-      alt: residence.title,
+      alt: heroAlt,
     },
   });
 }
@@ -76,7 +97,7 @@ export default async function ResidenceDetailPage({ params }: ResidencePageProps
 
       <SitePhotoHero
         src={residence.heroImage}
-        alt={residence.title}
+        alt={residenceHeroAlt(residence)}
         className="min-h-[min(70vh,720px)]"
         contentClassName="min-h-[min(70vh,720px)] pb-10 sm:pb-12 lg:pb-14"
       >
@@ -115,6 +136,42 @@ export default async function ResidenceDetailPage({ params }: ResidencePageProps
                   {residence.description.map((paragraph) => (
                     <p key={paragraph}>{paragraph}</p>
                   ))}
+                  <p>
+                    <Link
+                      href="/what-to-see"
+                      className="font-medium text-primary underline-offset-4 hover:underline"
+                    >
+                      Day trips from Avdou
+                    </Link>
+                    {" · "}
+                    <Link
+                      href="/avdou-village"
+                      className="font-medium text-primary underline-offset-4 hover:underline"
+                    >
+                      Avdou village
+                    </Link>
+                    {" · "}
+                    <Link
+                      href="/getting-here"
+                      className="font-medium text-primary underline-offset-4 hover:underline"
+                    >
+                      Getting here
+                    </Link>
+                    {" · "}
+                    <Link
+                      href="/faq"
+                      className="font-medium text-primary underline-offset-4 hover:underline"
+                    >
+                      Booking FAQ
+                    </Link>
+                    {" · "}
+                    <Link
+                      href="/contact"
+                      className="font-medium text-primary underline-offset-4 hover:underline"
+                    >
+                      Contact the host
+                    </Link>
+                  </p>
                 </div>
               </div>
 

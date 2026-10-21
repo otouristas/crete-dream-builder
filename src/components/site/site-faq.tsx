@@ -1,13 +1,31 @@
 "use client";
 
+import Link from "next/link";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { SITE_FAQ } from "@/lib/faq-data";
+import { type FaqAnswerPart, SITE_FAQ } from "@/lib/faq-data";
 import { cn } from "@/lib/utils";
+
+function FaqAnswer({ answer }: { readonly answer: readonly FaqAnswerPart[] }) {
+  return answer.map((part, partIndex) => {
+    if (typeof part === "string") {
+      return <span key={partIndex}>{part}</span>;
+    }
+    return (
+      <Link
+        key={partIndex}
+        href={part.href}
+        className="font-medium text-primary underline-offset-4 hover:underline"
+      >
+        {part.label}
+      </Link>
+    );
+  });
+}
 
 export function SiteFaq({ className }: { readonly className?: string }) {
   return (
@@ -18,7 +36,7 @@ export function SiteFaq({ className }: { readonly className?: string }) {
             {item.question}
           </AccordionTrigger>
           <AccordionContent className="pb-5 text-base leading-relaxed text-foreground/80">
-            {item.answer}
+            <FaqAnswer answer={item.answer} />
           </AccordionContent>
         </AccordionItem>
       ))}

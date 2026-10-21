@@ -31,6 +31,15 @@ export const SITE_RESIDENCES_LINKS: readonly SiteNavItem[] = [
   },
 ] as const;
 
+/** English guides. Linked from the footer and mobile menu, not the desktop bar. */
+export const SITE_GUIDE_PAGES: readonly SiteNavItem[] = [
+  { href: "/avdou-village", label: "Avdou village" },
+  { href: "/lasithi-plateau", label: "Lasithi Plateau" },
+  { href: "/day-trips", label: "Day trips" },
+  { href: "/getting-here", label: "Getting here" },
+  { href: "/groups", label: "Groups & families" },
+] as const;
+
 /** Top-level nav items (no dropdown) */
 export const SITE_TOP_LEVEL_PAGES: readonly SiteNavItem[] = [
   { href: "/reviews", label: "Reviews" },

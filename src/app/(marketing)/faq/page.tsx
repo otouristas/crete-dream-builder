@@ -54,6 +54,20 @@ export default function FaqPage() {
             WhatsApp {PHONE_1_DISPLAY}
           </a>{" "}
           or email {EMAIL}. See also{" "}
+          <Link
+            href="/residences/concept-1"
+            className="text-primary underline-offset-4 hover:underline"
+          >
+            Residence I
+          </Link>
+          ,{" "}
+          <Link
+            href="/residences/concept-2"
+            className="text-primary underline-offset-4 hover:underline"
+          >
+            Residence II
+          </Link>
+          ,{" "}
           <Link href="/contact" className="text-primary underline-offset-4 hover:underline">
             Contact
           </Link>{" "}

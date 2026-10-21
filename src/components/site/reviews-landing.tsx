@@ -33,11 +33,24 @@ export function ReviewsLanding() {
       >
         <p className="text-xs uppercase tracking-display text-primary">Guest voices</p>
         <h1 className="mt-4 max-w-3xl font-display text-4xl leading-[1.12] text-balance text-cream sm:text-5xl lg:text-6xl">
-          What people remember <span className="text-primary">after they leave.</span>
+          Guest reviews of the <span className="text-primary">Avdou stone houses.</span>
         </h1>
         <p className="mt-6 max-w-xl text-lg leading-relaxed text-cream/80">
-          Every note below is from a real stay — same house, same family welcome. Prefer your own
-          thread? Message us on WhatsApp.
+          Every note below is from a real stay in{" "}
+          <Link
+            href="/residences/concept-1"
+            className="font-medium text-primary underline-offset-4 hover:underline"
+          >
+            Residence I
+          </Link>{" "}
+          or{" "}
+          <Link
+            href="/residences/concept-2"
+            className="font-medium text-primary underline-offset-4 hover:underline"
+          >
+            Residence II
+          </Link>
+          — same family welcome. Prefer your own thread? Message us on WhatsApp.
         </p>
         <div className="mt-10 flex flex-wrap items-end gap-8 border-t border-cream/15 pt-10">
           <div>

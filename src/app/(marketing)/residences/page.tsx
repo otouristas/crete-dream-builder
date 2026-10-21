@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { AvailabilityCalculator } from "@/components/site/availability-calculator";
 import { JsonLd } from "@/components/site/json-ld";
 import { ResidenceCard } from "@/components/site/residence-card";
@@ -40,6 +41,35 @@ export default function ResidencesPage() {
           <p className="mt-4 text-lg text-foreground/80">
             Two restored stone houses in Avdou village. Choose the house that fits your party, or
             reserve both for a family gathering of up to 13 guests.
+          </p>
+          <p className="mt-3 text-sm text-muted-foreground">
+            <Link
+              href="/groups"
+              className="font-medium text-primary underline-offset-4 hover:underline"
+            >
+              Groups of 13
+            </Link>
+            {" · "}
+            <Link
+              href="/what-to-see"
+              className="font-medium text-primary underline-offset-4 hover:underline"
+            >
+              What to see near Avdou
+            </Link>
+            {" · "}
+            <Link
+              href="/faq"
+              className="font-medium text-primary underline-offset-4 hover:underline"
+            >
+              Booking FAQ
+            </Link>
+            {" · "}
+            <Link
+              href="/contact"
+              className="font-medium text-primary underline-offset-4 hover:underline"
+            >
+              Contact
+            </Link>
           </p>
         </div>
 

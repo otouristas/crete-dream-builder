@@ -3,8 +3,6 @@ export const SITE_URL = `https://${SITE_DOMAIN}`;
 
 /** Hosts that may serve this app. Sitemap `<loc>` values must match the requested host. */
 export const PRODUCTION_HOSTS = [
-  "www.kagiampakisconceptresidences.com",
-  "kagiampakisconceptresidences.com",
   "www.kagiampakisresidences.com",
   "kagiampakisresidences.com",
 ] as const;

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/site/json-ld";
 import { ReviewsLanding } from "@/components/site/reviews-landing";
 import { buildPageMetadata } from "@/lib/build-page-metadata";
-import { buildBreadcrumbJsonLd, buildReviewsJsonLd } from "@/lib/structured-data";
+import { buildBreadcrumbJsonLd } from "@/lib/structured-data";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Guest reviews",
@@ -20,7 +20,6 @@ export default function ReviewsPage() {
           { name: "Reviews", path: "/reviews" },
         ])}
       />
-      <JsonLd data={buildReviewsJsonLd()} />
       <ReviewsLanding />
     </>
   );
