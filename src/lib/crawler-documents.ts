@@ -3,7 +3,6 @@ import { getAllResidences } from "@/lib/residences-data";
 import { originFromHostHeader } from "@/lib/site-url";
 import { buildRobotsTxt as buildParityRobotsTxt } from "@/lib/seo-parity/robots-parity";
 
-
 const STATIC_PATHS: readonly {
   path: string;
   priority: string;

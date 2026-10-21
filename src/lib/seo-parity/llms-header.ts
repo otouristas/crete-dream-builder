@@ -25,7 +25,9 @@ export type LlmsHeaderOptions = {
 export function withLlmsHeader(body: string, o: LlmsHeaderOptions): string {
   const origin = o.origin.replace(/\/$/, "");
   // Prefer a review date the body already states; otherwise the build date.
-  const stated = body.match(/^(?:Last-Updated|Last Updated|Last updated|Last revised|Updated|Last reviewed):\s*(\d{4}-\d{2}-\d{2})/im);
+  const stated = body.match(
+    /^(?:Last-Updated|Last Updated|Last updated|Last revised|Updated|Last reviewed):\s*(\d{4}-\d{2}-\d{2})/im,
+  );
   const date = o.lastUpdated ?? stated?.[1] ?? new Date().toISOString().slice(0, 10);
   const lines = body
     .replace(/^\uFEFF/, "")

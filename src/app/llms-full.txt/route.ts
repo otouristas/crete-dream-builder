@@ -54,7 +54,10 @@ function body(): string {
   const faq = SITE_FAQ.map((f) => `- Q: ${f.question}\n  A: ${f.answer}`).join("\n");
 
   const reviews = getPropertyReviews()
-    .map((r) => `- ${r["Reviewer Name"]} (${r["Reviewer Details"]}), ${r.Rating}/5: ${r["Review Text"].replace(/\s+/g, " ").trim()}`)
+    .map(
+      (r) =>
+        `- ${r["Reviewer Name"]} (${r["Reviewer Details"]}), ${r.Rating}/5: ${r["Review Text"].replace(/\s+/g, " ").trim()}`,
+    )
     .join("\n");
 
   return `# Kagiampakis Concept Residences — Complete Knowledge Base
