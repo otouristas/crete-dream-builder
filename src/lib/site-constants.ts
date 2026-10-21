@@ -1,4 +1,4 @@
-export const SITE_DOMAIN = "www.kagiampakisconceptresidences.com";
+export const SITE_DOMAIN = "kagiampakisresidences.com";
 export const SITE_URL = `https://${SITE_DOMAIN}`;
 
 /** Hosts that may serve this app. Sitemap `<loc>` values must match the requested host. */
