@@ -1,4 +1,10 @@
+Last-Updated: 2026-10-21
+Canonical: https://kagiampakisresidences.com/llms.txt
+Long-form: https://kagiampakisresidences.com/llms-full.txt
+Sitemap: https://kagiampakisresidences.com/sitemap.xml
+
 # Kagiampakis Concept Residences
+Source: https://kagiampakisresidences.com
 
 > Two family-hosted restored stone residences in Avdou village, Heraklion region, Crete, Greece. Book direct with host Xrisa via WhatsApp, Viber, or email.
 
@@ -15,13 +21,13 @@
 - Distance to Heraklion Airport: 34.3 km / about 31 minutes
 - Distance to Heraklion port: 37.5 km / about 41 minutes
 - Distance to Heraklion city: about 35 km
-- Website: https://www.kagiampakisconceptresidences.com
+- Website: https://kagiampakisresidences.com
 
 ## Residences
 
 ### Residence I (Kagiampakis Concept Residence I)
 
-- URL: https://www.kagiampakisconceptresidences.com/residences/concept-1
+- URL: https://kagiampakisresidences.com/residences/concept-1
 - Capacity: up to 6 guests
 - Bedrooms: 2 · Bathrooms: 1
 - Layout: three-level traditional stone house
@@ -34,7 +40,7 @@
 
 ### Residence II (Kagiampakis Concept Residence II)
 
-- URL: https://www.kagiampakisconceptresidences.com/residences/concept-2
+- URL: https://kagiampakisresidences.com/residences/concept-2
 - Capacity: up to 7 guests
 - Bedrooms: 3 · Bathrooms: 2
 - Highlights: dedicated workspace, in-unit washer, air conditioning in all rooms, kitchen, free parking
@@ -53,13 +59,13 @@ Prefer WhatsApp or Viber for the fastest reply (Greek and English, usually withi
 - WhatsApp / Viber / phone primary: +30 694 968 7227 — https://wa.me/306949687227
 - WhatsApp / Viber / phone secondary: +30 698 221 0506 — https://wa.me/306982210506
 - Email: Xrisa.xk@hotmail.gr
-- Contact page: https://www.kagiampakisconceptresidences.com/contact
-- Instant rate calculator: https://www.kagiampakisconceptresidences.com/#calculator
+- Contact page: https://kagiampakisresidences.com/contact
+- Instant rate calculator: https://kagiampakisresidences.com/#calculator
 
 ## Guest proof
 
 - Rating: 5.0 / 5 from 22 published guest reviews on this site
-- Reviews page: https://www.kagiampakisconceptresidences.com/reviews
+- Reviews page: https://kagiampakisresidences.com/reviews
 - Google Business: https://share.google/bdtGTRlP6tdMvQN93
 - Tripadvisor: https://www.tripadvisor.com.gr/HotelHighlight-g1568645-d27929486-Reviews-Kagiampakis_Concept_Residences-Avdou_Crete.html
 - Instagram: https://www.instagram.com/kagiampakis_residences
@@ -73,7 +79,7 @@ Prefer WhatsApp or Viber for the fastest reply (Greek and English, usually withi
 - Lasithi Plateau: 14 km
 - Heraklion city, Archaeological Museum, Knossos: 35 km
 
-Guide: https://www.kagiampakisconceptresidences.com/what-to-see
+Guide: https://kagiampakisresidences.com/what-to-see
 
 ## Answers for common questions
 
@@ -84,11 +90,11 @@ Guide: https://www.kagiampakisconceptresidences.com/what-to-see
 - Parking / Wi-Fi / kitchen? Yes on both houses.
 - Official licenses? 00000846700 (Residence I) and 00001845501 (Residence II).
 
-FAQ: https://www.kagiampakisconceptresidences.com/faq
-Privacy: https://www.kagiampakisconceptresidences.com/privacy
+FAQ: https://kagiampakisresidences.com/faq
+Privacy: https://kagiampakisresidences.com/privacy
 
 ## Machine-readable
 
-- Sitemap: https://www.kagiampakisconceptresidences.com/sitemap.xml
-- Robots: https://www.kagiampakisconceptresidences.com/robots.txt
+- Sitemap: https://kagiampakisresidences.com/sitemap.xml
+- Robots: https://kagiampakisresidences.com/robots.txt
 - JSON-LD: LodgingBusiness, VacationRental, FAQPage, BreadcrumbList on relevant pages

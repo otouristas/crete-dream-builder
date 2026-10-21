@@ -1,17 +1,8 @@
 import { headers } from "next/headers";
 import { getAllResidences } from "@/lib/residences-data";
 import { originFromHostHeader } from "@/lib/site-url";
+import { buildRobotsTxt as buildParityRobotsTxt } from "@/lib/seo-parity/robots-parity";
 
-const AI_CRAWLERS = [
-  "GPTBot",
-  "ChatGPT-User",
-  "Google-Extended",
-  "PerplexityBot",
-  "ClaudeBot",
-  "anthropic-ai",
-  "Applebot-Extended",
-  "CCBot",
-] as const;
 
 const STATIC_PATHS: readonly {
   path: string;
@@ -84,18 +75,13 @@ export function buildSitemapXml(origin: string, now = new Date()): string {
 
 export function buildRobotsTxt(origin: string): string {
   const base = origin.replace(/\/+$/, "");
-  const host = new URL(base).host;
-  const lines = [
-    "User-agent: *",
-    "Allow: /",
-    "Disallow: /api/",
-    "",
-    ...AI_CRAWLERS.flatMap((userAgent) => [`User-agent: ${userAgent}`, "Allow: /", ""]),
-    `Sitemap: ${base}/sitemap.xml`,
-    `Host: ${host}`,
-    "",
-  ];
-  return lines.join("\n");
+  // Same group structure as discovercyclades.gr/robots.txt (see robots-parity.ts).
+  return buildParityRobotsTxt({
+    name: "Kagiampakis Residences",
+    origin: base,
+    disallow: ["/api/"],
+    sitemaps: [`${base}/sitemap.xml`],
+  });
 }
 
 export async function getCrawlerOrigin(): Promise<string> {
