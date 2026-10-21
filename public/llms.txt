@@ -13,7 +13,7 @@ Source: https://kagiampakisresidences.com
 - Official name: Kagiampakis Concept Residences
 - Host: Xrisa (Kagiampakis family)
 - Type: Licensed short-term vacation rentals (two separate houses)
-- Village: Avdou, Crete, Greece
+- Village: Avdou (Αβδού), Crete, Greece
 - Postal code: 70005
 - Street / alley: Sokaki Kagiampidon
 - Coordinates: 35.230902, 25.430079
@@ -43,7 +43,7 @@ Source: https://kagiampakisresidences.com
 - URL: https://kagiampakisresidences.com/residences/concept-2
 - Capacity: up to 7 guests
 - Bedrooms: 3 · Bathrooms: 2
-- Highlights: dedicated workspace, in-unit washer, air conditioning in all rooms, kitchen, free parking
+- Highlights: dedicated workspace, in-unit washer, air conditioning in all rooms, kitchen
 - Minimum stay: 3 nights
 - Sunday–Thursday: €170 per night (flat, 1–7 guests)
 - Friday–Saturday: €180 per night (flat)
@@ -86,12 +86,31 @@ Guide: https://kagiampakisresidences.com/what-to-see
 - What is it? Two restored stone houses in Avdou, Crete, hosted by the Kagiampakis family.
 - How much? Residence I from €60/night; Residence II from €170/night. See the rate calculator.
 - How far from the airport? About 31 minutes / 34.3 km.
-- Can we book both? Yes, for up to 13 guests.
-- Parking / Wi-Fi / kitchen? Yes on both houses.
+- Can a group use both? The two residences in Avdou sleep up to 6 and up to 7, 13 guests when both are reserved. Each residence keeps its own rate and minimum stay.
+- Wi-Fi / kitchen? Yes on both houses. Residence I has a wood-burning stove for the winter months.
+- Check-in / checkout? After 15:00 / before 12:00. The host greets you.
+- Pets? Residence I: no pets, service animals only. Residence II: 1 pet.
+- Host languages? Greek and English.
 - Official licenses? 00000846700 (Residence I) and 00001845501 (Residence II).
+- Airbnb rating? Residence I is 5.0 from 26 reviews on Airbnb. Residence II has no Airbnb reviews yet.
 
 FAQ: https://kagiampakisresidences.com/faq
+Greek FAQ: https://kagiampakisresidences.com/el/faq
 Privacy: https://kagiampakisresidences.com/privacy
+
+## Guides
+
+- Avdou village (EN): https://kagiampakisresidences.com/avdou-village
+- Avdou village (EL): https://kagiampakisresidences.com/el/avdou
+- Lasithi Plateau (EN): https://kagiampakisresidences.com/lasithi-plateau
+- Lasithi Plateau (EL): https://kagiampakisresidences.com/el/oropedio-lasithiou
+- Day trips (EN): https://kagiampakisresidences.com/day-trips
+- Day trips (EL): https://kagiampakisresidences.com/el/ekdromes
+- Getting here (EN): https://kagiampakisresidences.com/getting-here
+- Getting here (EL): https://kagiampakisresidences.com/el/getting-here
+- Groups (EN): https://kagiampakisresidences.com/groups
+- Groups (EL): https://kagiampakisresidences.com/el/omades
+- Greek home: https://kagiampakisresidences.com/el
 
 ## Machine-readable
 

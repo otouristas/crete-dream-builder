@@ -10,16 +10,19 @@ import {
   PHONE_2_RAW,
   VIBER_1_URL,
 } from "@/lib/site-constants";
+import { pick, type Locale } from "@/lib/i18n/locale";
 import { calculateStayPrice, getResidenceSpecs } from "@/lib/price-calculator";
 
 interface AvailabilityCalculatorProps {
   readonly initialResidenceId?: "concept-1" | "concept-2";
   readonly className?: string;
+  readonly locale?: Locale;
 }
 
 export function AvailabilityCalculator({
   initialResidenceId = "concept-1",
   className = "",
+  locale = "en",
 }: AvailabilityCalculatorProps) {
   const idPrefix = useId();
   const [residenceId, setResidenceId] = useState<"concept-1" | "concept-2">(initialResidenceId);
@@ -68,16 +71,28 @@ export function AvailabilityCalculator({
   const residenceName = specs.name;
   const formatDateDisplay = (date: Date | null) =>
     date
-      ? date.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })
+      ? date.toLocaleDateString(locale === "el" ? "el-GR" : "en-GB", {
+          day: "numeric",
+          month: "short",
+          year: "numeric",
+        })
       : "";
 
   const bookingSummaryText = result
-    ? `Booking Enquiry for ${residenceName}\n` +
-      `Check-in: ${formatDateDisplay(result.checkIn)}\n` +
-      `Check-out: ${formatDateDisplay(result.checkOut)} (${result.nightsCount} nights)\n` +
-      `Guests: ${result.guestCount}\n` +
-      `Estimated Total: €${result.totalPrice}`
-    : `Enquiry for ${residenceName}`;
+    ? pick(
+        locale,
+        `Booking Enquiry for ${residenceName}\n` +
+          `Check-in: ${formatDateDisplay(result.checkIn)}\n` +
+          `Check-out: ${formatDateDisplay(result.checkOut)} (${result.nightsCount} nights)\n` +
+          `Guests: ${result.guestCount}\n` +
+          `Estimated Total: €${result.totalPrice}`,
+        `Αίτημα κράτησης για ${residenceName}\n` +
+          `Άφιξη: ${formatDateDisplay(result.checkIn)}\n` +
+          `Αναχώρηση: ${formatDateDisplay(result.checkOut)} (${result.nightsCount} διανυκτερεύσεις)\n` +
+          `Άτομα: ${result.guestCount}\n` +
+          `Εκτιμώμενο σύνολο: €${result.totalPrice}`,
+      )
+    : pick(locale, `Enquiry for ${residenceName}`, `Αίτημα για ${residenceName}`);
 
   const whatsapp1Url = `https://wa.me/30${PHONE_1_RAW}?text=${encodeURIComponent(bookingSummaryText)}`;
   const whatsapp2Url = `https://wa.me/30${PHONE_2_RAW}?text=${encodeURIComponent(bookingSummaryText)}`;
@@ -93,10 +108,10 @@ export function AvailabilityCalculator({
       <div className="mb-6 flex flex-col justify-between gap-4 border-b border-border pb-6 sm:flex-row sm:items-center">
         <div>
           <span className="text-xs font-semibold uppercase tracking-display text-primary">
-            Instant Price &amp; Availability Quote
+            {pick(locale, "Instant Price & Availability Quote", "Άμεση τιμή και διαθεσιμότητα")}
           </span>
           <h3 className="font-display text-2xl text-stone-deep sm:text-3xl">
-            Select Your Stay Dates
+            {pick(locale, "Select Your Stay Dates", "Διαλέξτε ημερομηνίες")}
           </h3>
         </div>
 
@@ -111,7 +126,7 @@ export function AvailabilityCalculator({
                 : "text-muted-foreground hover:text-foreground"
             }`}
           >
-            Concept I (6 Guests)
+            {pick(locale, "Concept I (6 Guests)", "Κατοικία I (6 άτομα)")}
           </button>
           <button
             type="button"
@@ -122,7 +137,7 @@ export function AvailabilityCalculator({
                 : "text-muted-foreground hover:text-foreground"
             }`}
           >
-            Concept II (7 Guests)
+            {pick(locale, "Concept II (7 Guests)", "Κατοικία II (7 άτομα)")}
           </button>
         </div>
       </div>
@@ -134,7 +149,7 @@ export function AvailabilityCalculator({
             htmlFor={`${idPrefix}-checkin`}
             className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-muted-foreground"
           >
-            Check-In Date
+            {pick(locale, "Check-In Date", "Άφιξη")}
           </label>
           <input
             id={`${idPrefix}-checkin`}
@@ -151,7 +166,7 @@ export function AvailabilityCalculator({
             htmlFor={`${idPrefix}-checkout`}
             className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-muted-foreground"
           >
-            Check-Out Date
+            {pick(locale, "Check-Out Date", "Αναχώρηση")}
           </label>
           <input
             id={`${idPrefix}-checkout`}
@@ -168,7 +183,7 @@ export function AvailabilityCalculator({
             htmlFor={`${idPrefix}-guests`}
             className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-muted-foreground"
           >
-            Guests Count
+            {pick(locale, "Guests Count", "Άτομα")}
           </label>
           <select
             id={`${idPrefix}-guests`}
@@ -178,7 +193,7 @@ export function AvailabilityCalculator({
           >
             {Array.from({ length: specs.maxGuests }, (_, i) => i + 1).map((num) => (
               <option key={num} value={num}>
-                {num} {num === 1 ? "Guest" : "Guests"}
+                {num} {pick(locale, num === 1 ? "Guest" : "Guests", num === 1 ? "άτομο" : "άτομα")}
               </option>
             ))}
           </select>
@@ -188,9 +203,12 @@ export function AvailabilityCalculator({
       {/* Validation Warning */}
       {result && !result.isValidMinStay && (
         <div className="mt-6 rounded-sm border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-900">
-          <strong>Minimum stay:</strong> {specs.shortName} requires{" "}
-          <strong>{specs.minStayNights} nights</strong>. Please choose at least{" "}
-          {specs.minStayNights} nights to reserve.
+          <strong>{pick(locale, "Minimum stay:", "Ελάχιστη διαμονή:")}</strong>{" "}
+          {pick(
+            locale,
+            `${specs.shortName} requires ${specs.minStayNights} nights. Please choose at least ${specs.minStayNights} nights to reserve.`,
+            `Η ${specs.shortName} απαιτεί ${specs.minStayNights} διανυκτερεύσεις. Διαλέξτε τουλάχιστον ${specs.minStayNights} διανυκτερεύσεις.`,
+          )}
         </div>
       )}
 
@@ -200,24 +218,39 @@ export function AvailabilityCalculator({
           <div className="flex flex-wrap items-baseline justify-between gap-4 border-b border-border/80 pb-4">
             <div>
               <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                Total for {result.nightsCount} {result.nightsCount === 1 ? "night" : "nights"} (
-                {result.guestCount} {result.guestCount === 1 ? "guest" : "guests"})
+                {pick(
+                  locale,
+                  `Total for ${result.nightsCount} ${result.nightsCount === 1 ? "night" : "nights"} (${result.guestCount} ${result.guestCount === 1 ? "guest" : "guests"})`,
+                  `Σύνολο για ${result.nightsCount} ${result.nightsCount === 1 ? "διανυκτέρευση" : "διανυκτερεύσεις"} (${result.guestCount} ${result.guestCount === 1 ? "άτομο" : "άτομα"})`,
+                )}
               </span>
               <div className="mt-1 font-display text-3xl text-stone-deep sm:text-4xl">
                 €{result.totalPrice}{" "}
                 <span className="text-sm font-normal text-muted-foreground">
-                  (avg €{result.averagePricePerNight}/night)
+                  {pick(
+                    locale,
+                    `(avg €${result.averagePricePerNight}/night)`,
+                    `(μέσος όρος ${result.averagePricePerNight}€/διανυκτέρευση)`,
+                  )}
                 </span>
               </div>
             </div>
             <div className="text-xs text-muted-foreground">
               {residenceId === "concept-1" ? (
                 <span className="inline-block rounded-xs bg-cream px-3 py-1 font-medium text-stone-deep border border-border">
-                  Tiered Rates · Min 2 Nights
+                  {pick(
+                    locale,
+                    "Tiered Rates · Min 2 Nights",
+                    "Κλιμακωτή τιμή · Ελάχιστο 2 διανυκτερεύσεις",
+                  )}
                 </span>
               ) : (
                 <span className="inline-block rounded-xs bg-cream px-3 py-1 font-medium text-stone-deep border border-border">
-                  Flat Rate €170 (Sun–Thu) / €180 (Fri–Sat) · Min 3 Nights
+                  {pick(
+                    locale,
+                    "Flat Rate €170 (Sun–Thu) / €180 (Fri–Sat) · Min 3 Nights",
+                    "Ενιαία τιμή 170€ (Κυρ–Πέμ) / 180€ (Παρ–Σάβ) · Ελάχιστο 3 διανυκτερεύσεις",
+                  )}
                 </span>
               )}
             </div>
@@ -226,19 +259,25 @@ export function AvailabilityCalculator({
           {/* Breakdown List */}
           <div className="mt-4 grid grid-cols-2 gap-3 text-xs text-foreground/80 sm:grid-cols-4">
             <div>
-              <span className="text-muted-foreground">Sun–Thu Nights:</span>{" "}
+              <span className="text-muted-foreground">
+                {pick(locale, "Sun–Thu Nights:", "Διανυκτερεύσεις Κυρ–Πέμ:")}
+              </span>{" "}
               <strong>{result.weekdayNights}</strong>
             </div>
             <div>
-              <span className="text-muted-foreground">Fri–Sat Nights:</span>{" "}
+              <span className="text-muted-foreground">
+                {pick(locale, "Fri–Sat Nights:", "Διανυκτερεύσεις Παρ–Σάβ:")}
+              </span>{" "}
               <strong>{result.weekendNights}</strong>
             </div>
             <div>
-              <span className="text-muted-foreground">Check-in:</span>{" "}
+              <span className="text-muted-foreground">{pick(locale, "Check-in:", "Άφιξη:")}</span>{" "}
               <strong>{formatDateDisplay(result.checkIn)}</strong>
             </div>
             <div>
-              <span className="text-muted-foreground">Check-out:</span>{" "}
+              <span className="text-muted-foreground">
+                {pick(locale, "Check-out:", "Αναχώρηση:")}
+              </span>{" "}
               <strong>{formatDateDisplay(result.checkOut)}</strong>
             </div>
           </div>
@@ -248,25 +287,25 @@ export function AvailabilityCalculator({
       {/* Booking Actions */}
       <div className="mt-8 border-t border-border pt-6">
         <p className="mb-4 text-xs font-semibold uppercase tracking-display text-primary">
-          Send Direct Reservation Request
+          {pick(locale, "Send Direct Reservation Request", "Στείλτε αίτημα κράτησης")}
         </p>
         <div className="flex flex-col gap-2.5">
           <ContactChannelRow
             href={whatsapp1Url}
             variant="whatsapp"
-            label="WhatsApp primary"
+            label={pick(locale, "WhatsApp primary", "WhatsApp (κύριο)")}
             detail={PHONE_1_DISPLAY}
           />
           <ContactChannelRow
             href={whatsapp2Url}
             variant="whatsapp-alt"
-            label="WhatsApp secondary"
+            label={pick(locale, "WhatsApp secondary", "WhatsApp (δεύτερο)")}
             detail={PHONE_2_DISPLAY}
           />
           <ContactChannelRow
             href={VIBER_1_URL}
             variant="viber"
-            label="Viber message"
+            label={pick(locale, "Viber message", "Μήνυμα στο Viber")}
             detail={PHONE_1_DISPLAY}
             external={false}
           />
@@ -274,8 +313,10 @@ export function AvailabilityCalculator({
             href={mailtoUrl}
             className="flex h-12 w-full items-center justify-between rounded-lg border border-primary/30 bg-primary/10 px-4 text-xs font-semibold text-primary transition-all hover:bg-primary hover:text-primary-foreground"
           >
-            <span>Email enquiry</span>
-            <span className="text-[11px] font-medium opacity-80">Send</span>
+            <span>{pick(locale, "Email enquiry", "Αίτημα με email")}</span>
+            <span className="text-[11px] font-medium opacity-80">
+              {pick(locale, "Send", "Αποστολή")}
+            </span>
           </a>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { SITE_FAQ } from "@/lib/faq-data";
+import { faqText, SITE_FAQ } from "@/lib/faq-data";
 import { getPropertyReviews } from "@/lib/property-data";
 import { getAllResidences } from "@/lib/residences-data";
 import { getReviewStats } from "@/lib/review-stats";
@@ -51,7 +51,10 @@ function body(): string {
     )
     .join("\n\n");
 
-  const faq = SITE_FAQ.map((f) => `- Q: ${f.question}\n  A: ${f.answer}`).join("\n");
+  const faq = SITE_FAQ.map((item) => {
+    const text = faqText(item, "en");
+    return `- Q: ${text.question}\n  A: ${text.answer}`;
+  }).join("\n");
 
   const reviews = getPropertyReviews()
     .map(
@@ -71,6 +74,10 @@ function body(): string {
 - Instagram: ${INSTAGRAM_URL}
 - Registration: ${REGISTRATION}
 - Contact page: ${ORIGIN}/contact
+- Check-in after 15:00, checkout before 12:00 (both residences). The host greets you.
+- Languages: Greek and English
+- Pets: Residence I does not accept pets (service animals only). Residence II allows 1 pet.
+- Groups: two residences in Avdou, up to 6 and up to 7 guests, 13 in total when both are reserved. Each residence keeps its own rate and minimum stay.
 
 ## Residences
 ${residences}
@@ -88,6 +95,18 @@ ${reviews}
 - Reviews: ${ORIGIN}/reviews
 - FAQ: ${ORIGIN}/faq
 - Contact: ${ORIGIN}/contact
+- Avdou village: ${ORIGIN}/avdou-village
+- Lasithi Plateau: ${ORIGIN}/lasithi-plateau
+- Day trips: ${ORIGIN}/day-trips
+- Getting here: ${ORIGIN}/getting-here
+- Groups: ${ORIGIN}/groups
+- Greek home: ${ORIGIN}/el
+- Greek Avdou guide: ${ORIGIN}/el/avdou
+- Greek Lasithi guide: ${ORIGIN}/el/oropedio-lasithiou
+- Greek day trips: ${ORIGIN}/el/ekdromes
+- Greek getting here: ${ORIGIN}/el/getting-here
+- Greek groups: ${ORIGIN}/el/omades
+- Greek FAQ: ${ORIGIN}/el/faq
 `;
 }
 

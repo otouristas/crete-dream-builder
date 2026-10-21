@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { hreflangPaths, type Locale } from "@/lib/i18n/locale";
 import { getAbsoluteUrl } from "@/lib/site-url";
 import {
   DEFAULT_KEYWORDS,
@@ -20,8 +21,21 @@ interface BuildPageMetadataInput {
   readonly title: string;
   readonly description: string;
   readonly path: string;
+  readonly locale?: Locale;
   readonly keywords?: readonly string[];
   readonly ogImage?: OgImageInput;
+}
+
+function languageAlternates(path: string): Metadata["alternates"] {
+  const paths = hreflangPaths(path);
+  return {
+    canonical: getAbsoluteUrl(path),
+    languages: {
+      en: getAbsoluteUrl(paths.en),
+      el: getAbsoluteUrl(paths.el),
+      "x-default": getAbsoluteUrl(paths.xDefault),
+    },
+  };
 }
 
 /**
@@ -32,11 +46,13 @@ export function buildPageMetadata({
   title,
   description,
   path,
+  locale = "en",
   keywords,
   ogImage,
 }: BuildPageMetadataInput): Metadata {
   const canonical = getAbsoluteUrl(path);
   const pageTitle = `${title} | ${SITE_NAME}`;
+  const ogLocale = locale === "el" ? "el_GR" : "en_GB";
   const image = ogImage
     ? {
         url: ogImage.url,
@@ -51,10 +67,11 @@ export function buildPageMetadata({
     title,
     description,
     keywords: [...(keywords ?? DEFAULT_KEYWORDS)],
-    alternates: { canonical },
+    alternates: languageAlternates(path),
     openGraph: {
       type: "website",
-      locale: "en_GB",
+      locale: ogLocale,
+      alternateLocale: locale === "el" ? ["en_GB"] : ["el_GR"],
       siteName: SITE_NAME,
       url: canonical,
       title: pageTitle,
@@ -90,10 +107,11 @@ export function buildHomeMetadata(): Metadata {
     },
     description: HOME_DESCRIPTION,
     keywords: [...DEFAULT_KEYWORDS],
-    alternates: { canonical },
+    alternates: languageAlternates("/"),
     openGraph: {
       type: "website",
       locale: "en_GB",
+      alternateLocale: ["el_GR"],
       siteName: SITE_NAME,
       url: canonical,
       title: HOME_TITLE,

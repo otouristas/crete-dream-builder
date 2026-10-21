@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { SITE_HEADER_HEIGHT_CLASS } from "@/lib/layout-constants";
-import { SITE_RESIDENCES_LINKS, SITE_TOP_LEVEL_PAGES } from "@/lib/nav-config";
+import { chrome } from "@/lib/i18n/chrome";
+import { alternatePath, localizedHref, type Locale } from "@/lib/i18n/locale";
 import { PHONE_1_DISPLAY, VIBER_1_URL, WHATSAPP_1_URL } from "@/lib/site-constants";
 import { SiteMobileNav } from "@/components/site/site-mobile-nav";
 import { ViberIcon, WhatsAppIcon } from "@/components/icons";
@@ -14,14 +15,23 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 
-export function SiteNav() {
+export function SiteNav({
+  locale,
+  pathname,
+}: {
+  readonly locale: Locale;
+  readonly pathname: string;
+}) {
+  const labels = chrome(locale);
+  const href = (path: string) => localizedHref(locale, path);
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-cream/90 pt-[env(safe-area-inset-top,0px)] backdrop-blur-md">
       <nav
         className={`mx-auto flex ${SITE_HEADER_HEIGHT_CLASS} max-w-7xl items-center justify-between gap-2 px-4 sm:gap-3 sm:px-6 lg:px-10`}
         aria-label="Primary"
       >
-        <Link href="/" className="flex min-w-0 shrink items-center gap-2 sm:gap-3">
+        <Link href={href("/")} className="flex min-w-0 shrink items-center gap-2 sm:gap-3">
           <Image
             src="/logo-header.png"
             alt="Kagiampakis Concept Residences"
@@ -40,15 +50,15 @@ export function SiteNav() {
             <NavigationMenuList className="gap-0.5">
               <NavigationMenuItem>
                 <NavigationMenuTrigger className="bg-transparent text-sm font-medium text-muted-foreground hover:bg-secondary/60 hover:text-primary data-[state=open]:bg-secondary/60 data-[state=open]:text-primary">
-                  Residences
+                  {labels.residencesLabel}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-[380px] gap-1 p-3">
-                    {SITE_RESIDENCES_LINKS.map((item) => (
+                    {labels.residences.map((item) => (
                       <li key={item.href}>
                         <NavigationMenuLink asChild>
                           <Link
-                            href={item.href}
+                            href={href(item.href)}
                             className="group block rounded-md px-3.5 py-3 transition-colors hover:bg-secondary/70"
                           >
                             <div className="text-sm font-semibold text-stone-deep group-hover:text-primary">
@@ -67,11 +77,11 @@ export function SiteNav() {
                 </NavigationMenuContent>
               </NavigationMenuItem>
 
-              {SITE_TOP_LEVEL_PAGES.map((item) => (
+              {labels.top.map((item) => (
                 <NavigationMenuItem key={item.href}>
                   <NavigationMenuLink asChild>
                     <Link
-                      href={item.href}
+                      href={href(item.href)}
                       className="inline-flex h-9 items-center justify-center rounded-md bg-transparent px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary/60 hover:text-primary"
                     >
                       {item.label}
@@ -84,6 +94,13 @@ export function SiteNav() {
         </div>
 
         <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
+          <Link
+            href={alternatePath(pathname)}
+            hrefLang={locale === "el" ? "en" : "el"}
+            className="inline-flex h-10 items-center px-2 text-sm font-semibold text-muted-foreground hover:text-primary"
+          >
+            {labels.language}
+          </Link>
           <a
             href={WHATSAPP_1_URL}
             target="_blank"
@@ -102,7 +119,7 @@ export function SiteNav() {
           >
             <ViberIcon className="h-5 w-5 shrink-0" />
           </a>
-          <SiteMobileNav />
+          <SiteMobileNav locale={locale} />
         </div>
       </nav>
     </header>

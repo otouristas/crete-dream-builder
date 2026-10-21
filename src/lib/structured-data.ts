@@ -1,4 +1,5 @@
-import { SITE_FAQ } from "@/lib/faq-data";
+import { faqText, SITE_FAQ } from "@/lib/faq-data";
+import type { Locale } from "@/lib/i18n/locale";
 import { GEO } from "@/lib/geo-config";
 import { getReviewStats } from "@/lib/review-stats";
 import { DEFAULT_OG_IMAGE_PATH, HOME_DESCRIPTION, SITE_NAME } from "@/lib/seo-config";
@@ -105,18 +106,22 @@ export function buildLodgingBusinessJsonLd() {
   };
 }
 
-export function buildFaqJsonLd() {
+export function buildFaqJsonLd(locale: Locale = "en") {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: SITE_FAQ.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.answer,
-      },
-    })),
+    inLanguage: locale === "el" ? "el" : "en",
+    mainEntity: SITE_FAQ.map((item) => {
+      const text = faqText(item, locale);
+      return {
+        "@type": "Question",
+        name: text.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: text.answer,
+        },
+      };
+    }),
   };
 }
 

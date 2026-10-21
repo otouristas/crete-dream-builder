@@ -10,7 +10,7 @@
    Display/body fonts are loaded via next/font in layout (variables --font-inter, --font-cormorant). */
 
 @theme inline {
-  --font-display: var(--font-cormorant), ui-serif, Georgia, serif;
+  --font-display: var(--font-cormorant), var(--font-greek-display), ui-serif, Georgia, serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
   --radius-sm: calc(var(--radius) - 4px);

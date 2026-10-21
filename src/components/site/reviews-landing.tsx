@@ -4,6 +4,7 @@ import { getPropertyReviews } from "@/lib/property-data";
 import { WhatsAppIcon } from "@/components/icons";
 import { SitePhotoHero } from "@/components/site/site-hero";
 import { SITE_FAB_CLEAR_CLASS } from "@/lib/layout-constants";
+import { localizedHref, pick, type Locale } from "@/lib/i18n/locale";
 import { GOOGLE_BUSINESS_URL, MAILTO, TRIPADVISOR_URL, WHATSAPP_URL } from "@/lib/site-constants";
 
 function StarRow({ rating }: { readonly rating: string }) {
@@ -18,7 +19,7 @@ function StarRow({ rating }: { readonly rating: string }) {
   );
 }
 
-export function ReviewsLanding() {
+export function ReviewsLanding({ locale = "en" }: { readonly locale?: Locale }) {
   const reviews = getPropertyReviews();
   const count = reviews.length;
   const allFive = reviews.every((r) => Number.parseInt(r.Rating, 10) >= 5);
@@ -31,23 +32,33 @@ export function ReviewsLanding() {
         className="min-h-[min(62svh,640px)] border-b border-cream/10 text-cream"
         contentClassName="min-h-[min(62svh,640px)] max-w-6xl pb-14 sm:pb-16 lg:pb-20"
       >
-        <p className="text-xs uppercase tracking-display text-primary">Guest voices</p>
+        <p className="text-xs uppercase tracking-display text-primary">
+          {pick(locale, "Guest voices", "Φωνές επισκεπτών")}
+        </p>
         <h1 className="mt-4 max-w-3xl font-display text-4xl leading-[1.12] text-balance text-cream sm:text-5xl lg:text-6xl">
-          What people remember <span className="text-primary">after they leave.</span>
+          {pick(locale, "What people remember", "Τι θυμούνται οι επισκέπτες")}{" "}
+          <span className="text-primary">{pick(locale, "after they leave.", "αφού φύγουν.")}</span>
         </h1>
         <p className="mt-6 max-w-xl text-lg leading-relaxed text-cream/80">
-          Every note below is from a real stay — same house, same family welcome. Prefer your own
-          thread? Message us on WhatsApp.
+          {pick(
+            locale,
+            "In short. These notes are from real stays at the two residences in Avdou. On Airbnb, Residence I is rated 5.0 from 26 reviews. Residence II has no Airbnb reviews yet. The texts below stay in the language the guest wrote.",
+            "Με λίγα λόγια. Τα σημειώματα είναι από πραγματικές διαμονές στις δύο κατοικίες της Αβδού. Στο Airbnb η Κατοικία I έχει 5,0 από 26 κριτικές. Η Κατοικία II δεν έχει ακόμη κριτικές στο Airbnb. Τα κείμενα μένουν στη γλώσσα που έγραψε ο επισκέπτης.",
+          )}
         </p>
         <div className="mt-10 flex flex-wrap items-end gap-8 border-t border-cream/15 pt-10">
           <div>
             <p className="font-display text-5xl text-primary sm:text-6xl">5.0</p>
-            <p className="mt-1 text-xs uppercase tracking-display text-cream/55">Average rating</p>
+            <p className="mt-1 text-xs uppercase tracking-display text-cream/55">
+              {pick(locale, "Average rating", "Μέση βαθμολογία")}
+            </p>
           </div>
           <div className="h-12 w-px bg-cream/20" aria-hidden />
           <div>
             <p className="font-display text-5xl text-cream sm:text-6xl">{count}</p>
-            <p className="mt-1 text-xs uppercase tracking-display text-cream/55">Reviews shown</p>
+            <p className="mt-1 text-xs uppercase tracking-display text-cream/55">
+              {pick(locale, "Reviews shown", "Κριτικές στη σελίδα")}
+            </p>
           </div>
           <div className="h-12 w-px bg-cream/20 max-sm:hidden" aria-hidden />
           <p className="max-w-xs text-sm text-cream/65 max-sm:w-full sm:ml-4">
@@ -152,10 +163,10 @@ export function ReviewsLanding() {
               Email
             </a>
             <Link
-              href="/contact"
+              href={localizedHref(locale, "/contact")}
               className="inline-flex items-center rounded-full border border-cream/40 px-7 py-3 text-sm text-cream/95 hover:bg-cream/10"
             >
-              Contact &amp; map
+              {pick(locale, "Contact & map", "Επικοινωνία και χάρτης")}
             </Link>
           </div>
         </div>

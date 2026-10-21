@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { headers } from "next/headers";
+import { Cormorant_Garamond, EB_Garamond, Inter } from "next/font/google";
 import "@/app/globals.css";
 import { JsonLdOrganization } from "@/components/site/json-ld-organization";
 import { SiteWhatsAppFab } from "@/components/site/site-whatsapp-fab";
@@ -9,7 +10,7 @@ import { SITE_NAME } from "@/lib/seo-config";
 import { getSiteUrl } from "@/lib/site-url";
 
 const inter = Inter({
-  subsets: ["latin"],
+  subsets: ["latin", "greek"],
   variable: "--font-inter",
   display: "swap",
 });
@@ -21,6 +22,16 @@ const cormorantGaramond = Cormorant_Garamond({
   weight: ["300", "400", "500", "600"],
   style: ["normal", "italic"],
   /** Display font: avoid an extra `<link rel="preload">` competing with Inter for LCP. */
+  preload: false,
+});
+
+/** Greek glyphs for display headings. Latin text still resolves to Cormorant first. */
+const greekDisplay = EB_Garamond({
+  subsets: ["greek"],
+  variable: "--font-greek-display",
+  display: "swap",
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
   preload: false,
 });
 
@@ -61,15 +72,18 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const requestHeaders = await headers();
+  const lang = requestHeaders.get("x-locale") === "el" ? "el" : "en";
+
   return (
     <html
-      lang="en"
-      className={`${inter.variable} ${cormorantGaramond.variable}`}
+      lang={lang}
+      className={`${inter.variable} ${cormorantGaramond.variable} ${greekDisplay.variable}`}
       suppressHydrationWarning
     >
       <body className="min-h-dvh antialiased" suppressHydrationWarning>

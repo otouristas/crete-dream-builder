@@ -2,14 +2,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { ResidenceSpecs } from "@/components/site/residence-specs";
 import { WhatsAppIcon } from "@/components/icons";
+import { localizedHref, pick, type Locale } from "@/lib/i18n/locale";
+import { localizeResidence } from "@/lib/i18n/residence-copy";
 import type { ResidenceDetails } from "@/lib/residences-data";
 import { WHATSAPP_1_URL } from "@/lib/site-constants";
 
 interface ResidenceCardProps {
   readonly residence: ResidenceDetails;
+  readonly locale?: Locale;
 }
 
-export function ResidenceCard({ residence }: ResidenceCardProps) {
+export function ResidenceCard({ residence: source, locale = "en" }: ResidenceCardProps) {
+  const residence = localizeResidence(source, locale);
   const isConcept1 = residence.id === "concept-1";
 
   return (
@@ -29,7 +33,7 @@ export function ResidenceCard({ residence }: ResidenceCardProps) {
             {residence.badge}
           </span>
           <span className="rounded-xs bg-stone-deep/90 px-3 py-1 text-xs font-medium text-cream backdrop-blur-xs">
-            {residence.photos.length} photos
+            {residence.photos.length} {pick(locale, "photos", "φωτογραφίες")}
           </span>
         </div>
 
@@ -40,6 +44,7 @@ export function ResidenceCard({ residence }: ResidenceCardProps) {
             bedrooms={residence.bedrooms}
             bathrooms={residence.bathrooms}
             minStayNights={residence.minStayNights}
+            locale={locale}
             className="mt-2 text-xs font-medium text-cream/90"
           />
         </div>
@@ -50,34 +55,50 @@ export function ResidenceCard({ residence }: ResidenceCardProps) {
 
         <div className="my-6 rounded-sm border border-border/60 bg-secondary/50 p-4">
           <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary">
-            Pricing overview
+            {pick(locale, "Pricing overview", "Τιμές")}
           </div>
           {isConcept1 ? (
             <div className="space-y-1 text-xs text-foreground/80">
               <div className="flex justify-between border-b border-border/50 pb-1">
-                <span>Sunday – Thursday</span>
-                <strong className="text-stone-deep">€60 – €120 / night</strong>
+                <span>{pick(locale, "Sunday – Thursday", "Κυριακή – Πέμπτη")}</span>
+                <strong className="text-stone-deep">
+                  €60 – €120 / {pick(locale, "night", "διανυκτέρευση")}
+                </strong>
               </div>
               <div className="flex justify-between pt-1">
-                <span>Friday – Saturday</span>
-                <strong className="text-stone-deep">€70 – €130 / night</strong>
+                <span>{pick(locale, "Friday – Saturday", "Παρασκευή – Σάββατο")}</span>
+                <strong className="text-stone-deep">
+                  €70 – €130 / {pick(locale, "night", "διανυκτέρευση")}
+                </strong>
               </div>
               <div className="pt-1 text-[11px] text-muted-foreground">
-                Rates vary by guest count (2 to 6). Minimum stay 2 nights.
+                {pick(
+                  locale,
+                  "Rates vary by guest count (2 to 6). Minimum stay 2 nights.",
+                  "Η τιμή αλλάζει με τα άτομα (2 έως 6). Ελάχιστη διαμονή 2 διανυκτερεύσεις.",
+                )}
               </div>
             </div>
           ) : (
             <div className="space-y-1 text-xs text-foreground/80">
               <div className="flex justify-between border-b border-border/50 pb-1">
-                <span>Sunday – Thursday</span>
-                <strong className="text-stone-deep">€170 / night (flat)</strong>
+                <span>{pick(locale, "Sunday – Thursday", "Κυριακή – Πέμπτη")}</span>
+                <strong className="text-stone-deep">
+                  €170 / {pick(locale, "night (flat)", "διανυκτέρευση (ενιαία)")}
+                </strong>
               </div>
               <div className="flex justify-between pt-1">
-                <span>Friday – Saturday</span>
-                <strong className="text-stone-deep">€180 / night (flat)</strong>
+                <span>{pick(locale, "Friday – Saturday", "Παρασκευή – Σάββατο")}</span>
+                <strong className="text-stone-deep">
+                  €180 / {pick(locale, "night (flat)", "διανυκτέρευση (ενιαία)")}
+                </strong>
               </div>
               <div className="pt-1 text-[11px] text-muted-foreground">
-                Flat rate for 1 to 7 guests. Minimum stay 3 nights.
+                {pick(
+                  locale,
+                  "Flat rate for 1 to 7 guests. Minimum stay 3 nights.",
+                  "Ενιαία τιμή για 1 έως 7 άτομα. Ελάχιστη διαμονή 3 διανυκτερεύσεις.",
+                )}
               </div>
             </div>
           )}
@@ -96,10 +117,10 @@ export function ResidenceCard({ residence }: ResidenceCardProps) {
 
         <div className="flex flex-wrap items-center gap-3 border-t border-border pt-4">
           <Link
-            href={`/residences/${residence.id}`}
+            href={localizedHref(locale, `/residences/${residence.id}`)}
             className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-primary px-5 py-2.5 text-xs font-semibold text-primary-foreground shadow-xs transition-all hover:bg-primary/90"
           >
-            Details &amp; photos
+            {pick(locale, "Details & photos", "Λεπτομέρειες και φωτογραφίες")}
           </Link>
           <a
             href={WHATSAPP_1_URL}

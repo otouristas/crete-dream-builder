@@ -22,17 +22,34 @@ import {
   WHATSAPP_1_URL,
   WHATSAPP_2_URL,
 } from "@/lib/site-constants";
-import { SITE_HOME_ANCHORS, SITE_LEGAL_PAGES, SITE_MAIN_PAGES } from "@/lib/nav-config";
+import { chrome } from "@/lib/i18n/chrome";
+import { alternatePath, localizedHref, pick, type Locale } from "@/lib/i18n/locale";
 import { CreditsBar } from "./CreditsBar";
 import { SITE_CONTAINER_CLASS } from "@/lib/layout-constants";
 
-export function SiteFooter() {
+export function SiteFooter({
+  locale,
+  pathname,
+}: {
+  readonly locale: Locale;
+  readonly pathname: string;
+}) {
+  const labels = chrome(locale);
+  const href = (path: string) => localizedHref(locale, path);
+  const explore = [
+    { href: "/", label: labels.home },
+    ...labels.residences.filter((item) => item.href !== "/#calculator"),
+    ...labels.top,
+    ...labels.guides,
+    ...labels.anchors,
+  ];
+
   return (
     <footer className="bg-stone-deep text-cream/80 pb-[max(1rem,env(safe-area-inset-bottom))]">
       <div className={`${SITE_CONTAINER_CLASS} py-14 lg:py-16`}>
         <div className="grid gap-12 border-b border-cream/10 pb-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-1">
-            <Link href="/" className="inline-flex items-center gap-3">
+            <Link href={href("/")} className="inline-flex items-center gap-3">
               <span className="inline-flex shrink-0 brightness-0 invert">
                 <Image
                   src="/logo-final.png"
@@ -48,8 +65,11 @@ export function SiteFooter() {
               </span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-cream/65">
-              Two traditional stone residences in Avdou, Crete — Residence I (6 guests) and
-              Residence II (7 guests). Hosted by the Kagiampakis family. Book direct.
+              {pick(
+                locale,
+                "Two traditional stone residences in Avdou, Crete — Residence I (6 guests) and Residence II (7 guests). Hosted by the Kagiampakis family. Book direct.",
+                "Δύο παραδοσιακές πέτρινες κατοικίες στην Αβδού της Κρήτης — η Κατοικία I (6 άτομα) και η Κατοικία II (7 άτομα). Φιλοξενία από την οικογένεια Καγιαμπάκη. Απευθείας κράτηση.",
+              )}
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <a
@@ -96,28 +116,13 @@ export function SiteFooter() {
 
           <div>
             <h2 className="text-xs font-semibold uppercase tracking-display text-primary">
-              Explore
+              {labels.explore}
             </h2>
             <ul className="mt-5 space-y-3 text-sm">
-              <li>
-                <Link href="/" className="text-cream/85 transition-colors hover:text-primary">
-                  Home
-                </Link>
-              </li>
-              {SITE_MAIN_PAGES.map((link) => (
-                <li key={link.href}>
+              {explore.map((link) => (
+                <li key={`${link.href}-${link.label}`}>
                   <Link
-                    href={link.href}
-                    className="text-cream/85 transition-colors hover:text-primary"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-              {SITE_HOME_ANCHORS.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
+                    href={href(link.href)}
                     className="text-cream/85 transition-colors hover:text-primary"
                   >
                     {link.label}
@@ -129,7 +134,7 @@ export function SiteFooter() {
 
           <div>
             <h2 className="text-xs font-semibold uppercase tracking-display text-primary">
-              Book direct
+              {labels.bookDirect}
             </h2>
             <ul className="mt-5 space-y-3 text-sm">
               <li>
@@ -186,7 +191,7 @@ export function SiteFooter() {
 
           <div>
             <h2 className="text-xs font-semibold uppercase tracking-display text-primary">
-              Call or list
+              {pick(locale, "Call or list", "Τηλέφωνο")}
             </h2>
             <ul className="mt-4 space-y-2 text-sm">
               <li>
@@ -210,7 +215,7 @@ export function SiteFooter() {
             </ul>
 
             <h2 className="mt-6 text-xs font-semibold uppercase tracking-display text-primary">
-              Also listed on
+              {pick(locale, "Also listed on", "Επίσης σε")}
             </h2>
             <ul className="mt-3 space-y-2 text-xs">
               <li>
@@ -220,7 +225,7 @@ export function SiteFooter() {
                   rel="noopener noreferrer"
                   className="text-cream/60 transition-colors hover:text-primary"
                 >
-                  Airbnb: Residence I
+                  {pick(locale, "Airbnb: Residence I", "Airbnb: Κατοικία I")}
                 </a>
               </li>
               <li>
@@ -230,7 +235,7 @@ export function SiteFooter() {
                   rel="noopener noreferrer"
                   className="text-cream/60 transition-colors hover:text-primary"
                 >
-                  Airbnb: Residence II
+                  {pick(locale, "Airbnb: Residence II", "Airbnb: Κατοικία II")}
                 </a>
               </li>
             </ul>
@@ -241,14 +246,22 @@ export function SiteFooter() {
           <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
             <p>{REGISTRATION}</p>
             <nav className="flex flex-wrap gap-x-4 gap-y-2" aria-label="Legal">
-              {SITE_LEGAL_PAGES.map((link) => (
-                <Link key={link.href} href={link.href} className="hover:text-primary">
+              {labels.legal.map((link) => (
+                <Link key={link.href} href={href(link.href)} className="hover:text-primary">
                   {link.label}
                 </Link>
               ))}
+              <Link
+                href={alternatePath(pathname)}
+                className="hover:text-primary"
+                hrefLang={locale === "el" ? "en" : "el"}
+              >
+                {labels.language}
+              </Link>
             </nav>
             <p className="sm:text-right">
-              © {new Date().getFullYear()} {SITE_DOMAIN}. All rights reserved.
+              © {new Date().getFullYear()} {SITE_DOMAIN}.{" "}
+              {pick(locale, "All rights reserved.", "Με την επιφύλαξη κάθε δικαιώματος.")}
             </p>
           </div>
           <CreditsBar
