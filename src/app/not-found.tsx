@@ -1,5 +1,32 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { SITE_NAME } from "@/lib/seo-config";
+
+export const metadata: Metadata = {
+  title: "Page not found",
+  description:
+    "This page does not exist. View the stone houses in Avdou, Crete, or contact host Xrisa.",
+  robots: {
+    index: false,
+    follow: true,
+    googleBot: {
+      index: false,
+      follow: true,
+    },
+  },
+  openGraph: {
+    title: `Page not found | ${SITE_NAME}`,
+    description:
+      "This page does not exist. View the stone houses in Avdou, Crete, or contact host Xrisa.",
+  },
+  twitter: {
+    card: "summary",
+    title: `Page not found | ${SITE_NAME}`,
+    description:
+      "This page does not exist. View the stone houses in Avdou, Crete, or contact host Xrisa.",
+  },
+};
 
 export default function NotFound() {
   return (

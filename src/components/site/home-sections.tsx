@@ -49,8 +49,7 @@ export function HomeHero() {
           Avdou Village · Heraklion · Crete
         </p>
         <h1 className="font-display text-4xl leading-[1.15] text-balance text-cream [text-shadow:0_2px_28px_rgba(0,0,0,0.45)] sm:text-5xl lg:text-7xl xl:text-8xl">
-          Kagiampakis
-          <br />
+          Kagiampakis <br />
           <span className="font-light text-primary/95">Concept Residences I &amp; II</span>
         </h1>
         <p className="mt-4 max-w-2xl text-pretty text-base text-cream [text-shadow:0_1px_16px_rgba(0,0,0,0.4)] sm:mt-5 sm:text-lg lg:text-xl">
@@ -191,8 +190,21 @@ export function HomeStory() {
             </p>
             <p>
               We kept the wooden beams, thick thermal walls, and wood stove, and added comfortable
-              beds, climate control, full kitchens, and high-speed Wi-Fi. Whether you choose Concept
-              I or Concept II, you stay with Cretan warmth — and a host who answers personally.
+              beds, climate control, full kitchens, and high-speed Wi-Fi. Whether you choose{" "}
+              <Link
+                href="/residences/concept-1"
+                className="font-medium text-primary underline-offset-4 hover:underline"
+              >
+                Concept I
+              </Link>{" "}
+              or{" "}
+              <Link
+                href="/residences/concept-2"
+                className="font-medium text-primary underline-offset-4 hover:underline"
+              >
+                Concept II
+              </Link>
+              , you stay with Cretan warmth — and a host who answers personally.
             </p>
           </div>
 
@@ -227,11 +239,10 @@ export function HomeLocation() {
       <div className="absolute inset-0 opacity-35">
         <Image
           src="/property/exterior-courtyard.jpg"
-          alt=""
+          alt="Stone courtyard at Kagiampakis Concept Residences in Avdou, Crete"
           fill
           className="object-cover"
           sizes="100vw"
-          role="presentation"
         />
       </div>
       <div
@@ -248,6 +259,35 @@ export function HomeLocation() {
             Avdou sits 34.3 km (about 31 minutes) from Heraklion Airport. Paragliding, Rosa gorge,
             horseback riding, the 18 villages of Lasithi Plateau, and Hersonissos beaches are all
             easy day trips from the door.
+          </p>
+          <p className="mt-4 text-sm text-cream/75">
+            <Link
+              href="/avdou-village"
+              className="font-medium text-primary underline-offset-4 hover:underline"
+            >
+              Avdou village
+            </Link>
+            {" · "}
+            <Link
+              href="/lasithi-plateau"
+              className="font-medium text-primary underline-offset-4 hover:underline"
+            >
+              Lasithi Plateau
+            </Link>
+            {" · "}
+            <Link
+              href="/day-trips"
+              className="font-medium text-primary underline-offset-4 hover:underline"
+            >
+              Day trips
+            </Link>
+            {" · "}
+            <Link
+              href="/getting-here"
+              className="font-medium text-primary underline-offset-4 hover:underline"
+            >
+              Getting here
+            </Link>
           </p>
           <Link
             href="/what-to-see"

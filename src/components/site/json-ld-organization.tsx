@@ -1,12 +1,17 @@
 import { JsonLd } from "@/components/site/json-ld";
-import { buildLodgingBusinessJsonLd, buildWebsiteJsonLd } from "@/lib/structured-data";
+import {
+  buildLodgingBusinessJsonLd,
+  buildOrganizationJsonLd,
+  buildWebsiteJsonLd,
+} from "@/lib/structured-data";
 
 /**
- * Sitewide entity graph: lodging business + website for search and answer engines.
+ * Sitewide entity graph: organization, website, and lodging business.
  */
 export function JsonLdOrganization() {
   return (
     <>
+      <JsonLd data={buildOrganizationJsonLd()} />
       <JsonLd data={buildWebsiteJsonLd()} />
       <JsonLd data={buildLodgingBusinessJsonLd()} />
     </>

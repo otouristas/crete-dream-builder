@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { ContactEnquiryForm } from "@/components/site/contact-enquiry-form";
 import { ContactChannelCard } from "@/components/site/contact-channels";
 import { JsonLd } from "@/components/site/json-ld";
@@ -51,7 +52,20 @@ export default function ContactPage() {
           Contact host Xrisa
         </h1>
         <p className="mt-4 max-w-2xl text-lg text-foreground/80">
-          The fastest way to reserve <strong>Residence I</strong> or <strong>Residence II</strong>{" "}
+          The fastest way to reserve{" "}
+          <Link
+            href="/residences/concept-1"
+            className="font-medium text-primary underline-offset-4 hover:underline"
+          >
+            <strong>Residence I</strong>
+          </Link>{" "}
+          or{" "}
+          <Link
+            href="/residences/concept-2"
+            className="font-medium text-primary underline-offset-4 hover:underline"
+          >
+            <strong>Residence II</strong>
+          </Link>{" "}
           is WhatsApp or Viber. We reply in Greek and English, usually within hours. Email works too
           — the form below opens your mail app.
         </p>

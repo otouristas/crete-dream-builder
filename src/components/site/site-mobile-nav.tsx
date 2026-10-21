@@ -16,6 +16,7 @@ import {
 } from "@/lib/site-constants";
 import {
   SITE_CALCULATOR_LINK,
+  SITE_GUIDE_PAGES,
   SITE_RESIDENCES_LINKS,
   SITE_TOP_LEVEL_PAGES,
 } from "@/lib/nav-config";
@@ -87,6 +88,17 @@ export function SiteMobileNav() {
           ) : null}
 
           {SITE_TOP_LEVEL_PAGES.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={close}
+              className="rounded-md px-4 py-3.5 text-lg text-foreground/90 transition-colors hover:bg-secondary/60 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              {link.label}
+            </Link>
+          ))}
+
+          {SITE_GUIDE_PAGES.map((link) => (
             <Link
               key={link.href}
               href={link.href}

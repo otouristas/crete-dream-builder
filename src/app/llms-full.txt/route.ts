@@ -1,4 +1,4 @@
-import { SITE_FAQ } from "@/lib/faq-data";
+import { faqAnswerText, SITE_FAQ } from "@/lib/faq-data";
 import { getPropertyReviews } from "@/lib/property-data";
 import { getAllResidences } from "@/lib/residences-data";
 import { getReviewStats } from "@/lib/review-stats";
@@ -51,7 +51,7 @@ function body(): string {
     )
     .join("\n\n");
 
-  const faq = SITE_FAQ.map((f) => `- Q: ${f.question}\n  A: ${f.answer}`).join("\n");
+  const faq = SITE_FAQ.map((f) => `- Q: ${f.question}\n  A: ${faqAnswerText(f.answer)}`).join("\n");
 
   const reviews = getPropertyReviews()
     .map(
@@ -85,6 +85,11 @@ ${reviews}
 - Home: ${ORIGIN}/
 - Residences: ${ORIGIN}/residences
 - What to see nearby: ${ORIGIN}/what-to-see
+- Avdou village: ${ORIGIN}/avdou-village
+- Lasithi Plateau: ${ORIGIN}/lasithi-plateau
+- Day trips: ${ORIGIN}/day-trips
+- Getting here: ${ORIGIN}/getting-here
+- Groups and families: ${ORIGIN}/groups
 - Reviews: ${ORIGIN}/reviews
 - FAQ: ${ORIGIN}/faq
 - Contact: ${ORIGIN}/contact

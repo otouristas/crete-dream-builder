@@ -84,10 +84,7 @@ export function buildPageMetadata({
 export function buildHomeMetadata(): Metadata {
   const canonical = getAbsoluteUrl("/");
   return {
-    title: {
-      default: HOME_TITLE,
-      template: `%s | ${SITE_NAME}`,
-    },
+    title: { absolute: HOME_TITLE },
     description: HOME_DESCRIPTION,
     keywords: [...DEFAULT_KEYWORDS],
     alternates: { canonical },

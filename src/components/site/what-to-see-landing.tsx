@@ -62,7 +62,7 @@ export function WhatToSeeLanding() {
       >
         <p className="text-xs uppercase tracking-display text-primary/95">Beyond the courtyard</p>
         <h1 className="mt-4 max-w-4xl font-display text-4xl leading-[1.12] text-balance text-cream sm:text-5xl lg:text-7xl">
-          Crete from <span className="text-primary/95">Avdou.</span>
+          Day trips from <span className="text-primary/95">Avdou, Crete.</span>
         </h1>
         <p className="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-cream/88 lg:text-xl">
           You are between the Lasithi mountains and the north coast — day trips to plateau, sea, and
@@ -97,10 +97,68 @@ export function WhatToSeeLanding() {
               </h2>
             </div>
             <p className="max-w-md text-sm leading-relaxed text-muted-foreground lg:text-right">
-              Distances are driving estimates from the house. Ask Xrisa on WhatsApp for the routes
-              she actually uses.
+              Distances are driving estimates from{" "}
+              <Link
+                href="/residences/concept-1"
+                className="font-medium text-primary underline-offset-4 hover:underline"
+              >
+                Residence I
+              </Link>{" "}
+              and{" "}
+              <Link
+                href="/residences/concept-2"
+                className="font-medium text-primary underline-offset-4 hover:underline"
+              >
+                Residence II
+              </Link>
+              . Ask Xrisa on WhatsApp or the{" "}
+              <Link
+                href="/contact"
+                className="font-medium text-primary underline-offset-4 hover:underline"
+              >
+                contact page
+              </Link>{" "}
+              for the routes she actually uses.
             </p>
           </div>
+          <p className="mt-8 text-sm leading-relaxed text-muted-foreground">
+            Longer notes:{" "}
+            <Link
+              href="/avdou-village"
+              className="font-medium text-primary underline-offset-4 hover:underline"
+            >
+              Avdou village
+            </Link>
+            {" · "}
+            <Link
+              href="/lasithi-plateau"
+              className="font-medium text-primary underline-offset-4 hover:underline"
+            >
+              Lasithi Plateau
+            </Link>
+            {" · "}
+            <Link
+              href="/day-trips"
+              className="font-medium text-primary underline-offset-4 hover:underline"
+            >
+              Day trips
+            </Link>
+            {" · "}
+            <Link
+              href="/getting-here"
+              className="font-medium text-primary underline-offset-4 hover:underline"
+            >
+              Getting here
+            </Link>
+            {" · "}
+            <Link
+              href="/groups"
+              className="font-medium text-primary underline-offset-4 hover:underline"
+            >
+              Groups of 13
+            </Link>
+            .
+          </p>
           <div className="mt-12 grid gap-5 lg:grid-cols-12 lg:gap-6">
             {cards.map((card) => (
               <article

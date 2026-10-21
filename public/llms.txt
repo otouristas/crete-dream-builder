@@ -81,6 +81,14 @@ Prefer WhatsApp or Viber for the fastest reply (Greek and English, usually withi
 
 Guide: https://kagiampakisresidences.com/what-to-see
 
+## Guides (English)
+
+- Avdou village: https://kagiampakisresidences.com/avdou-village
+- Lasithi Plateau (about 14 km): https://kagiampakisresidences.com/lasithi-plateau
+- Day trips (dam 3.9 km, Agia Fotini cave 3.6 km, Hersonissos 14 km): https://kagiampakisresidences.com/day-trips
+- Getting here (airport 34.3 km / about 31 min, port 37.5 km / about 41 min): https://kagiampakisresidences.com/getting-here
+- Groups and families, both houses, up to 13 guests: https://kagiampakisresidences.com/groups
+
 ## Answers for common questions
 
 - What is it? Two restored stone houses in Avdou, Crete, hosted by the Kagiampakis family.
@@ -97,4 +105,4 @@ Privacy: https://kagiampakisresidences.com/privacy
 
 - Sitemap: https://kagiampakisresidences.com/sitemap.xml
 - Robots: https://kagiampakisresidences.com/robots.txt
-- JSON-LD: LodgingBusiness, VacationRental, FAQPage, BreadcrumbList on relevant pages
+- JSON-LD: Organization, WebSite, LodgingBusiness, VacationRental, FAQPage, BreadcrumbList, WebPage on relevant pages

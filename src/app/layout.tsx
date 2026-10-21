@@ -3,9 +3,8 @@ import { Cormorant_Garamond, Inter } from "next/font/google";
 import "@/app/globals.css";
 import { JsonLdOrganization } from "@/components/site/json-ld-organization";
 import { SiteWhatsAppFab } from "@/components/site/site-whatsapp-fab";
-import { buildHomeMetadata } from "@/lib/build-page-metadata";
 import { GEO, GEO_ICBM, GEO_POSITION } from "@/lib/geo-config";
-import { SITE_NAME } from "@/lib/seo-config";
+import { HOME_TITLE, SITE_NAME } from "@/lib/seo-config";
 import { getSiteUrl } from "@/lib/site-url";
 
 const inter = Inter({
@@ -28,7 +27,10 @@ const origin = getSiteUrl().origin;
 
 export const metadata: Metadata = {
   metadataBase: getSiteUrl(),
-  ...buildHomeMetadata(),
+  title: {
+    default: HOME_TITLE,
+    template: `%s | ${SITE_NAME}`,
+  },
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },

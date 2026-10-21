@@ -13,7 +13,7 @@ export const DEFAULT_OG_IMAGE = {
 
 export const HOME_TITLE = `${SITE_NAME} — Traditional Stone Houses in Avdou, Crete`;
 export const HOME_DESCRIPTION =
-  "Book two restored stone residences in Avdou, Crete: Residence I (up to 6 guests, from €60/night) and Residence II (up to 7 guests, from €170/night). 35 km from Heraklion Airport. WhatsApp, Viber, or email host Xrisa. EOT 00000846700 / 00001845501.";
+  "Avdou, Crete · stone houses · sleeps 6, 7 or 13. Residence I from €60/night, Residence II from €170. Book direct.";
 
 export const DEFAULT_KEYWORDS: readonly string[] = [
   "Kagiampakis Concept Residences",
